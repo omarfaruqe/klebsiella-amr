@@ -9,5 +9,15 @@ dependencies:
   - seqkit
   - mash
   - minimap2
-  - ncbi-amrfinderplus
+  - ncbi-amrfinderplus=4.2.7
   - nextflow
+  # Kleborate imports kaptive.database, which Kaptive 3.3 renamed to kaptive.db.
+  # Neither package caps the version, so pin Kaptive below 3.3 until Kleborate is updated.
+  - kleborate>=3.1
+  - kaptive>=3.0,<3.3
+  - pandas>=2.2
+  - requests>=2.32
+  - pyarrow>=16
+  - pytest>=8
+  - ruff>=0.6
+  - pre-commit>=3.7
