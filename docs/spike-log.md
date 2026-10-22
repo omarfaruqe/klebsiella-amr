@@ -35,3 +35,32 @@ Shortlisted drugs (laboratory genomes, Resistant / Susceptible / Intermediate / 
   join to genome metadata (BioProject) in Sprint 1.
 - Excluded for class imbalance or intrinsic resistance: ampicillin (7 S), cefazolin, cefuroxime.
 - Snapshot size is ~520 MB of JSONL; raw stays out of git, manifest records the SHA-256.
+
+## Toolchain validation: HS11286 (GCF_000240185.1), 2026-10-22
+Versions: AMRFinderPlus 4.2.7 (database 2026-08-07.1, --organism Klebsiella_pneumoniae --plus),
+Kleborate 3.1.3 (-p kpsc) with Kaptive 3.2.2.
+
+Assembly: 7 contigs, 5,682,322 bp, N50 5,333,942; Kleborate QC flags 1 ambiguous base.
+
+| Marker | AMRFinderPlus | Kleborate | Note |
+|---|---|---|---|
+| ST | n/a | ST11 | expected for HS11286 |
+| K / O locus | n/a | KL103 / OL2a.1 | typeable |
+| Carbapenemase | blaKPC-2 | KPC-2 | agree |
+| ESBL | blaCTX-M-14 | CTX-M-14 | agree |
+| QRDR | gyrA_S83I, parC_S80I | GyrA-83I, ParC-80I | agree |
+| Porin | ompK35 frameshift | OmpK35-40% | agree |
+| Colistin | none reported | PmrB-10% (truncation) | DISCORDANT; drives Kleborate resistance score 3 |
+| Gentamicin | aac(3)-IId, rmtB1 | rmtB (no aac(3)-IId in AGly column) | DISCORDANT on aac(3)-IId |
+
+Observations:
+- Kleborate counts the PmrB truncation as a colistin marker. Colistin resistance via PmrB is
+  usually gain-of-function missense; a truncation is more likely loss of function, so this may
+  be a false-positive call. Colistin rules must be evaluated per tool against phenotype.
+- Rule baselines will be built separately from each tool and from their union, and the
+  tool-vs-tool disagreement rate is reported per drug.
+
+## Environment notes
+- Kleborate 3.1.3 imports kaptive.database; Kaptive 3.3 renamed it to kaptive.db and neither
+  package caps the version. Pinned kaptive>=3.0,<3.3 in environment.yml (3.2.2 works).
+- AMRFinderPlus took 273 s on one genome with default threads on the M4 Air.
