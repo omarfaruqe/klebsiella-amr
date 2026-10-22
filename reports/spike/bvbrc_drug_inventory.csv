@@ -1,0 +1,85 @@
+antibiotic,Intermediate,Nonsusceptible,Resistant,Susceptible,Unknown,genomes,conflicting
+meropenem,159,0,1444,2551,1980,6074,60
+gentamicin,118,0,1628,2586,588,4890,29
+ciprofloxacin,103,0,2548,1180,1006,4809,28
+ceftazidime,94,0,2665,986,606,4337,14
+amikacin,442,0,467,2534,398,3813,28
+trimethoprim/sulfamethoxazole,25,0,2319,1147,283,3746,28
+ampicillin,85,0,3260,7,50,3402,0
+piperacillin/tazobactam,243,0,1722,850,546,3346,15
+cefepime,248,0,1386,863,705,3202,0
+cefoxitin,214,0,1549,1041,395,3199,0
+imipenem,72,0,970,1301,681,2965,59
+ceftriaxone,62,0,2135,416,289,2902,0
+aztreonam,57,0,2220,476,197,2902,48
+tobramycin,388,0,1267,938,197,2790,0
+cefuroxime,15,0,1934,99,436,2484,0
+cefazolin,0,0,2024,428,20,2472,0
+levofloxacin,41,0,1601,393,290,2325,0
+tetracycline,197,0,957,856,311,2307,14
+ampicillin/sulbactam,125,0,1684,245,190,2244,0
+cefotaxime,36,0,1158,420,526,2126,14
+colistin,0,0,338,1023,646,1959,48
+tigecycline,117,0,262,690,698,1690,77
+ertapenem,10,0,1109,397,180,1669,27
+amoxicillin/clavulanic acid,29,0,1020,201,287,1520,17
+nitrofurantoin,284,0,894,207,14,1385,14
+polymyxin b,1,128,44,147,377,697,0
+chloramphenicol,30,0,317,112,192,651,0
+minocycline,10,0,11,36,525,582,0
+fosfomycin,11,0,84,214,461,576,194
+extended spectrum beta lactamase,0,0,191,260,0,451,0
+cefpodoxime,0,0,181,46,190,417,0
+doripenem,18,0,170,22,166,376,0
+cefotaxime/clavulanic acid,1,0,24,0,289,314,0
+ceftazidime/clavulanic acid,0,0,0,0,305,305,0
+trimethoprim,1,0,122,157,0,280,0
+ceftazidime/avibactam,0,0,67,180,32,279,0
+piperacillin,0,0,5,1,258,264,0
+trimethoprim/sulfobactam,0,0,87,161,0,248,0
+amoxicillin,0,0,2,0,246,248,0
+cefotetan,3,0,25,37,166,231,0
+cefpodoxime_clavulanic_acid,15,0,182,30,0,227,0
+ticarcillin/clavulanic acid,2,0,50,154,20,226,0
+norfloxacin,3,0,28,177,0,206,2
+cefoperazone/sulbactam,0,0,0,0,166,166,0
+cefmetazole,0,0,0,0,166,166,0
+cefozopran,0,0,0,0,166,166,0
+doxycycline,50,0,41,66,0,157,0
+fluoroquinolones,0,0,83,62,0,145,0
+aminogycosides,0,0,87,58,0,145,0
+trimotheprim,0,0,103,42,0,145,0
+beta-lactam,0,0,96,49,0,145,0
+cefalotin,1,0,137,1,0,139,0
+erythromycin,0,0,99,0,0,99,0
+rifampin,0,0,99,0,0,99,0
+nalidixic acid,30,0,61,6,0,97,0
+kanamycin,6,0,85,6,0,97,0
+carbenicillin,2,0,93,2,0,97,0
+streptomycin,17,0,54,26,0,97,0
+cefoperazone,0,0,0,0,92,92,0
+ceftolozane/tazobactam,0,0,52,0,32,84,0
+penicillin,0,0,75,0,0,75,0
+ofloxacin,0,0,47,27,0,74,0
+ceftriaxone/cefpodoxime,0,0,30,29,0,59,0
+spectinomycin,0,0,14,0,41,55,0
+neomycin,0,0,10,0,43,53,0
+cefiderocol,0,0,0,48,0,48,0
+imipenem/relebactam,0,0,0,0,32,32,0
+cefepime_taniborbactam,0,0,0,0,32,32,0
+trimethoprim_sulfonamide,0,0,0,0,27,27,0
+ceftaroline,0,0,25,0,0,25,0
+cephalothin,0,0,2,1,20,23,0
+florfenicol,0,0,11,3,14,14,14
+moxifloxacin,0,0,7,0,4,11,0
+cefalexin,0,0,3,0,0,3,0
+sulfamethoxazole,1,0,2,0,0,3,0
+sulbactam,0,0,3,0,0,3,0
+teicoplanin,0,0,2,0,0,2,0
+linezolid,0,0,2,0,0,2,0
+daptomycin,0,0,2,0,0,2,0
+azithromycin,0,0,2,0,0,2,0
+metronidazole,0,0,0,0,2,2,0
+clarithromycin,0,0,2,0,0,2,0
+vancomycin,0,0,2,0,0,2,0
+clindamycin,0,0,1,0,0,1,0
