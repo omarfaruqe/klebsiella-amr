@@ -1,0 +1,18 @@
+# data never goes in git; provenance manifests live in snapshots/
+data/
+work/
+results/
+.nextflow/
+.nextflow.log*
+
+# python
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# os / editors
+.DS_Store
+.vscode/
+.idea/
