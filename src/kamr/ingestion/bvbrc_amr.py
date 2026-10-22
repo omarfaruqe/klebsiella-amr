@@ -38,12 +38,7 @@ FIELDS = (
 
 def build_query(taxon_id: int, limit: int, offset: int) -> str:
     """Return an RQL query string for one page of genome_amr records."""
-    return (
-        f"eq(taxon_id,{taxon_id})"
-        f"&select({','.join(FIELDS)})"
-        f"&sort(+id)"
-        f"&limit({limit},{offset})"
-    )
+    return f"eq(taxon_id,{taxon_id})&select({','.join(FIELDS)})&sort(+id)&limit({limit},{offset})"
 
 
 def fetch_all(taxon_id: int, page_size: int = PAGE_SIZE, timeout: int = 120) -> list[dict]:
