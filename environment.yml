@@ -1,0 +1,13 @@
+name: kamr
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.12
+  - pip
+  - ncbi-datasets-cli
+  - seqkit
+  - mash
+  - minimap2
+  - ncbi-amrfinderplus
+  - nextflow
