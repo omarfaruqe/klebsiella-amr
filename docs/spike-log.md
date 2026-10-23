@@ -64,3 +64,11 @@ Observations:
 - Kleborate 3.1.3 imports kaptive.database; Kaptive 3.3 renamed it to kaptive.db and neither
   package caps the version. Pinned kaptive>=3.0,<3.3 in environment.yml (3.2.2 works).
 - AMRFinderPlus took 273 s on one genome with default threads on the M4 Air.
+- Server (Ubuntu x86_64, 32 cores, 31 GB RAM) rebuilt from environment.yml resolved Kleborate
+  3.2.4; HS11286 results matched the Mac (ST11, resistance score 3, 9 classes, 13 genes;
+  AMRFinderPlus blaKPC-2, gyrA_S83I, parC_S80I, aac(3)-IId). Pinned kleborate=3.2.4 and
+  kaptive=3.2.2 exactly so both machines resolve the same versions.
+- AMRFinderPlus nucleotide mode: 270 s/genome on the M4 Air (single core) vs 90 s on the
+  server (multi-threaded). Batch runs go on the server.
+- Installing Kleborate pulls ECTyper, whose post-link script downloads a ~990 MB Mash sketch
+  from Zenodo; first environment builds take extra time for this.

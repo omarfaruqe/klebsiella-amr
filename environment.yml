@@ -12,9 +12,10 @@ dependencies:
   - ncbi-amrfinderplus=4.2.7
   - nextflow
   # Kleborate imports kaptive.database, which Kaptive 3.3 renamed to kaptive.db.
-  # Neither package caps the version, so pin Kaptive below 3.3 until Kleborate is updated.
-  - kleborate>=3.1
-  - kaptive>=3.0,<3.3
+  # Neither package caps the version, so both are pinned exactly. Validated on HS11286
+  # (GCF_000240185.1) on macOS arm64 and Ubuntu x86_64, 2026-10-22.
+  - kleborate=3.2.4
+  - kaptive=3.2.2
   - pandas>=2.2
   - requests>=2.32
   - pyarrow>=16
