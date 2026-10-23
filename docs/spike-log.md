@@ -7,6 +7,7 @@ and how far a rules baseline gets.
 | Date (UTC) | Source | Query | Records | Manifest |
 |---|---|---|---|---|
 | 2026-10-22 | BV-BRC genome_amr | eq(taxon_id,573), all fields in FIELDS | 1,840,793 (39,598 genomes) | snapshots/bvbrc-genome_amr-2026-10-22.json |
+| 2026-10-23 | BV-BRC genome_amr (server re-pull) | same query | 1,840,793 (39,598 genomes) | snapshots/bvbrc-genome_amr-2026-10-23.json |
 
 ## Per-drug inventory
 Full table: reports/spike/bvbrc_drug_inventory.csv (laboratory evidence only, unique genomes).
@@ -92,5 +93,12 @@ Kleborate 3.2 changed mutation notation from 3.1 (e.g. PmrB-10% -> pmrb:p.Gly20f
 GyrA-83I -> GyrA:p.Ser83Ile, OmpK35-40% -> OmpK35:p.Trp133fs). AMRFinderPlus and Kleborate
 also number the same OmpK35 frameshift differently (G134AfsTer11 vs Trp133fs). Feature
 extraction must normalise variants to gene + variant class, not match raw strings.
+
+## Snapshot reproducibility, 2026-10-23
+The Mac's raw copy of the 2026-10-22 snapshot was lost when the project folder was replaced by
+a GitHub archive (raw data is gitignored by design). The snapshot was re-downloaded on the server
+with the same downloader. Result: 1,840,793 records, 39,598 genomes and an identical SHA-256
+(d0e561a6...1505126). The sorted, key-ordered JSONL output makes pulls byte-reproducible while
+BV-BRC content is unchanged. Raw data now lives on the server; the Mac keeps only manifests.
 
 Sprint 0 complete.

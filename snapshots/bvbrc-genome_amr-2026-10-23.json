@@ -1,0 +1,11 @@
+{
+  "source": "BV-BRC",
+  "endpoint": "https://www.bv-brc.org/api/genome_amr/",
+  "query_template": "eq(taxon_id,573)&select(id,genome_id,genome_name,taxon_id,antibiotic,resistant_phenotype,measurement,measurement_sign,measurement_value,measurement_unit,laboratory_typing_method,testing_standard,testing_standard_year,evidence,source)&sort(+id)&limit(10000,0)",
+  "taxon_id": 573,
+  "retrieved_utc": "2026-10-23T21:49:10+00:00",
+  "records": 1840793,
+  "unique_genomes": 39598,
+  "file": "data/raw/bvbrc/2026-10-23/genome_amr.jsonl",
+  "sha256": "d0e561a67333d818a0911790af9bb16bb05c1f27be73ad28fb3ad432c1505126"
+}
