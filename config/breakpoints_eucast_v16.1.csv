@@ -1,0 +1,6 @@
+antibiotic,standard,version,valid_from,organism_group,s_le_mg_per_l,r_gt_mg_per_l,applies_to_kpneumoniae,verified,note
+meropenem,EUCAST,16.1,2026-06-24,Enterobacterales,2,8,yes,yes,Row: indications other than meningitis
+ciprofloxacin,EUCAST,16.1,2026-06-24,Enterobacterales,0.25,0.5,yes,yes,Row: indications other than meningitis; ATU 0.5 mg/L
+gentamicin,EUCAST,16.1,2026-06-24,Enterobacterales,2,2,yes,yes,Row: systemic infections; bracketed (2)/(2) per EUCAST guidance on breakpoints in brackets
+colistin,EUCAST,16.1,2026-06-24,Enterobacterales,2,2,yes,yes,Bracketed (2)/(2); MIC must be determined by broth microdilution (note 2)
+tigecycline,EUCAST,16.1,2026-06-24,Enterobacterales,0.5,0.5,no,yes,Row: E. coli and C. koseri only (note 3: variable activity in other species); reported calls used for K. pneumoniae
