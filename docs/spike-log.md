@@ -75,3 +75,22 @@ Observations:
 - bioconda kleborate=3.2.4 requires stxtyper, which has no osx-arm64 build. The Mac
   installs Kleborate 3.2.4 and Kaptive 3.2.2 from PyPI (environment-macos-arm64.yml);
   the server uses environment.yml. Equivalence checked with scripts/verify_toolchain.sh.
+
+## Cross-machine verification, 2026-10-23
+`scripts/verify_toolchain.sh` on HS11286 (FASTA sha256 prefix 9528cd6940c58fae):
+
+| Machine | OS / arch | Kleborate source | AMRFinderPlus | Kleborate | Fingerprint |
+|---|---|---|---|---|---|
+| Mac (faruqe) | Darwin arm64, 10 cores | PyPI (environment-macos-arm64.yml) | 269 s | 16 s | 131c4f63ab10c2b3 |
+| Server (omf) | Linux x86_64, 32 cores | bioconda (environment.yml) | 63 s (8 threads) | 16 s | 131c4f63ab10c2b3 |
+
+Both: AMRFinderPlus 4.2.7, database 2026-08-07.1, Kleborate 3.2.4, Kaptive 3.2.2, Mash 2.3,
+seqkit 2.14.0, BLAST 2.17.0. Fingerprint is identical at 4 and 8 threads on the Mac, so thread
+count does not change results. Decision: development on the Mac, batch runs on the server.
+
+Kleborate 3.2 changed mutation notation from 3.1 (e.g. PmrB-10% -> pmrb:p.Gly20fs,
+GyrA-83I -> GyrA:p.Ser83Ile, OmpK35-40% -> OmpK35:p.Trp133fs). AMRFinderPlus and Kleborate
+also number the same OmpK35 frameshift differently (G134AfsTer11 vs Trp133fs). Feature
+extraction must normalise variants to gene + variant class, not match raw strings.
+
+Sprint 0 complete.
