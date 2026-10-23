@@ -102,3 +102,32 @@ with the same downloader. Result: 1,840,793 records, 39,598 genomes and an ident
 BV-BRC content is unchanged. Raw data now lives on the server; the Mac keeps only manifests.
 
 Sprint 0 complete.
+
+# Sprint 1
+
+## Part 1: labelled cohort (2026-10-23, server, 14 s)
+`python -m kamr.curation.cohort data/raw/bvbrc/2026-10-23/genome_amr.jsonl` with
+config/breakpoints_eucast_v16.1.csv (verified). 19,803 laboratory records for the 5 drugs.
+Full table: reports/cohort/label_report.md.
+
+| Drug | R before -> after | S before -> after | Conflicts before -> after | Recovered from Unknown | Modelling set (S+R) |
+|---|---|---|---|---|---|
+| meropenem | 1,444 -> 1,886 | 2,551 -> 3,798 | 60 -> 8 | 1,921 | 5,684 |
+| gentamicin | 1,628 -> 2,147 | 2,586 -> 2,699 | 29 -> 7 | 560 | 4,846 |
+| ciprofloxacin | 2,548 -> 3,501 | 1,180 -> 1,228 | 28 -> 1 | 959 | 4,729 |
+| colistin | 338 -> 429 | 1,023 -> 1,528 | 48 -> 2 | 598 | 1,957 |
+| tigecycline | 262 -> 262 | 690 -> 690 | 77 -> 0 | 0 | 952 |
+
+"Before" = reported calls in the Sprint 0 inventory; "after" = EUCAST v16.1 re-interpretation.
+
+Findings:
+- Re-interpreting MIC-only "Unknown" records adds 30-50% labelled genomes per drug.
+- Most apparent conflicts were mixed standards (CLSI vs EUCAST), not contradictory results;
+  a single standard removes nearly all of them.
+- Reported vs re-interpreted agreement is 92.9-97.2% where both exist. Disagreements are
+  mostly standard differences (e.g. CLSI meropenem R from 4 mg/L vs EUCAST I for 4-8 mg/L,
+  raising meropenem I from 159 to 382).
+- Colistin agreement (100%) rests on only 269 records; most labels come from bare MICs.
+  Testing method must be checked (EUCAST requires broth microdilution).
+- Tigecycline: 621 MIC-only genomes stay unlabelled (no K. pneumoniae breakpoint).
+- Ciprofloxacin: 19 genomes unlabelled because censored MICs are undecidable.

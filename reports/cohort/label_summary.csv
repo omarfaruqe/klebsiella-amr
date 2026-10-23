@@ -1,0 +1,6 @@
+antibiotic,R,S,I,conflict,unlabelled,genomes,recovered_from_unknown,records_both_calls,reported_vs_eucast_agreement
+meropenem,1886,3798,382,8,0,6074,1921,2544.0,0.945
+gentamicin,2147,2699,37,7,0,4890,560,2525.0,0.929
+ciprofloxacin,3501,1228,60,1,19,4809,959,2026.0,0.972
+colistin,429,1528,0,2,0,1959,598,269.0,1.0
+tigecycline,262,690,117,0,621,1690,0,0.0,0.0
