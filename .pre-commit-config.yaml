@@ -8,7 +8,10 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
+      # Generated reports and manifests are committed exactly as the code writes them.
       - id: end-of-file-fixer
+        exclude: ^(reports|snapshots)/
       - id: trailing-whitespace
+        exclude: ^(reports|snapshots)/
       - id: check-added-large-files
         args: [--maxkb=1000]

@@ -1,0 +1,12 @@
+{
+  "source": "BV-BRC",
+  "endpoint": "https://www.bv-brc.org/api/genome/",
+  "query_template": "in(genome_id,(<genome_id>,...))&select(genome_id,genome_name,species,taxon_id,genome_status,genome_quality,assembly_accession,bioproject_accession,biosample_accession,sra_accession,contigs,contig_n50,genome_length,gc_content,checkm_completeness,checkm_contamination,mlst,collection_year,collection_date,isolation_country,isolation_source,host_name)&limit(12)",
+  "batch_size": 200,
+  "retrieved_utc": "2026-10-23T23:31:41+00:00",
+  "requested_genomes": 6817,
+  "records": 6817,
+  "file": "data/raw/bvbrc_genome/2026-10-23/genome.jsonl",
+  "sha256": "8196a945b79cada87e8d2091cd066b24b2d539e2bc348531ce140ebaaf2a96b9",
+  "note": "Manifest reconstructed from the raw file on 2026-10-23; retrieved_utc is the file modification time."
+}

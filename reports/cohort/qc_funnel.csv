@@ -1,0 +1,10 @@
+step,remaining,removed
+labelled genomes with metadata,6817,0
+species,6817,0
+assembly_stats_present,6817,0
+min_length,6801,16
+max_length,6774,27
+max_contigs,6674,100
+min_n50,6674,0
+checkm_completeness,6670,4
+checkm_contamination,6655,15
