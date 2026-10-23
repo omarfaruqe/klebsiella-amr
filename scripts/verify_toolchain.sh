@@ -3,6 +3,7 @@
 # Run inside the kamr environment. Prints versions, key calls and a fingerprint;
 # matching fingerprints on two machines mean identical normalized results.
 set -euo pipefail
+trap 'echo "ERROR: line $LINENO failed: $BASH_COMMAND" >&2' ERR
 
 ACC="GCF_000240185.1"
 WORK="${KAMR_VERIFY_DIR:-$HOME/kamr-scratch/verify}"
@@ -54,7 +55,12 @@ amr = pd.read_csv("amrfinder.tsv", sep="\t")
 col = "Element symbol" if "Element symbol" in amr.columns else "Gene symbol"
 amr_calls = sorted(amr[col].astype(str))
 
-kl = pd.read_csv(glob.glob("kleborate/*.txt")[0], sep="\t").iloc[0]
+# Kleborate writes a short summary table and a full table; use the full one.
+tables = [pd.read_csv(f, sep="\t") for f in sorted(glob.glob("kleborate/*.txt"))]
+full = [t for t in tables if any(c.endswith("mlst__ST") for c in t.columns)]
+if not full:
+    raise SystemExit(f"ERROR: no full Kleborate table in {sorted(glob.glob('kleborate/*'))}")
+kl = full[0].iloc[0]
 want = ["mlst__ST", "Bla_Carb_acquired", "Bla_ESBL_acquired", "Col_mutations", "AGly_acquired",
         "Flq_mutations", "Omp_mutations", "resistance_score__resistance_score",
         "kaptive__K_locus", "kaptive__O_locus"]

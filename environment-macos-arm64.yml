@@ -1,0 +1,27 @@
+# macOS Apple Silicon development environment.
+# Same tools and versions as environment.yml (canonical, used on the Linux server), except
+# Kleborate and Kaptive come from PyPI: bioconda's kleborate=3.2.4 depends on stxtyper,
+# which has no osx-arm64 build. StxTyper is only used for E. coli and not by the kpsc preset.
+# Equivalence is checked with scripts/verify_toolchain.sh (matching FINGERPRINT).
+name: kamr
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.12
+  - pip
+  - ncbi-datasets-cli
+  - seqkit
+  - mash
+  - minimap2
+  - ncbi-amrfinderplus=4.2.7
+  - nextflow
+  - pandas>=2.2
+  - requests>=2.32
+  - pyarrow>=16
+  - pytest>=8
+  - ruff>=0.6
+  - pre-commit>=3.7
+  - pip:
+      - kleborate==3.2.4
+      - kaptive==3.2.2

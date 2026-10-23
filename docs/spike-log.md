@@ -72,3 +72,6 @@ Observations:
   server (multi-threaded). Batch runs go on the server.
 - Installing Kleborate pulls ECTyper, whose post-link script downloads a ~990 MB Mash sketch
   from Zenodo; first environment builds take extra time for this.
+- bioconda kleborate=3.2.4 requires stxtyper, which has no osx-arm64 build. The Mac
+  installs Kleborate 3.2.4 and Kaptive 3.2.2 from PyPI (environment-macos-arm64.yml);
+  the server uses environment.yml. Equivalence checked with scripts/verify_toolchain.sh.
