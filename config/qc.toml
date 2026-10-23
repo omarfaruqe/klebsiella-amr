@@ -1,0 +1,17 @@
+# Assembly QC thresholds for K. pneumoniae genomes (Sprint 1 part 2).
+# Filters are applied in the order below; the QC report counts genomes removed at each step.
+# Missing CheckM values are reported but do not fail a genome.
+
+[assembly]
+species_pattern = "Klebsiella pneumoniae"
+min_length = 5_000_000
+max_length = 6_500_000
+max_contigs = 500
+min_n50 = 20_000
+min_checkm_completeness = 95.0
+max_checkm_contamination = 5.0
+
+[sample]
+per_stratum = 50
+seed = 20261023
+drugs = ["meropenem", "ciprofloxacin", "gentamicin", "colistin", "tigecycline"]
