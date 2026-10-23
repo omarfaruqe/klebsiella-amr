@@ -12,6 +12,6 @@ min_checkm_completeness = 95.0
 max_checkm_contamination = 5.0
 
 [sample]
-per_stratum = 50
+per_stratum = 100
 seed = 20261023
 drugs = ["meropenem", "ciprofloxacin", "gentamicin", "colistin", "tigecycline"]

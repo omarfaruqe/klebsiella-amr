@@ -131,3 +131,12 @@ Findings:
   Testing method must be checked (EUCAST requires broth microdilution).
 - Tigecycline: 621 MIC-only genomes stay unlabelled (no K. pneumoniae breakpoint).
 - Ciprofloxacin: 19 genomes unlabelled because censored MICs are undecidable.
+
+## Part 2: genome metadata and QC (2026-10-23, server)
+Metadata for 6,817 labelled genomes (snapshots/bvbrc-genome-2026-10-23.json); 6,655 pass QC.
+Full report: reports/cohort/qc_report.md. Decisions recorded in ADR-003:
+- 61% of QC-passing genomes lack an NCBI assembly accession, so assemblies come from BV-BRC.
+- Colistin primary labels restricted to broth microdilution (367 R / 1,164 S).
+- Two BioProjects hold 44% of genomes: study-aware splits are required.
+- Collection year missing for 34%; dated genomes concentrate in 2010-2014.
+- First pilot (per_stratum = 50) gave 265 genomes over 223 STs; raised to per_stratum = 100.
