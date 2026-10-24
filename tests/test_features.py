@@ -16,6 +16,9 @@ from kamr.curation.breakpoints import Breakpoint
     ("symbol", "family"),
     [
         ("blaKPC-2", "blaKPC"),
+        ("blaOXA-48", "blaOXA-48-like"),
+        ("blaOXA-232", "blaOXA-48-like"),
+        ("blaOXA-1", "blaOXA"),
         ("blaCTX-M-15", "blaCTX-M"),
         ("rmtB1", "rmtB"),
         ("qnrS1", "qnrS"),
@@ -36,6 +39,7 @@ def test_features_and_matrix():
             "Element symbol": ["blaKPC-2", "gyrA_S83I", "oqxA", "blaKPC-3", "fieF"],
             "Type": ["AMR", "AMR", "AMR", "AMR", "STRESS"],
             "Subtype": ["AMR", "POINT", "AMR", "AMR", "STRESS"],
+            "Subclass": ["CARBAPENEM", "QUINOLONE", "QUINOLONE", "CARBAPENEM", ""],
         }
     )
     status = pd.DataFrame(
@@ -47,10 +51,36 @@ def test_features_and_matrix():
     )
     long = pd.concat([amr_features(amr), mgrb_features(status)])
     x = feature_matrix(long, ["1", "2", "3"], min_count=1)
-    assert list(x.columns) == ["blaKPC", "gyrA_S83I", "mgrB_disrupted", "mgrB_missense"]
-    assert x.loc["2"].tolist() == [1, 0, 0, 1]
+    assert list(x.columns) == [
+        "blaKPC",
+        "gyrA_S83I",
+        "mgrB_disrupted",
+        "mgrB_missense",
+        "subclass:CARBAPENEM",
+    ]
+    assert x.loc["2"].tolist() == [1, 0, 0, 1, 1]
     assert x.loc["3"].sum() == 0
-    assert list(feature_matrix(long, ["1", "2"], min_count=2).columns) == ["blaKPC"]
+    two = feature_matrix(long, ["1", "2"], min_count=2)
+    assert list(two.columns) == ["blaKPC", "subclass:CARBAPENEM"]
+
+
+def test_subclass_split():
+    amr = pd.DataFrame(
+        {
+            "genome_id": ["1"],
+            "Element symbol": ["ant(2'')-Ia"],
+            "Type": ["AMR"],
+            "Subtype": ["AMR"],
+            "Subclass": ["GENTAMICIN/KANAMYCIN/TOBRAMYCIN"],
+        }
+    )
+    feats = set(amr_features(amr)["feature"])
+    assert feats == {
+        "ant(2'')-Ia",
+        "subclass:GENTAMICIN",
+        "subclass:KANAMYCIN",
+        "subclass:TOBRAMYCIN",
+    }
 
 
 def test_borderline():

@@ -2,7 +2,11 @@
 
 Features (binary presence per genome):
   - AMRFinderPlus AMR elements, intrinsic oqxA/oqxB removed. Acquired genes are collapsed to gene
-    family (blaKPC-2 -> blaKPC, rmtB1 -> rmtB); point mutations keep the full call (gyrA_S83I).
+    family (blaKPC-2 -> blaKPC, rmtB1 -> rmtB), except that OXA-48-like carbapenemases are kept
+    apart from other OXA enzymes (blaOXA-48-like vs blaOXA). Point mutations keep the full call.
+  - Functional features from the AMRFinderPlus Subclass of each acquired gene, split on "/"
+    (subclass:CARBAPENEM, subclass:CEPHALOSPORIN, subclass:GENTAMICIN, ...). These separate, for
+    example, ESBL SHV variants (CEPHALOSPORIN) from chromosomal SHV-1 within the blaSHV family.
   - Efflux-regulator variants are kept: a learned model may use them where the core rule does not.
   - mgrB status from the Sprint 2 check: mgrB_disrupted, mgrB_missense.
   Features present in fewer than --min-count genomes are dropped.
@@ -28,6 +32,7 @@ from pathlib import Path
 import pandas as pd
 
 from kamr.analysis.concordance import evaluation_labels
+from kamr.analysis.review_meropenem import OXA48_LIKE
 from kamr.analysis.rules import INTRINSIC
 from kamr.curation.breakpoints import load_breakpoints
 
@@ -37,6 +42,8 @@ ALLELE_SUFFIX = re.compile(r"(-\d+[A-Za-z]?|\d+)$")
 
 def gene_family(symbol: str) -> str:
     """blaKPC-2 -> blaKPC, rmtB1 -> rmtB, qnrS1 -> qnrS, aac(6')-Ib-cr5 -> aac(6')-Ib-cr."""
+    if OXA48_LIKE.match(symbol):
+        return "blaOXA-48-like"
     if symbol.startswith("tet(") or symbol.endswith(")"):
         return symbol
     return ALLELE_SUFFIX.sub("", symbol) or symbol
@@ -50,7 +57,17 @@ def amr_features(amr: pd.DataFrame) -> pd.DataFrame:
     keep = (etype == "AMR") & ~sym.str.match(INTRINSIC) & (sym != "")
     point = subtype.str.startswith("POINT")
     feat = sym.where(point, sym.map(gene_family))
-    return pd.DataFrame({"genome_id": amr.loc[keep, "genome_id"], "feature": feat[keep]})
+    genes = pd.DataFrame({"genome_id": amr.loc[keep, "genome_id"], "feature": feat[keep]})
+    sub = amr.get("Subclass", pd.Series("", index=amr.index)).fillna("").astype(str).str.upper()
+    acquired = keep & ~point & (sub != "")
+    func = (
+        pd.DataFrame(
+            {"genome_id": amr.loc[acquired, "genome_id"], "sub": sub[acquired].str.split("/")}
+        )
+        .explode("sub")
+        .assign(feature=lambda d: "subclass:" + d["sub"].str.strip())
+    )
+    return pd.concat([genes, func[["genome_id", "feature"]]], ignore_index=True)
 
 
 def mgrb_features(status: pd.DataFrame) -> pd.DataFrame:
@@ -148,7 +165,8 @@ def main() -> None:
     x.to_parquet(args.out / "X.parquet")
     lab.to_parquet(args.out / "labels.parquet", index=False)
 
-    n_point = sum("_" in c and not c.startswith("mgrB_") for c in x.columns)
+    n_func = sum(c.startswith("subclass:") for c in x.columns)
+    n_point = sum("_" in c and not c.startswith(("mgrB_", "subclass:")) for c in x.columns)
     prevalence = x.mean().sort_values(ascending=False)
     uniq = lab.drop_duplicates("genome_id")
     lines = [
@@ -156,7 +174,8 @@ def main() -> None:
         "",
         f"- Generated (UTC): {dt.datetime.now(dt.UTC).isoformat(timespec='seconds')}",
         f"- Genomes: {x.shape[0]:,}; features: {x.shape[1]:,} (present in >= {args.min_count} "
-        f"genomes; {n_point} point-mutation features, 2 mgrB features, rest gene families)",
+        f"genomes; {n_point} point mutations, {n_func} AMRFinderPlus subclasses, 2 mgrB, "
+        "rest gene families)",
         "- Colistin labels: broth microdilution only (ADR-003)",
         "- Borderline: highest MIC exactly at s_le or at 2 x r_gt (ADR-004)",
         "- Flagged: study-level exclusions from config/label_flags.csv (ADR-004)",
