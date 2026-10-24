@@ -225,3 +225,30 @@ Findings to review (reports/cohort/discordant.tsv, 1,740 genome-drug pairs):
   risk factor rather than a predictor.
 - PRJEB10018 contributes 158 of 326 false positives (48%); ST15 is the commonest ST among them.
   Strong study clustering, supporting study-aware splits (ADR-003).
+
+## Part 2: colistin and mgrB (2026-10-24, server; reports/review/colistin_mgrb.md)
+- tblastn of MgrB (WP_002911375.1, from the AMRFinderPlus database) against all 6,652
+  assemblies: 2 min on 16 jobs. Per-genome status: reports/review/mgrb_status.tsv.
+- First run labelled 6,048 genomes "missense" at 97.9% identity: one artefactual mismatch at
+  position 1, because tblastn translates the alternative start codon as V/L. Fixed by calling
+  variants residue by residue and ignoring position 1. Now 6,056 intact, 129 missense, and
+  467 disrupted (split_contigs 162, partial 153, premature_stop 73, absent 34,
+  frameshift_or_indel 27, contig_break 13, insertion_assembled 5).
+- Colistin, broth microdilution (n = 1,528; 367 R): disrupted mgrB 153 R / 41 S;
+  missense 70 R / 13 S (e.g. M27K 25/3, T21N 9/0, N42Y 7/0, K43I 7/0, C28W 4/1, C39G 3/0);
+  intact 144 R / 1,107 S.
+
+| Rule | Sensitivity | Specificity |
+|---|---|---|
+| AMRFinderPlus | 28.3% | 97.8% |
+| AMRFinderPlus + mgrB disrupted | 56.7% | 95.2% |
+| AMRFinderPlus + mgrB disrupted or missense | 67.3% | 94.3% |
+| Kleborate | 39.5% | 96.3% |
+| Kleborate + mgrB disrupted or missense | 61.6% | 94.5% |
+| mgrB disrupted or missense alone | 60.8% | 95.3% |
+
+- A targeted mgrB check explains 143 more resistant isolates than AMRFinderPlus alone, for 40
+  extra false positives. Many disruptions appear as contig breaks or split contigs, consistent
+  with insertion sequences that short-read assemblies cannot span.
+- 120 resistant isolates remain unexplained; most have an intact mgrB coding sequence. Next
+  candidates: pmrB/phoQ/crrB variants and IS insertions in the mgrB promoter (not searched).
