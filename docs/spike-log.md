@@ -184,3 +184,28 @@ Findings:
   insertion sequences, which assembly-based gene and point-mutation searches miss.
 - Meropenem false positives (carbapenemase present, phenotype S) and false negatives (R without
   a carbapenemase) are listed for review in discordant.tsv.
+
+## Part 5: full cohort (2026-10-24 UTC, server)
+- QC re-run with the genome-name species check: 6,652 genomes pass (was 6,655); pilot sample
+  kept frozen. List: reports/cohort/qc_pass_genomes.tsv.
+- 6,652 assemblies downloaded from BV-BRC in 34 min, all valid
+  (snapshots/assemblies-cohort-2026-10-24.tsv).
+- AMRFinderPlus + Kleborate: 8 jobs x 4 threads, 530 min wall time, about 140 CPU-hours,
+  0 failures; 523 pilot results reused. Summary: reports/cohort/run_summary.md.
+
+Cohort concordance (reports/cohort/concordance.md; all QC-passing labelled genomes, not
+de-duplicated for related isolates):
+
+| Drug | n (R/S) | Sensitivity AMRFinderPlus / Kleborate | Specificity AMRFinderPlus / Kleborate |
+|---|---|---|---|
+| meropenem | 5,541 (1,854/3,687) | 96.7% / 96.5% | 91.2% / 91.3% |
+| ciprofloxacin | 4,640 (3,441/1,199) | 98.8% / 98.7% | 88.2% / 88.4% |
+| gentamicin | 4,760 (2,113/2,647) | 85.1% / 81.4% | 94.9% / 95.8% |
+| colistin (BMD) | 1,528 (367/1,161) | 28.3% / 39.5% | 97.8% / 96.3% |
+| tigecycline | 948 (261/687) | 2.7% / 0.0% (12.6% with regulators) | 100% / 100% (84.4% with regulators) |
+
+Findings to review (reports/cohort/discordant.tsv, 1,740 genome-drug pairs):
+- meropenem: 326 isolates with a carbapenemase but a susceptible phenotype.
+- gentamicin: 314 resistant isolates with no detected gentamicin mechanism.
+- colistin: 263 broth-microdilution resistant isolates unexplained by AMRFinderPlus.
+- The pilot's conclusions hold on the full cohort with much narrower intervals.

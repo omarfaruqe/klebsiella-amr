@@ -203,7 +203,7 @@ def main() -> None:
         *[f"| {d} | {fmt(agree.get(d, math.nan))} |" for d in order],
         "",
         f"Discordant genome-drug pairs (core AMRFinderPlus or Kleborate wrong): {len(disc)}, in "
-        "`reports/pilot/discordant.tsv` with each tool's evidence for review.",
+        f"`{args.reports}/discordant.tsv` with each tool's evidence for review.",
     ]
     (args.reports / "concordance.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
