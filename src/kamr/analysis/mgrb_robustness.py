@@ -188,22 +188,31 @@ def main() -> None:
     loo = leave_one_study_out(d)
     if len(loo):
         L += [
-            "| Held-out study | R | S | Sensitivity | Specificity | variants selected |",
-            "|---|---|---|---|---|---|",
+            "| Held-out study | R | S | Sens: disrupted only | Sens: + missense (OOS)"
+            " | Specificity | variants |",
+            "|---|---|---|---|---|---|---|",
         ]
         for r in loo.itertuples():
             L.append(
-                f"| {r.held_out_study} | {r.n_R} | {r.n_S} | {r.sensitivity:.1%} | "
-                f"{r.specificity:.1%} | {r.n_variants_selected} |"
+                f"| {r.held_out_study} | {r.n_R} | {r.n_S} | {r.sens_disrupted_only:.1%} | "
+                f"{r.sensitivity:.1%} | {r.specificity:.1%} | {r.n_variants_selected} |"
             )
-        w = np.average(loo.sensitivity, weights=loo.n_R)
         tot_r = int(loo.n_R.sum())
-        lo, hi = wilson(int(round(w * tot_r)), tot_r)
+        wd = np.average(loo.sens_disrupted_only, weights=loo.n_R)
+        wm = np.average(loo.sensitivity, weights=loo.n_R)
+        lo_d, hi_d = wilson(int(round(wd * tot_r)), tot_r)
+        lo_m, hi_m = wilson(int(round(wm * tot_r)), tot_r)
         L += [
             "",
-            f"**Pooled leave-one-study-out sensitivity: {w:.1%} "
-            f"({lo:.1%}-{hi:.1%}), {tot_r} resistant isolates across {len(loo)} studies.**",
-            "Compare with the in-sample pooled estimate of 67.3% reported in the main analysis.",
+            f"**Disrupted only (nothing fitted): {wd:.1%} ({lo_d:.1%}-{hi_d:.1%}).**",
+            f"**With missense selected out-of-sample: {wm:.1%} ({lo_m:.1%}-{hi_m:.1%}).**",
+            f"Pooled over {tot_r} resistant isolates in {len(loo)} studies.",
+            "",
+            "In-sample equivalents from the main analysis: 56.7% (disrupted) and 67.3%",
+            "(disrupted or missense). The gap between the in-sample and out-of-sample missense",
+            "figures is the cost of selecting variants on the same data. Per-study sensitivity",
+            "also varies widely in the disrupted-only column, which is fitted to nothing: the",
+            "mechanism mix of colistin resistance genuinely differs between collections.",
         ]
     else:
         L.append("No study had enough resistant isolates for leave-one-study-out.")
