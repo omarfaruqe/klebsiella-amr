@@ -10,7 +10,10 @@ Statuses: intact, missense, premature_stop, frameshift_or_indel, insertion_assem
 split_contigs, contig_break, partial, absent. Everything except intact and missense counts as
 "disrupted".
 
-Outputs: results/cohort/mgrb/<genome_id>.tsv (raw tblastn hits, cached),
+Missense calls compare the aligned query and subject residue by residue. Query position 1 is
+ignored because tblastn translates alternative start codons (e.g. GTG) as V or L, not M.
+
+Outputs: results/cohort/mgrb_hits/<genome_id>.tsv (raw tblastn hits, cached),
          reports/review/mgrb_status.tsv, reports/review/colistin_mgrb.md
 """
 
@@ -40,6 +43,7 @@ COLUMNS = [
     "evalue",
     "sseq",
     "slen",
+    "qseq",
 ]
 EDGE_BP = 20
 INSERTION_GAP_BP = 300
@@ -83,7 +87,24 @@ def run_tblastn(fasta: Path, out: Path, query: Path = QUERY) -> bool:
 def read_hits(path: Path) -> pd.DataFrame:
     if path.stat().st_size == 0:
         return pd.DataFrame(columns=COLUMNS)
-    return pd.read_csv(path, sep="\t", names=COLUMNS, dtype={"sseqid": str, "sseq": str})
+    return pd.read_csv(
+        path, sep="\t", names=COLUMNS, dtype={"sseqid": str, "sseq": str, "qseq": str}
+    )
+
+
+def variants(qseq: str, sseq: str, qstart: int) -> list[str]:
+    """Amino-acid differences (e.g. W47R) between aligned query and subject; ignores position 1."""
+    out, qpos = [], qstart
+    for qa, sa in zip(qseq, sseq, strict=False):
+        if qa == "-":
+            out.append(f"ins{qpos - 1}{sa}")
+            continue
+        if sa == "-":
+            out.append(f"{qa}{qpos}del")
+        elif qa != sa and qpos != 1:
+            out.append(f"{qa}{qpos}{sa}")
+        qpos += 1
+    return out
 
 
 def classify(hits: pd.DataFrame) -> tuple[str, str]:
@@ -101,9 +122,10 @@ def classify(hits: pd.DataFrame) -> tuple[str, str]:
         h = full.iloc[0]
         if "*" in str(h["sseq"]).rstrip("*"):
             return "premature_stop", f"stop in aligned protein at {h['sseqid']}"
-        if h["pident"] >= 99.9:
+        diffs = variants(str(h["qseq"]), str(h["sseq"]), int(h["qstart"]))
+        if not diffs:
             return "intact", ""
-        return "missense", f"{h['pident']:.1f}% identity"
+        return "missense", ";".join(diffs)
 
     near_edge = (hits["lo"] <= EDGE_BP) | (hits["hi"] >= hits["slen"] - EDGE_BP)
     covered = set()
@@ -138,7 +160,7 @@ def main() -> None:
 
     manifest = pd.read_csv(args.manifest, sep="\t", dtype={"genome_id": str})
     ids = manifest.loc[manifest["status"] == "ok", "genome_id"].tolist()
-    hit_dir = args.results / "mgrb"
+    hit_dir = args.results / "mgrb_hits"
     hit_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"tblastn MgrB vs {len(ids)} assemblies ({args.jobs} at once) ...")
@@ -197,6 +219,27 @@ def main() -> None:
         "| Status | Genomes |",
         "|---|---|",
         *[f"| {k} | {v:,} |" for k, v in status["mgrb_status"].value_counts().items()],
+    ]
+    bmd = ev[ev["drug"] == "colistin"].merge(status, on="genome_id")
+    mis = (
+        bmd[bmd["mgrb_status"] == "missense"]
+        .assign(variant=lambda d: d["mgrb_detail"].str.split(";"))
+        .explode("variant")
+    )
+    var = pd.crosstab(mis["variant"], mis["label"])
+    for col in ("R", "S"):
+        if col not in var:
+            var[col] = 0
+    var = var.assign(total=var["R"] + var["S"]).sort_values("total", ascending=False).head(15)
+    lines += [
+        "",
+        "## mgrB missense variants (colistin, broth microdilution)",
+        "",
+        "Missense variants are not counted as disrupted. Top 15 by genomes:",
+        "",
+        "| Variant | R | S |",
+        "|---|---|---|",
+        *[f"| {i} | {int(r['R']):,} | {int(r['S']):,} |" for i, r in var.iterrows()],
     ]
     for drug in ("colistin", "colistin_all"):
         lab = ev[ev["drug"] == drug].merge(status, on="genome_id")

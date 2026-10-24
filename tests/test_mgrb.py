@@ -1,6 +1,6 @@
 import pandas as pd
 
-from kamr.analysis.mgrb import QLEN, classify
+from kamr.analysis.mgrb import QLEN, classify, variants
 
 FULL = "MKKLRWVLLIVIIAGCLLLWTQMLNVMCDQDVQFFSGICTINKFIPW"
 
@@ -17,14 +17,30 @@ def hits(*rows):
         "evalue",
         "sseq",
         "slen",
+        "qseq",
     ]
+    rows = [r if len(r) == 11 else (*r, FULL[r[1] - 1 : r[2]]) for r in rows]
     return pd.DataFrame(rows, columns=cols)
 
 
 def test_absent_and_intact():
     assert classify(hits())[0] == "absent"
     assert classify(hits(("c1", 1, 47, 1000, 1141, 100.0, 47, 1e-30, FULL, 50000)))[0] == "intact"
-    assert classify(hits(("c1", 1, 47, 1000, 1141, 97.9, 47, 1e-30, FULL, 50000)))[0] == "missense"
+    gtg_start = "V" + FULL[1:]
+    assert classify(hits(("c1", 1, 47, 1000, 1141, 97.9, 47, 1e-30, gtg_start, 50000)))[0] == (
+        "intact"
+    )
+    w47r = FULL[:-1] + "R"
+    assert classify(hits(("c1", 1, 47, 1000, 1141, 97.9, 47, 1e-30, w47r, 50000))) == (
+        "missense",
+        "W47R",
+    )
+
+
+def test_variants_with_gaps():
+    assert variants("MKKLR", "VKKLR", 1) == []
+    assert variants("MKK-LR", "MKKALR", 1) == ["ins3A"]
+    assert variants("MKKLR", "MK-LR", 1) == ["K3del"]
 
 
 def test_premature_stop():
