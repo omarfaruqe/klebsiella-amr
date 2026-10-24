@@ -62,3 +62,17 @@ def test_run_drug_learns_a_marker():
     assert main.loc["logreg", "balanced_accuracy"] > 0.95
     assert set(res.scheme) == {"random", "study", "lineage", "temporal"}
     assert set(oof.model) == {"rule", "logreg", "gboost"}
+
+
+def test_small_test_sets_are_not_evaluable():
+    lab = lab_frame(200)
+    lab.loc[lab["collection_year"] > 2016, "y"] = 0
+    x = pd.DataFrame({"marker": lab["y"].to_numpy()}, index=lab["genome_id"])
+    rules = pd.DataFrame({"meropenem": lab["y"].to_numpy()}, index=lab["genome_id"])
+    rows, _ = run_drug(lab, x, rules, "meropenem")
+    res = pd.DataFrame(rows)
+    temporal = res[(res.scheme == "temporal") & (res.labels == "all")]
+    assert not temporal["evaluable"].any()
+    assert temporal["balanced_accuracy"].isna().all()
+    assert "not evaluable" in temporal["note"].iloc[0]
+    assert res[res.scheme == "random"]["evaluable"].all()

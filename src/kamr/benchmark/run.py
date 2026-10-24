@@ -33,6 +33,7 @@ from kamr.benchmark.features import DRUGS
 from kamr.benchmark.splits import SCHEMES, folds, temporal_split
 
 SEED = 20261024
+MIN_PER_CLASS = 10  # a split is scored only if its test set has >= 10 R and >= 10 S
 
 
 def make_model(name: str):
@@ -129,6 +130,13 @@ def run_drug(lab: pd.DataFrame, x: pd.DataFrame, rules: pd.DataFrame, drug: str)
                 ("no_borderline", done & ~lab["borderline"].to_numpy()),
             ):
                 pr = prob[m][keep] if m != "rule" else None
+                metrics = score(y[keep], pred[m][keep], pr)
+                evaluable = min(metrics["R"], metrics["S"]) >= MIN_PER_CLASS
+                note = extra
+                if not evaluable:
+                    note = f"{extra}; not evaluable ({metrics['R']} R / {metrics['S']} S in test)"
+                    for k in ("sensitivity", "specificity", "balanced_accuracy", "auroc"):
+                        metrics[k] = math.nan
                 rows.append(
                     {
                         "drug": drug,
@@ -136,8 +144,9 @@ def run_drug(lab: pd.DataFrame, x: pd.DataFrame, rules: pd.DataFrame, drug: str)
                         "model": m,
                         "labels": view,
                         "folds": n_folds,
-                        "note": extra,
-                        **score(y[keep], pred[m][keep], pr),
+                        "evaluable": evaluable,
+                        "note": note.strip("; "),
+                        **metrics,
                     }
                 )
             oof.append(
@@ -213,7 +222,9 @@ def main() -> None:
         return out
 
     gap = (ba["random"] - ba[["study", "lineage"]].min(axis=1)).rename("gap")
-    temporal_notes = main_view[main_view.scheme == "temporal"].drop_duplicates("drug")
+    temporal_notes = main_view[
+        (main_view.scheme == "temporal") & (main_view.model == "rule")
+    ].drop_duplicates("drug")
     lines = [
         "# Leakage-aware benchmark",
         "",
@@ -222,8 +233,10 @@ def main() -> None:
         "- Predictors: rule (AMRFinderPlus core; colistin + mgrB), logreg, gboost",
         "- Splits: random 5-fold; study = 5-fold grouped by BioProject; lineage = 5-fold grouped "
         "by ST; temporal = train on earlier, test on the latest ~20% of dated genomes",
-        "- Temporal cut-offs: "
+        "- Temporal splits: "
         + "; ".join(f"{r.drug} {r.note}" for r in temporal_notes.itertuples()),
+        f"- Splits whose test set has fewer than {MIN_PER_CLASS} R or {MIN_PER_CLASS} S genomes "
+        "are not evaluable and shown as n/a.",
         "",
         "## Balanced accuracy, all test labels",
         "",

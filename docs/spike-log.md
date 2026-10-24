@@ -270,3 +270,35 @@ Findings to review (reports/cohort/discordant.tsv, 1,740 genome-drug pairs):
   1 mg/L; implausible for rmtB, flagged as a likely metadata error.
 - Decisions in ADR-004: report every benchmark result with and without borderline-MIC labels;
   keep a reviewed study-level flag table (config/label_flags.csv), first entry PRJEB28400.
+
+# Sprint 3: leakage-aware benchmark
+
+## Part 1: inputs (2026-10-24; reports/benchmark/feature_summary.md)
+- 6,652 genomes x 226 binary features: gene families (OXA-48-like kept apart from other OXA),
+  100 point mutations, 33 AMRFinderPlus subclasses, 2 mgrB features.
+- First version lumped OXA-1 with OXA-48-like carbapenemases in one "blaOXA" feature; fixed
+  before any modelling. Subclass features separate, e.g., ESBL SHV from chromosomal SHV-1.
+
+## Part 2: benchmark (2026-10-24, server, 52 s; reports/benchmark/results.md)
+Balanced accuracy, all test labels (flagged labels excluded):
+
+| Drug | Rule | Best model, random | Best model, study | Best model, lineage |
+|---|---|---|---|---|
+| ciprofloxacin | 0.935 | 0.954 | 0.948 | 0.950 |
+| meropenem | 0.939 | 0.951 | 0.942 | 0.945 |
+| gentamicin | 0.906 | 0.925 | 0.886 | 0.916 |
+| colistin | 0.808 | 0.844 | 0.822 | 0.731 |
+| tigecycline | 0.513 | 0.769 | 0.626 | 0.716 |
+
+- Well-explained drugs: models add 1-2 points on random splits, mostly lost under grouped
+  splits; gentamicin rule beats both models under the study split, and without borderline
+  labels (0.959 vs <= 0.948).
+- Colistin: models fall below the rule (0.71-0.73 vs 0.81) under the lineage split; random-split
+  optimism 11-13 points. Tigecycline: apparent model gain over the rule is mostly leakage;
+  optimism 14-15 points.
+- Temporal split (train <= 2014): meaningful only for meropenem, ciprofloxacin and gentamicin
+  (546-569 test genomes). Colistin (34 test genomes, 1 R) and tigecycline (28, 0 R) are not
+  evaluable; first report printed degenerate values (1.000 / 0.500), now reported as n/a with a
+  minimum of 10 R and 10 S per test set.
+- Headline: on public AMR data, random splits overstate model performance most where rules
+  fail (colistin, tigecycline), because models learn lineage and study markers.
