@@ -1,6 +1,7 @@
 """Download pilot assemblies from BV-BRC by genome_id, with validation and a provenance manifest.
 
-Source order: BV-BRC FTP (https) FASTA, then the BV-BRC genome_sequence API as a fallback.
+Source order: the BV-BRC genome_sequence API, then BV-BRC FTP (https) as a fallback. In the
+pilot the FTP route timed out from the server while the API answered, so the API goes first.
 Each file is checked (FASTA format, total length within tolerance of BV-BRC genome_length)
 and written atomically, so an interrupted run can simply be restarted.
 """
@@ -52,12 +53,12 @@ def check_fasta(text: str, expected_length: float | None) -> str:
     return "ok"
 
 
-def fetch_fasta(gid: str, timeout: int = 120) -> tuple[str, str]:
+def fetch_fasta(gid: str) -> tuple[str, str]:
     """Return (fasta_text, source). Raises if both sources fail."""
     errors = []
-    for source, url, headers in (
-        ("bvbrc_ftp", FTP_URL.format(gid=gid), {}),
-        ("bvbrc_api", API_URL.format(gid=gid), {"Accept": "application/dna+fasta"}),
+    for source, url, headers, timeout in (
+        ("bvbrc_api", API_URL.format(gid=gid), {"Accept": "application/dna+fasta"}, 120),
+        ("bvbrc_ftp", FTP_URL.format(gid=gid), {}, 30),
     ):
         try:
             resp = session().get(url, headers=headers, timeout=timeout)
