@@ -93,6 +93,12 @@ def main() -> None:
     parser.add_argument("--curated", type=Path, default=Path("data/curated"))
     parser.add_argument("--sample", type=Path, default=Path("reports/cohort/pilot_sample.tsv"))
     parser.add_argument("--reports", type=Path, default=Path("reports/pilot"))
+    parser.add_argument("--title", default="Pilot genotype-phenotype concordance")
+    parser.add_argument(
+        "--population",
+        action="store_true",
+        help="genome set is the full QC-passing cohort, not the ST-stratified pilot",
+    )
     args = parser.parse_args()
 
     amr = pd.read_parquet(args.results / "amrfinder.parquet")
@@ -159,18 +165,25 @@ def main() -> None:
     disc.to_csv(args.reports / "discordant.tsv", sep="\t", index=False)
 
     lines = [
-        "# Pilot genotype-phenotype concordance",
+        f"# {args.title}",
         "",
         f"- Generated (UTC): {dt.datetime.now(dt.UTC).isoformat(timespec='seconds')}",
-        f"- Genomes evaluated: {len(genomes)} of {len(sample)} in the pilot sample"
+        f"- Genomes evaluated: {len(genomes)} of {len(sample)} in `{args.sample}`"
         + (f" (excluded, incomplete tool output: {', '.join(excluded)})" if excluded else ""),
         "- Labels: EUCAST v16.1 re-interpreted laboratory S/R (I and conflicts excluded)",
         "- Colistin: broth microdilution only (ADR-003); colistin_all uses every method",
         "- Rules: see src/kamr/analysis/rules.py",
         "",
         "Sensitivity = resistant isolates the rule calls R; specificity = susceptible isolates the",
-        "rule calls S. 95% Wilson intervals in brackets. The pilot over-samples rare STs, so these",
-        "are tool-validation figures, not population estimates.",
+        "rule calls S. 95% Wilson intervals in brackets.",
+        (
+            "Genome set: all QC-passing genomes with laboratory labels. Related isolates are not"
+            " de-duplicated, so large outbreak studies weigh heavily; see the benchmark for"
+            " grouped estimates."
+            if args.population
+            else "The pilot over-samples rare STs, so these are tool-validation figures, not"
+            " population estimates."
+        ),
         "",
         "| Drug | Tool | n (R/S) | Sensitivity | Specificity | FN | FP |",
         "|---|---|---|---|---|---|---|",

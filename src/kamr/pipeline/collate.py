@@ -48,11 +48,18 @@ def main() -> None:
     parser.add_argument("manifest", type=Path, help="snapshots/assemblies-pilot-<date>.tsv")
     parser.add_argument("--results", type=Path, default=Path("results/pilot"))
     parser.add_argument("--report", type=Path, default=Path("reports/pilot/run_summary.md"))
+    parser.add_argument("--title", default="Pilot run summary")
     args = parser.parse_args()
 
     manifest = pd.read_csv(args.manifest, sep="\t", dtype={"genome_id": str})
+    wanted = set(manifest["genome_id"])
+    # Only genomes in this manifest count, even if other outputs sit in the results folder.
     amr = read_amrfinder(args.results / "amrfinder")
     kl = read_kleborate(args.results / "kleborate")
+    if len(amr):
+        amr = amr[amr["genome_id"].isin(wanted)]
+    if len(kl):
+        kl = kl[kl["genome_id"].isin(wanted)]
     amr.to_parquet(args.results / "amrfinder.parquet", index=False)
     kl.to_parquet(args.results / "kleborate.parquet", index=False)
 
@@ -68,7 +75,7 @@ def main() -> None:
         return f"{vals.median():.0f} s" if len(vals) else "n/a"
 
     lines = [
-        "# Pilot run summary",
+        f"# {args.title}",
         "",
         f"- Generated (UTC): {dt.datetime.now(dt.UTC).isoformat(timespec='seconds')}",
         f"- Assembly manifest: `{args.manifest}`",
