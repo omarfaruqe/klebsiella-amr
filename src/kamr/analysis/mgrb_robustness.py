@@ -104,11 +104,15 @@ def leave_one_study_out(d: pd.DataFrame, min_r: int = 5) -> pd.DataFrame:
 
         pred = test.apply(pred_row, axis=1)
         se, sp, nr, ns = sens_spec(pred, test.R)
+        # Disrupted-only is mechanism-specified and fitted to nothing; the gap between the two
+        # sensitivity columns isolates what the missense tier adds once selected out-of-sample.
+        se_d, _, _, _ = sens_spec(test.group == "disrupted", test.R)
         rows.append(
             {
                 "held_out_study": held,
                 "n_R": nr,
                 "n_S": ns,
+                "sens_disrupted_only": se_d,
                 "sensitivity": se,
                 "specificity": sp,
                 "n_variants_selected": len(enriched),
