@@ -52,19 +52,19 @@ def make_model(name: str):
 
 
 def rule_calls(amr: pd.DataFrame, mgrb: pd.DataFrame, genomes: list[str]) -> pd.DataFrame:
-    """Genome x drug table of rule predictions (1 = R), colistin including the mgrB check."""
+    """Genome x drug table of rule predictions (1 = R), colistin including the mgrB check.
+
+    Only mechanism-specified mgrB disruption is used. The missense tier is excluded: a
+    leave-one-study-out analysis (reports/review/mgrb_robustness.md) shows it adds 0.9 points of
+    sensitivity out-of-sample against 19.1 points in-sample, i.e. it is almost entirely fitted to
+    the cohort it was derived from.
+    """
     p = predictions(amrfinder_markers(amr[amr.genome_id.isin(genomes)]), genomes, "rule")
     wide = p.assign(r=(p.predicted == "R").astype("uint8")).pivot(
         index="genome_id", columns="drug", values="r"
     )
-    altered = set(
-        mgrb.loc[
-            (mgrb["mgrb_disrupted"].astype(str).str.lower() == "true")
-            | (mgrb["mgrb_status"] == "missense"),
-            "genome_id",
-        ]
-    )
-    wide.loc[wide.index.isin(altered), "colistin"] = 1
+    disrupted = set(mgrb.loc[mgrb["mgrb_disrupted"].astype(str).str.lower() == "true", "genome_id"])
+    wide.loc[wide.index.isin(disrupted), "colistin"] = 1
     return wide
 
 
