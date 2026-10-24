@@ -8,7 +8,8 @@ MgrB reference protein (config/reference/mgrB_WP_002911375.1.faa) and classifies
 
 Statuses: intact, missense, premature_stop, frameshift_or_indel, insertion_assembled,
 split_contigs, contig_break, partial, absent. Everything except intact and missense counts as
-"disrupted".
+"disrupted". Rules are reported with disrupted mgrB only, and with disrupted or missense mgrB,
+so the contribution of missense variants is visible separately.
 
 Missense calls compare the aligned query and subject residue by residue. Query position 1 is
 ignored because tblastn translates alternative start codons (e.g. GTG) as V or L, not M.
@@ -199,12 +200,21 @@ def main() -> None:
         "Kleborate": predictions(kleborate_markers(kl[kl.genome_id.isin(genomes)]), gl, "k"),
     }
     disrupted = set(status.loc[status["mgrb_disrupted"], "genome_id"])
+    altered = disrupted | set(status.loc[status["mgrb_status"] == "missense", "genome_id"])
     tables = {}
     for name, p in base.items():
         p = p[p["drug"] == "colistin"][["genome_id", "predicted"]].set_index("genome_id")
         tables[name] = p["predicted"]
-        tables[f"{name} + mgrB check"] = p["predicted"].where(~p.index.isin(disrupted), "R")
-    tables["mgrB check alone"] = pd.Series(["R" if g in disrupted else "S" for g in gl], index=gl)
+        tables[f"{name} + mgrB disrupted"] = p["predicted"].where(~p.index.isin(disrupted), "R")
+        tables[f"{name} + mgrB disrupted or missense"] = p["predicted"].where(
+            ~p.index.isin(altered), "R"
+        )
+    tables["mgrB disrupted alone"] = pd.Series(
+        ["R" if g in disrupted else "S" for g in gl], index=gl
+    )
+    tables["mgrB disrupted or missense alone"] = pd.Series(
+        ["R" if g in altered else "S" for g in gl], index=gl
+    )
 
     lines = [
         "# Colistin: targeted mgrB check",
