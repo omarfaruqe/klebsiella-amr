@@ -1,0 +1,2 @@
+bioproject_accession,antibiotic,action,reason,evidence
+PRJEB28400,gentamicin,exclude,rmtB carriers reported susceptible at MIC 1 mg/L (rmtB usually > 256 mg/L),reports/review/gentamicin.md section 4; 63 of 65 rmtB false positives

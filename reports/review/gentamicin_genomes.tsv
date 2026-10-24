@@ -1,0 +1,450 @@
+genome_id	label	outcome	evidence	aminoglycoside_genes	mic	method	st	bioproject_accession	collection_year	isolation_country
+573.12920	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA396774		USA
+573.13023	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA396774		USA
+573.13034	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13039	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13042	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13045	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13051	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13053	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13065	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13068	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13079	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13084	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13085	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13088	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13096	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13108	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13110	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13138	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13145	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13153	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13157	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13176	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13179	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13193	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13201	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13210	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13211	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13219	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13221	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13228	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13236	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13237	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13240	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13273	R	FN		aac(6')-Ib;aadA2;aph(3'')-Ib;aph(3')-Ia;aph(6)-Id	4.0	Broth dilution		PRJNA376414	2014.0	USA
+573.13278	R	FN		aph(3'')-Ib;aph(6)-Id	4.0	Broth dilution	ST307	PRJNA376414	2014.0	USA
+573.13322	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13341	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13343	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13347	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13361	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2011.0	USA
+573.13362	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13399	R	FN			4.0	Broth dilution	ST258	PRJNA376414	2011.0	USA
+573.13402	R	FN		aac(6')-Ib	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13412	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13440	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13445	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13468	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13470	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13478	R	FN		aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13494	R	FN		aac(6')-Ib	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13502	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13523	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.13525	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13529	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13531	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13543	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13546	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.13563	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13565	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13573	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13578	R	FN		aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13585	R	FN		aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13600	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13648	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13653	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13655	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13670	R	FN		aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13676	R	FN		aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13680	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13690	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13699	R	FN		aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13715	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13725	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13749	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13754	R	FN		aadA2	4.0	Broth dilution	ST1758	PRJNA376414	2014.0	USA
+573.13756	R	FN		aac(6')-Ib-cr;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13765	R	FN		aadA2	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13778	R	FN		aac(6')-Ib;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13784	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13793	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution		PRJNA376414	2015.0	USA
+573.13797	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.13798	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution		PRJNA376414	2015.0	USA
+573.13802	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13803	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13806	R	FN			4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13824	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13829	R	FN		aac(6')-Ib-cr;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13840	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.13849	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.13861	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13862	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13895	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13923	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13947	R	FN		aph(3'')-Ib;aph(6)-Id	4.0	Broth dilution	ST307	PRJNA376414	2015.0	USA
+573.13960	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13977	R	FN		aac(6')-Ib	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.13986	R	FN		aadA2	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.13989	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.13991	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.13998	R	FN		aac(6')-Ib	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14000	R	FN		aadA3;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14022	R	FN			4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14023	R	FN			4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14033	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14036	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14050	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14052	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14053	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14060	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14081	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14090	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14105	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14114	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14115	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14118	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14122	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14125	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14137	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14139	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14146	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14148	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14153	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14165	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14175	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14181	R	FN		aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14184	R	FN			4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14250	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST3792	PRJNA376414	2012.0	USA
+573.14254	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14255	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14256	R	FN		aac(6')-Ib;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14261	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST3792	PRJNA376414	2012.0	USA
+573.14263	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST3792	PRJNA376414	2012.0	USA
+573.14266	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14269	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14281	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST3792	PRJNA376414	2013.0	USA
+573.14283	R	FN		aac(6')-Ib-cr;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14308	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14323	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14353	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14354	R	FN		aac(6')-Ib;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14364	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14368	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14371	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14378	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14434	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14436	R	FN		aph(3'')-Ib;aph(6)-Id	4.0	Broth dilution	ST307	PRJNA376414	2013.0	USA
+573.14441	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14444	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14451	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14462	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14465	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14466	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14477	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14496	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14498	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14507	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14509	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14516	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14525	R	FN		aph(3'')-Ib;aph(6)-Id	4.0	Broth dilution	ST307	PRJNA376414	2013.0	USA
+573.14769	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2014.0	Italy
+573.14771	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2012.0	Italy
+573.14773	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2013.0	Italy
+573.14775	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST745	PRJNA385863	2013.0	Italy
+573.14780	R	FN		aac(6')-Ib;aph(3'')-Ib;aph(3')-Ia;aph(6)-Id	4.0	Broth dilution	ST258	PRJNA385863	2013.0	Italy
+573.14789	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2013.0	Italy
+573.14790	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2013.0	Italy
+573.14791	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2012.0	Italy
+573.14795	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2013.0	Italy
+573.14796	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2013.0	Italy
+573.14800	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2012.0	Italy
+573.14805	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST1519	PRJNA385863	2013.0	Italy
+573.14807	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2012.0	Italy
+573.14812	R	FN		aac(6')-Ib	4.0	Broth dilution	ST258	PRJNA385863	2012.0	Italy
+573.14819	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2014.0	Italy
+573.14821	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2013.0	Italy
+573.15029	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2013.0	Italy
+573.15053	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2012.0	Italy
+573.15056	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2013.0	Italy
+573.15058	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA385863	2013.0	Italy
+573.1733	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Disk diffusion	ST512	PRJEB7661	2013.0	Italy
+573.24301	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA278886	2017.0	USA
+573.24304	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST258	PRJNA278886	2017.0	USA
+573.28631	R	FN		aph(3'')-Ib;aph(3')-Ia;aph(6)-Id	4.0	Broth dilution	ST17	PRJNA579879	2018.0	Italy
+573.28633	R	FN		aph(3'')-Ib;aph(6)-Id	4.0	Broth dilution	ST45	PRJNA579879	2018.0	Italy
+573.29867	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJEB22890		Italy
+573.29904	R	FN		aac(6')-Ib;aph(3')-Ia	4.0	Broth dilution	ST258	PRJEB22890		Italy
+573.29919	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJEB22890		Italy
+573.29982	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJEB22890		Italy
+573.29994	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJEB22890		Italy
+573.31599	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31600	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31602	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31603	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31605	R	FN		aac(6')-Ib	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31606	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31607	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31608	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31609	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31611	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31612	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31613	R	FN		aac(6')-Ib;aadA2	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31616	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31618	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31619	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31620	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31621	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31622	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31623	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31624	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31625	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	4.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.66069	R	FN		aac(6')-Ib;aadA22	4.0	MIC	ST29	PRJDB10842		Japan
+573.66228	R	FN		aac(6')-Ib;aadA1;aadA8;aph(3'')-Ib;aph(6)-Id	4.0	MIC	ST392	PRJEB28400		Vietnam
+573.9636	R	FN			4.0	Broth dilution	ST395	PRJNA356818	2016.0	Italy
+573.12914	R	FN		aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id	8.0	Broth dilution	ST25	PRJNA396774		USA
+573.12919	R	FN			8.0	Broth dilution	ST307	PRJNA396774		USA
+573.12981	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA396774		USA
+573.13041	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13044	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.13100	R	FN			8.0	Broth dilution	ST418	PRJNA376414	2013.0	USA
+573.13181	R	FN		aph(3'')-Ib;aph(6)-Id	8.0	Broth dilution	ST307	PRJNA376414	2014.0	USA
+573.13205	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13206	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13207	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13208	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13217	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13280	R	FN			8.0	Broth dilution	ST307	PRJNA376414	2014.0	USA
+573.13287	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13299	R	FN		aph(3'')-Ib;aph(6)-Id	8.0	Broth dilution	ST307	PRJNA376414	2014.0	USA
+573.13342	R	FN		aadA2	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13363	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13369	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13380	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13384	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13390	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13392	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13400	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13427	R	FN		aph(3'')-Ib;aph(6)-Id	8.0	Broth dilution	ST307	PRJNA376414	2014.0	USA
+573.13429	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13433	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13449	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13492	R	FN		aadA2;aph(3'')-Ib;aph(6)-Id	8.0	Broth dilution	ST340	PRJNA376414	2014.0	USA
+573.13552	R	FN		aac(6')-Ib;aadA2	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13553	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13566	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13592	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13635	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13697	R	FN		aph(3'')-Ib;aph(6)-Id	8.0	Broth dilution	ST147	PRJNA376414	2014.0	USA
+573.13704	R	FN		aac(6')-Ib-cr;aadA16	8.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13856	R	FN		aac(6')-Ib;aadA2	8.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13878	R	FN		aac(6')-Ib;aadA2	8.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13905	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13908	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13911	R	FN			8.0	Broth dilution	ST3792	PRJNA376414	2015.0	USA
+573.13913	R	FN			8.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.14054	R	FN		aadA2	8.0	Broth dilution	ST42	PRJNA376414	2012.0	USA
+573.14058	R	FN		aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14066	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14136	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14178	R	FN		aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14205	R	FN			8.0	Broth dilution	ST20	PRJNA376414	2012.0	USA
+573.14235	R	FN		aac(6')-Ib-cr5;aadA1	8.0	Broth dilution	ST15	PRJNA376414	2012.0	USA
+573.14242	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2012.0	USA
+573.14252	R	FN		aph(3'')-Ib;aph(6)-Id	8.0	Broth dilution	ST307	PRJNA376414	2012.0	USA
+573.14277	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST3792	PRJNA376414	2013.0	USA
+573.14306	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA376414	2013.0	USA
+573.14336	R	FN			8.0	Broth dilution	ST16	PRJNA376414	2013.0	USA
+573.14783	R	FN		aac(6')-Ib;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA385863	2013.0	Italy
+573.15057	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST512	PRJNA385863	2013.0	Italy
+573.20063	R	FN		aac(6')-Ib;aadA1;aadA2;aph(3'')-Ib;aph(6)-Id	8.0	Broth dilution	ST3603	PRJNA292904		
+573.24327	R	FN		aac(6')-Ib;aadA1;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA288601	2014.0	USA
+573.24370	R	FN		aac(6')-Ib;aadA1;aadA2;aph(3')-Ia	8.0	Broth dilution	ST258	PRJNA288601	2014.0	USA
+573.31615	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	8.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.4227	R	FN			8.0	Agar dilution	ST336	PRJEB5065	2006.0	United Kingdom
+573.46838	R	FN		aac(6')-Ib;aadA1;aph(3')-VI	8.0	Broth dilution	ST147	PRJNA643814		Italy
+573.46855	R	FN		aac(6')-Ib;aadA1;aph(3')-Ia;aph(3')-VI	8.0	Broth dilution	ST147	PRJNA643814		Italy
+573.66044	R	FN		aac(6')-Ib-cr5;aadA16;aph(3')-Ia	8.0	MIC	ST3409	PRJDB10842		Japan
+573.14777	R	FN		aph(3'')-Ib;aph(6)-Id	16.0	Broth dilution	ST307	PRJNA385863	2013.0	Italy
+573.24256	R	FN		aac(6')-Ib-cr5	16.0	Broth dilution	ST14	PRJNA296771	2013.0	USA
+573.24330	R	FN		aac(6')-Ib;aadA2	16.0	Broth dilution	ST258	PRJNA288601	2014.0	USA
+573.24340	R	FN		aac(6')-Ib;aadA2	16.0	Broth dilution	ST258	PRJNA288601	2014.0	USA
+573.24436	R	FN		aac(6')-Ib;aadA1	16.0	Broth dilution	ST258	PRJNA288601	2013.0	USA
+573.31604	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia	16.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.31614	R	FN		aac(6')-Ib;aadA2	16.0	Broth dilution	ST512	PRJNA504600	2013.0	Italy
+573.4065	R	FN			16.0	Agar dilution	ST384	PRJEB5065	2003.0	United Kingdom
+573.5694	R	FN		aac(6')-Ib-cr;aadA16	16.0	Broth dilution	ST462	PRJEB11403	2015.0	Thailand
+573.66440	R	FN		aac(6')-Ib-cr5;aadA16	16.0	MIC	ST656	PRJEB28400		Vietnam
+573.66449	R	FN		aac(6')-Ib-cr5;aadA16	16.0	MIC	ST11	PRJEB28400		Vietnam
+573.66457	R	FN		aph(3'')-Ib;aph(6)-Id	16.0	MIC	ST307	PRJEB28400		Vietnam
+573.66481	R	FN			16.0	MIC	ST307	PRJEB28400		Vietnam
+573.67353	R	FN		aac(6')-Ib;aadA1;aadA2;aph(3')-Ia	16.0	MIC	ST258	PRJNA736690		Canada
+573.7056	R	FN			16.0	Agar dilution		PRJEB5065	2006.0	United Kingdom
+573.22557	R	FN		aac(6')-Ib-cr5;aadA16;aph(3')-Ia	32.0	Broth dilution	ST11	PRJNA490421	2015.0	China
+573.4161	R	FN			32.0	Agar dilution	ST1180	PRJEB5065	2008.0	United Kingdom
+573.22568	R	FN		aac(6')-Ib-cr5;aadA16;aph(3'')-Ib;aph(3')-Ia;aph(6)-Id	64.0	Broth dilution	ST999	PRJNA490421	2015.0	China
+573.4196	R	FN		aac(6')-Ib-cr5	64.0	Agar dilution	ST15	PRJEB5065	2005.0	United Kingdom
+573.4200	R	FN		aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id	64.0	Agar dilution	ST158	PRJEB5065	2006.0	United Kingdom
+573.22561	R	FN		aac(6')-Ib-cr5;aadA16	128.0	Broth dilution	ST3003	PRJNA490421	2015.0	China
+573.7054	R	FN		aph(3'')-Ib;aph(3')-Ia;aph(6)-Id	128.0	Agar dilution		PRJEB5065	2005.0	United Kingdom
+573.4182	R	FN		aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id	256.0	Agar dilution	ST147	PRJEB5065	2003.0	United Kingdom
+573.15445	R	FN		aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id			ST307	PRJEB1800		Nepal
+573.15481	R	FN					ST716	PRJEB1800	2012.0	Nepal
+573.15507	R	FN		aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id			ST3395	PRJEB1800	2012.0	Nepal
+573.15603	R	FN		aadA2;aph(3'')-Ib;aph(6)-Id			ST340	PRJNA351909		Australia
+573.15661	R	FN		aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id			ST11	PRJEB1272		Spain
+573.15727	R	FN		aadA2;aph(3')-Ia			ST11	PRJEB1272		Spain
+573.2002	R	FN		aac(6')-Ib;aadA2;aph(3')-Ia			ST258	PRJEB10561		Greece
+573.26196	R	FN		aac(6')-Ib;aph(3'')-Ib			ST258	PRJEB31361		Antigua
+573.26319	R	FN					ST4090	PRJEB31361		Barbados
+573.31067	R	FN		aph(3'')-Ib;aph(6)-Id			ST48			Pakistan
+573.31140	R	FN		aph(3'')-Ib;aph(6)-Id			ST5721		2009.0	Malawi
+573.66896	R	FN		aph(3'')-Ib;aph(6)-Id			ST70	PRJEB27256	2011.0	Norway
+573.67175	R	FN		aac(6')-Ib-cr5;aadA1;aadA2			ST340	PRJEB27256	2015.0	Norway
+573.67193	R	FN		aac(6')-Ib-cr5			ST13	PRJEB24082		Ireland
+573.67277	R	FN		aph(3')-VI			ST111	PRJEB24082		Ireland
+573.46837	S	FP	armA	aac(6')-Ib-cr5;aph(3')-VI;armA	0.5	Broth dilution	ST147	PRJNA643814		Italy
+573.67358	S	FP	rmtB1	aac(6')-Ib;aadA1;aadA2;rmtB1	0.5	MIC	ST16	PRJNA736690		Canada
+573.23970	S	FP	aac(6')-Ib;rmtF1	aac(6')-Ib;aph(3'')-Ib;aph(6)-Id;rmtF1	1.0	Broth dilution	ST147			Italy
+573.24019	S	FP	aac(3)-IId;armA	aac(3)-IId;aac(6')-Ib-cr5;aadA2;armA	1.0	Broth dilution	ST34			Italy
+573.24244	S	FP	aac(3)-Ib	aac(3)-Ib;aadA2;aph(3')-Ia	1.0	Broth dilution	ST1473	PRJNA278886	2015.0	USA
+573.25568	S	FP	ant(2'')-Ia	aac(6')-Ib;aadA1;aadA2;ant(2'')-Ia;aph(3'')-Ib;aph(3')-Ia;aph(6)-Id	1.0	Broth dilution	ST258	PRJNA307517	2013.0	Greece
+573.27324	S	FP	rmtB1	aadA2;rmtB1	1.0	Broth dilution	ST11	PRJNA553055	2017.0	Italy
+573.29956	S	FP	aac(6')-Ib4	aac(6')-Ib4	1.0	Broth dilution	ST253	PRJEB22890		Italy
+573.29959	S	FP	aac(6')-Ib4	aac(6')-Ib4	1.0	Broth dilution	ST1505	PRJEB22890		Italy
+573.29960	S	FP	aac(6')-Ib4	aac(6')-Ib4	1.0	Broth dilution	ST23	PRJEB22890		Italy
+573.4057	S	FP	aac(3)-IIe	aac(3)-IIe;aadA2;aph(3')-Ia	1.0	Agar dilution	ST3709	PRJEB5065	2002.0	United Kingdom
+573.4123	S	FP	aac(3)-Ia	aac(3)-Ia;aac(6')-Ib3;aadA1	1.0	Agar dilution	ST70	PRJEB5065	2010.0	United Kingdom
+573.46839	S	FP	armA	aac(6')-Ib-cr;aadA1;aph(3')-VI;armA	1.0	Broth dilution	ST147	PRJNA643814		Italy
+573.46875	S	FP	armA	aac(6')-Ib-cr;aadA1;aph(3')-VI;armA	1.0	Broth dilution	ST147	PRJNA643814		Italy
+573.5794	S	FP	aac(3)-IId	aac(3)-IId;aac(6')-Ib-cr5;aadA2;aph(3')-Ia	1.0	Broth dilution	ST11	PRJEB11403	2015.0	Thailand
+573.5800	S	FP	ant(2'')-Ia	aac(6')-Ib-cr5;ant(2'')-Ia;aph(3'')-Ib;aph(6)-Id	1.0	Broth dilution	ST323	PRJEB11403	2015.0	Thailand
+573.65930	S	FP	aac(6')-IIc	aac(6')-IIc	1.0	MIC	ST12	PRJDB10842		Japan
+573.65931	S	FP	aac(6')-IIc	aac(6')-IIc	1.0	MIC	ST12	PRJDB10842		Japan
+573.65941	S	FP	aac(6')-Ib	aac(6')-Ib;aadA2	1.0	MIC	ST37	PRJDB10842		Japan
+573.65950	S	FP	aac(6')-IIc	aac(6')-IIc	1.0	MIC		PRJDB10842		Japan
+573.65974	S	FP	aac(6')-Ib	aac(6')-Ib	1.0	MIC	ST716	PRJDB10842		Japan
+573.66046	S	FP	aac(6')-Ib	aac(6')-Ib;aadA5	1.0	MIC	ST12	PRJDB10842		Japan
+573.66047	S	FP	aac(6')-Ib	aac(6')-Ib;aadA5	1.0	MIC	ST12	PRJDB10842		Japan
+573.66217	S	FP	aac(3)-IId	aac(3)-IId;aac(6')-Ib-cr5;aadA16;aph(3'')-Ib;aph(6)-Id	1.0	MIC	ST15	PRJEB28400		Vietnam
+573.66222	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66237	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66254	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66268	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66270	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66301	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66302	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66304	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66316	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66319	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66320	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66323	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66324	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66330	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66344	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66351	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66352	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66360	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66362	S	FP	rmtB1	aac(6')-Ib-cr5;aadA16;aph(3'')-Ib;aph(6)-Id;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66366	S	FP	rmtB1	aac(6')-Ib-cr5;aadA16;aph(3'')-Ib;aph(6)-Id;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66368	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66369	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66370	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66371	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66372	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66374	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66375	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66376	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66381	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66382	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66383	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66384	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66385	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66386	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66387	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66389	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66398	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66405	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66410	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66421	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66422	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66426	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66429	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66437	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66438	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66441	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66444	S	FP	rmtB1	aac(6')-Ib-cr5;aadA16;aph(3'')-Ib;aph(6)-Id;rmtB1	1.0	MIC	ST15	PRJEB28400		Vietnam
+573.66445	S	FP	rmtB1	rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66448	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66450	S	FP	aac(3)-IId	aac(3)-IId;aac(6')-Ib-cr5;aadA16;aph(3'')-Ib;aph(6)-Id	1.0	MIC	ST15	PRJEB28400		Vietnam
+573.66454	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66487	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66490	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66491	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66493	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66506	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66533	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.66535	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	1.0	MIC	ST16	PRJEB28400		Vietnam
+573.13011	S	FP	aac(6')-Ib	aac(6')-Ib	2.0	Broth dilution	ST258	PRJNA396774		USA
+573.13102	S	FP	aac(3)-IId	aac(3)-IId	2.0	Broth dilution	ST869	PRJNA376414	2013.0	USA
+573.13175	S	FP	aac(3)-IIe	aac(3)-IIe;aac(6')-Ib;aadA2	2.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13182	S	FP	aac(3)-IId	aac(3)-IId;aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id	2.0	Broth dilution	ST405	PRJNA376414	2014.0	USA
+573.13232	S	FP	aac(6')-Ib	aac(6')-Ib;aadA1;aadA2	2.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13281	S	FP	aac(6')-Ib	aac(6')-Ib;aadA1;aadA2	2.0	Broth dilution	ST258	PRJNA376414	2011.0	USA
+573.13288	S	FP	aac(3)-IIe	aac(3)-IIe;aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id	2.0	Broth dilution	ST323	PRJNA376414	2014.0	USA
+573.13327	S	FP	aac(3)-IIe	aac(3)-IIe;aac(6')-Ib;aph(3'')-Ib;aph(6)-Id	2.0	Broth dilution	ST307	PRJNA376414	2014.0	USA
+573.13333	S	FP	aac(3)-IId	aac(3)-IId;aadA5;aph(3'')-Ib;aph(6)-Id	2.0	Broth dilution	ST307	PRJNA376414	2014.0	USA
+573.13465	S	FP	aac(3)-IIe	aac(3)-IIe;aac(6')-Ib-cr5;aadA2	2.0	Broth dilution	ST37	PRJNA376414	2014.0	USA
+573.13524	S	FP	aac(3)-IVa	aac(3)-IVa;aadA2;aph(3')-Ia;aph(4)-Ia	2.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13551	S	FP	aac(3)-IIe	aac(3)-IIe	2.0	Broth dilution	ST307	PRJNA376414	2014.0	USA
+573.13595	S	FP	aac(3)-IVa	aac(3)-IVa;aac(6')-Ib;aadA2;aph(3')-Ia;aph(4)-Ia	2.0	Broth dilution	ST258	PRJNA376414	2014.0	USA
+573.13917	S	FP	aac(6')-Ib	aac(6')-Ib;aac(6')-Ib-cr5;aadA2	2.0	Broth dilution	ST258	PRJNA376414	2015.0	USA
+573.13993	S	FP	aac(3)-IIe	aac(3)-IIe;aac(6')-Ib;aph(3'')-Ib;aph(6)-Id	2.0	Broth dilution	ST22	PRJNA376414	2012.0	USA
+573.14396	S	FP	aac(3)-IIe	aac(3)-IIe;aac(6')-Ib-cr5	2.0	Broth dilution	ST16	PRJNA376414	2013.0	USA
+573.24032	S	FP	aac(3)-IId;armA	aac(3)-IId;aac(6')-Ib-cr5;aadA1;aadA2;armA	2.0	Broth dilution	ST34			Italy
+573.24326	S	FP	aac(3)-IVa	aac(3)-IVa;aac(6')-Ib;aadA1;aadA2;aph(3')-Ia;aph(4)-Ia	2.0	Broth dilution	ST258	PRJNA288601	2014.0	USA
+573.25569	S	FP	aac(3)-Ia	aac(3)-Ia;aac(6')-Ib3;aac(6')-Il;aadA1;aadA2;aph(3'')-Ib;aph(3')-Ia;aph(6)-Id	2.0	Broth dilution	ST383	PRJNA307517	2012.0	Greece
+573.46831	S	FP	armA	aac(6')-Ib-cr;aadA1;aph(3')-Ia;aph(3')-VI;armA	2.0	Broth dilution	ST147	PRJNA643814		Italy
+573.66001	S	FP	aac(6')-Ib	aac(6')-Ib;aadA2	2.0	MIC	ST12	PRJDB10842		Japan
+573.66003	S	FP	aac(6')-Ib	aac(6')-Ib;aadA2	2.0	MIC	ST12	PRJDB10842		Japan
+573.66021	S	FP	aac(6')-Ib	aac(6')-Ib;aadA2	2.0	MIC	ST105	PRJDB10842		Japan
+573.66309	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	2.0	MIC	ST16	PRJEB28400		Vietnam
+573.66310	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	2.0	MIC	ST16	PRJEB28400		Vietnam
+573.66315	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	2.0	MIC	ST16	PRJEB28400		Vietnam
+573.66404	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	2.0	MIC	ST16	PRJEB28400		Vietnam
+573.66419	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	2.0	MIC	ST16	PRJEB28400		Vietnam
+573.66504	S	FP	rmtB1	aac(6')-Ib-cr5;rmtB1	2.0	MIC	ST16	PRJEB28400		Vietnam
+573.7090	S	FP	aac(6')-Ib4	aac(6')-Ib4;aadA1	2.0	Agar dilution	ST1380	PRJEB5065	2008.0	United Kingdom
+573.24253	S	FP	aac(6')-Ib'	aac(6')-Ib';aadA1			ST327	PRJNA278886	2015.0	USA
+573.24354	S	FP	aac(6')-Ib'	aac(6')-Ib';aadA1;aadA2			ST34	PRJNA288601	2014.0	USA
+573.24386	S	FP	ant(2'')-Ia	ant(2'')-Ia			ST37	PRJNA288601	2012.0	USA
+573.24408	S	FP	aac(6')-Ib'	aac(6')-Ib';aadA1;aadA2;aph(3'')-Ib;aph(6)-Id			ST15	PRJNA288601	2013.0	USA
+573.24422	S	FP	aac(6')-Ib	aac(6')-Ib;aadA1			ST258	PRJNA288601	2013.0	USA
+573.24439	S	FP	ant(2'')-Ia	ant(2'')-Ia;aphA16			ST258	PRJNA288601	2012.0	USA
+573.26096	S	FP	aac(3)-IIe	aac(3)-IIe;aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id			ST405	PRJEB31361		Saint Kitts
+573.26323	S	FP	aac(3)-IIe	aac(3)-IIe;aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id			ST307	PRJEB31361		Barbados
+573.31065	S	FP	rmtF1	aac(6')-Ib-cr5;aadA2;aph(3')-Ia;rmtF1			ST11			Pakistan
+573.31093	S	FP	aac(3)-IIe	aac(3)-IIe;aph(3'')-Ib;aph(6)-Id			ST17		1996.0	Malawi
+573.31131	S	FP	aac(3)-IId	aac(3)-IId;aac(6')-Ib;aadA1;aph(3'')-Ib;aph(6)-Id			ST231		2007.0	Malawi
+573.31133	S	FP	aac(3)-IId	aac(3)-IId;aac(6')-Ib-cr5;aadA2;aph(3'')-Ib;aph(3')-Ia;aph(6)-Id			ST15		2010.0	Malawi
+573.31136	S	FP	aac(3)-IId	aac(3)-IId;aac(6')-Ib-cr5;aadA2;aph(3'')-Ib;aph(6)-Id			ST48		2008.0	Malawi
+573.31138	S	FP	aac(3)-IIe	aac(3)-IIe;aph(3'')-Ib;aph(6)-Id			ST664		1998.0	Malawi
+573.31147	S	FP	aac(3)-IId	aac(3)-IId;aac(6')-Ib-cr5;aadA2;aph(3'')-Ib;aph(3')-Ia;aph(6)-Id			ST334		2009.0	Malawi
+573.33394	S	FP	armA	aac(6')-Ib-cr5;aadA2;aph(3'')-Ib;aph(6)-Id;armA			ST15		2012.0	Nepal
+573.33419	S	FP	armA	aac(6')-Ib-cr5;aadA2;aph(3'')-Ib;aph(6)-Id;armA			ST15		2011.0	Nepal
+573.33420	S	FP	armA	aac(6')-Ib-cr5;aadA2;aph(3'')-Ib;aph(6)-Id;armA			ST15		2011.0	Nepal
+573.5644	S	FP	aac(3)-Ia	aac(3)-Ia;aac(6')-Ib3;aac(6')-Il;aadA1;aadA2;aph(3'')-Ib;aph(3')-Ia;aph(6)-Id			ST383	PRJNA307517	2013.0	Greece
+573.66735	S	FP	aac(3)-IId	aac(3)-IId;aac(6')-Ib-cr5;aadA16;aph(3'')-Ib;aph(3')-Ia;aph(6)-Id			ST273	PRJEB27256	2015.0	Norway
+573.66854	S	FP	aac(3)-IId	aac(3)-IId			ST231	PRJEB27256	2008.0	Norway
+573.66924	S	FP	aac(3)-IIe	aac(3)-IIe;aph(3')-Ia			ST14	PRJEB27256	2014.0	Norway
+573.67341	S	FP	aac(3)-IIe	aac(3)-IIe;aac(6')-Ib-cr5;aph(3'')-Ib;aph(6)-Id			ST13	PRJEB24085		Ireland

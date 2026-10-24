@@ -252,3 +252,21 @@ Findings to review (reports/cohort/discordant.tsv, 1,740 genome-drug pairs):
   with insertion sequences that short-read assemblies cannot span.
 - 120 resistant isolates remain unexplained; most have an intact mgrB coding sequence. Next
   candidates: pmrB/phoQ/crrB variants and IS insertions in the mgrB promoter (not searched).
+
+## Part 3: gentamicin (2026-10-24, server; reports/review/gentamicin.md)
+- 4,760 labelled genomes: TP 1,799, FN 314, FP 135, TN 2,512 (AMRFinderPlus core rule).
+- MIC: 213 of 299 false negatives with an MIC are at 4 mg/L, one dilution above the EUCAST
+  breakpoint; true positives are mostly >= 8 (86 of 1,349 at 4). Among CLSI-tested records of
+  these borderline false negatives, 160 of 162 were reported S by the original laboratory.
+  The rule agrees with the original call; EUCAST re-interpretation made them R. Without the
+  borderline isolates, sensitivity is about 95% rather than 85%.
+- Genes: aac(6')-Ib (63% of FN vs 12% of susceptible non-carriers) and aph(3')-Ia (61% vs 14%)
+  are enriched in false negatives; classical aac(6')-Ib does not confer gentamicin resistance, so
+  this is more likely lineage or plasmid co-carriage than a missed mechanism. AMRFinderPlus assigns
+  the GENTAMICIN subclass to some aac(6')-Ib alleles (Ib', Ib4) and not others.
+- Study: PRJNA376414 contributes 207 of 314 false negatives; in PRJNA504600 (24/24) and
+  PRJNA385863 (23/24) every resistant isolate is unexplained.
+- False positives: 63 of 65 rmtB carriers reported S come from PRJEB28400, nearly all at MIC
+  1 mg/L; implausible for rmtB, flagged as a likely metadata error.
+- Decisions in ADR-004: report every benchmark result with and without borderline-MIC labels;
+  keep a reviewed study-level flag table (config/label_flags.csv), first entry PRJEB28400.
