@@ -147,6 +147,36 @@ def classify(hits: pd.DataFrame) -> tuple[str, str]:
     return "partial", f"mgrB aa {int(h.qstart)}-{int(h.qend)}"
 
 
+def colistin_rules(
+    amr: pd.DataFrame, kl: pd.DataFrame, status: pd.DataFrame, genomes: list[str]
+) -> dict[str, pd.Series]:
+    """Colistin predictions (R/S per genome) for each rule, with and without the mgrB check."""
+    gset = set(genomes)
+    base = {
+        "AMRFinderPlus": predictions(
+            amrfinder_markers(amr[amr.genome_id.isin(gset)]), genomes, "a"
+        ),
+        "Kleborate": predictions(kleborate_markers(kl[kl.genome_id.isin(gset)]), genomes, "k"),
+    }
+    disrupted = set(status.loc[status["mgrb_disrupted"], "genome_id"])
+    altered = disrupted | set(status.loc[status["mgrb_status"] == "missense", "genome_id"])
+    tables: dict[str, pd.Series] = {}
+    for name, p in base.items():
+        p = p[p["drug"] == "colistin"][["genome_id", "predicted"]].set_index("genome_id")
+        tables[name] = p["predicted"]
+        tables[f"{name} + mgrB disrupted"] = p["predicted"].where(~p.index.isin(disrupted), "R")
+        tables[f"{name} + mgrB disrupted or missense"] = p["predicted"].where(
+            ~p.index.isin(altered), "R"
+        )
+    tables["mgrB disrupted alone"] = pd.Series(
+        ["R" if g in disrupted else "S" for g in genomes], index=genomes
+    )
+    tables["mgrB disrupted or missense alone"] = pd.Series(
+        ["R" if g in altered else "S" for g in genomes], index=genomes
+    )
+    return tables
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -194,27 +224,7 @@ def main() -> None:
     ev = evaluation_labels(labels, records, genomes)
     ev = ev[ev["drug"].isin(["colistin", "colistin_all"])]
 
-    gl = sorted(genomes)
-    base = {
-        "AMRFinderPlus": predictions(amrfinder_markers(amr[amr.genome_id.isin(genomes)]), gl, "a"),
-        "Kleborate": predictions(kleborate_markers(kl[kl.genome_id.isin(genomes)]), gl, "k"),
-    }
-    disrupted = set(status.loc[status["mgrb_disrupted"], "genome_id"])
-    altered = disrupted | set(status.loc[status["mgrb_status"] == "missense", "genome_id"])
-    tables = {}
-    for name, p in base.items():
-        p = p[p["drug"] == "colistin"][["genome_id", "predicted"]].set_index("genome_id")
-        tables[name] = p["predicted"]
-        tables[f"{name} + mgrB disrupted"] = p["predicted"].where(~p.index.isin(disrupted), "R")
-        tables[f"{name} + mgrB disrupted or missense"] = p["predicted"].where(
-            ~p.index.isin(altered), "R"
-        )
-    tables["mgrB disrupted alone"] = pd.Series(
-        ["R" if g in disrupted else "S" for g in gl], index=gl
-    )
-    tables["mgrB disrupted or missense alone"] = pd.Series(
-        ["R" if g in altered else "S" for g in gl], index=gl
-    )
+    tables = colistin_rules(amr, kl, status, sorted(genomes))
 
     lines = [
         "# Colistin: targeted mgrB check",
