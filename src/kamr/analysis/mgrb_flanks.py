@@ -32,8 +32,9 @@ from kamr.analysis.mgrb import MIN_HIT_AA, read_hits
 
 ASSEMBLY_INFERRED = {"split_contigs", "contig_break", "partial"}
 FLANK_BP = 600
+MIN_FLANK_BP = 50  # most breaks sit <100 bp from mgrB, so short flanks must be usable
 MIN_COPY_ID = 95.0
-MIN_COPY_BP = 200
+MIN_COPY_FRACTION = 0.8  # alignment must cover this much of the flank, which is often short
 AWAY_FROM_MGRB_BP = 2000
 
 
@@ -73,7 +74,9 @@ def flank_sequence(seq: str, frag: pd.Series, flank_bp: int = FLANK_BP) -> tuple
     return "right", seq[int(frag["hi"]) :][:flank_bp]
 
 
-def blastn_counts(query: Path, subject: Path, exclude: tuple[str, int, int] | None) -> int:
+def blastn_counts(
+    query: Path, subject: Path, exclude: tuple[str, int, int] | None, min_bp: int
+) -> int:
     """High-identity copies of the query in the subject assembly, outside the mgrB region."""
     cmd = [
         "blastn",
@@ -92,7 +95,7 @@ def blastn_counts(query: Path, subject: Path, exclude: tuple[str, int, int] | No
     n = 0
     for line in out.stdout.splitlines():
         sseqid, sstart, send, pident, length = line.split("\t")
-        if float(pident) < MIN_COPY_ID or int(length) < MIN_COPY_BP:
+        if float(pident) < MIN_COPY_ID or int(length) < min_bp:
             continue
         if exclude is not None:
             contig, lo, hi = exclude
@@ -153,23 +156,26 @@ def main() -> None:
                 "side": side,
                 "flank_bp": len(flank),
             }
-            if group == "disrupted" and len(flank) >= MIN_COPY_BP:
+            if group == "disrupted" and len(flank) >= MIN_FLANK_BP:
                 flanks[gid] = flank
+                min_bp = max(MIN_FLANK_BP, int(len(flank) * MIN_COPY_FRACTION))
                 qf = tmp / "q.fna"
                 write_fasta(qf, {gid: flank})
                 row["copies_in_genome"] = blastn_counts(
-                    qf, ap, (str(frag["sseqid"]), int(frag["lo"]), int(frag["hi"]))
+                    qf, ap, (str(frag["sseqid"]), int(frag["lo"]), int(frag["hi"])), min_bp
                 )
-                # control: a random other contig end of the same length
-                others = [c for c in seqs if c != str(frag["sseqid"]) and len(seqs[c]) > FLANK_BP]
+                # Control: a random other contig end, truncated to the same length as this
+                # genome's mgrB flank, so the copy-count comparison is not length-biased.
+                others = [c for c in seqs if c != str(frag["sseqid"]) and len(seqs[c]) > len(flank)]
                 if others:
                     c = rng.choice(others)
-                    ctrl = seqs[c][-FLANK_BP:]
+                    ctrl = seqs[c][-len(flank) :]
                     controls[gid] = ctrl
                     write_fasta(qf, {f"{gid}_ctrl": ctrl})
                     row["control_copies_in_genome"] = blastn_counts(
-                        qf, ap, (c, len(seqs[c]) - FLANK_BP, len(seqs[c]))
+                        qf, ap, (c, len(seqs[c]) - len(flank), len(seqs[c])), min_bp
                     )
+
             rows.append(row)
     t = pd.DataFrame(rows)
     a.out.mkdir(parents=True, exist_ok=True)
@@ -201,7 +207,8 @@ def main() -> None:
         partners: dict[str, set[str]] = {}
         for line in out.stdout.splitlines():
             q, s, pid, ln = line.split("\t")
-            if q != s and float(pid) >= 90 and int(ln) >= MIN_COPY_BP:
+            shorter = min(len(flanks[q]), len(flanks[s]))
+            if q != s and float(pid) >= 90 and int(ln) >= max(MIN_FLANK_BP, shorter * 0.8):
                 partners.setdefault(q, set()).add(s)
         shared = sum(1 for g in flanks if partners.get(g))
 
@@ -213,8 +220,11 @@ def main() -> None:
         f"- Generated (UTC): {dt.datetime.now(dt.UTC).isoformat(timespec='seconds')}",
         f"- Assembly-inferred disruptions examined: {len(d):,}; "
         f"matched intact controls: {len(i):,}",
-        f"- Flank length {FLANK_BP} bp; copies counted at >={MIN_COPY_ID}% identity over "
-        f">={MIN_COPY_BP} bp, excluding +/-{AWAY_FROM_MGRB_BP} bp around mgrB",
+        f"- Flank: up to {FLANK_BP} bp of contig end adjacent to mgrB, minimum {MIN_FLANK_BP} bp; "
+        f"copies counted at >={MIN_COPY_ID}% identity over >={MIN_COPY_FRACTION:.0%} of the flank, "
+        f"excluding +/-{AWAY_FROM_MGRB_BP} bp around mgrB",
+        "- Controls are random other contig ends truncated to the same length as each genome's "
+        "mgrB flank",
         "",
         "## 1. Position of mgrB relative to the contig end",
         "",
@@ -234,6 +244,9 @@ def main() -> None:
         "from contig ends in both groups.",
         "",
         "## 2. Are mgrB-adjacent contig ends repetitive within their own genome?",
+        "",
+        f"Flank lengths analysed: median {d.flank_bp.median():.0f} bp "
+        f"(range {d.flank_bp.min():.0f}-{d.flank_bp.max():.0f}); controls are length-matched.",
         "",
     ]
     if "copies_in_genome" in d and d.copies_in_genome.notna().any():
