@@ -23,10 +23,12 @@ clinical breakpoint (reports/review/meropenem.md).
 
 ## Decision
 1. EUCAST v16.1 stays the primary standard (ADR-002).
-2. Every benchmark result is reported twice: on all labels, and with "borderline" labels removed,
-   where borderline means the highest MIC lies within one doubling dilution of the breakpoint on
-   either side (gentamicin 2-4 mg/L; meropenem 2 and 16 mg/L are kept, as I is already excluded).
-   The difference is reported as label uncertainty, not model error.
+2. Every benchmark result is reported twice: on all labels, and with "borderline" labels removed.
+   Borderline means the genome's highest exact (uncensored) MIC is the highest susceptible value
+   (s_le) or the lowest resistant doubling dilution (2 x r_gt): gentamicin and colistin 2 and
+   4 mg/L, meropenem 2 and 16 mg/L, ciprofloxacin 0.25 and 1 mg/L. Tigecycline has no applicable
+   breakpoint and has no borderline labels. The difference between the two results is reported
+   as label uncertainty, not model error.
 3. A study-level flag table (config/label_flags.csv) records label sets judged implausible by
    review. Flagged labels are excluded from the primary benchmark and listed in the report. First
    entry: PRJEB28400, gentamicin, reason "rmtB carriers at MIC 1 mg/L".
