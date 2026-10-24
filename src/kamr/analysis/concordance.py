@@ -26,6 +26,8 @@ from kamr.analysis.rules import (
     predictions,
 )
 
+TOOLS = ("AMRFinderPlus", "AMRFinderPlus+regulators", "Kleborate")
+
 
 def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
     if n == 0:
@@ -103,10 +105,14 @@ def main() -> None:
     excluded = sorted(set(sample["genome_id"]) - complete)
     genomes = sorted(complete)
 
+    amr_c = amr[amr.genome_id.isin(complete)]
     preds = pd.concat(
         [
+            predictions(amrfinder_markers(amr_c), genomes, "AMRFinderPlus"),
             predictions(
-                amrfinder_markers(amr[amr.genome_id.isin(complete)]), genomes, "AMRFinderPlus"
+                amrfinder_markers(amr_c, include_regulators=True),
+                genomes,
+                "AMRFinderPlus+regulators",
             ),
             predictions(kleborate_markers(kl[kl.genome_id.isin(complete)]), genomes, "Kleborate"),
         ],
@@ -122,7 +128,7 @@ def main() -> None:
     order = [*DRUGS[:3], "colistin", "colistin_all", "tigecycline"]
     rows = []
     for drug in order:
-        for tool in ("AMRFinderPlus", "Kleborate"):
+        for tool in TOOLS:
             sub = evald[(evald.drug == drug) & (evald.tool == tool)]
             rows.append({"drug": drug, "tool": tool, **metrics(sub)})
     table = pd.DataFrame(rows)
@@ -177,13 +183,13 @@ def main() -> None:
         )
     lines += [
         "",
-        "## AMRFinderPlus vs Kleborate prediction agreement",
+        "## AMRFinderPlus (core) vs Kleborate prediction agreement",
         "",
         "| Drug | Agreement |",
         "|---|---|",
         *[f"| {d} | {fmt(agree.get(d, math.nan))} |" for d in order],
         "",
-        f"Discordant genome-drug pairs (either tool wrong): {len(disc)}, listed in "
+        f"Discordant genome-drug pairs (core AMRFinderPlus or Kleborate wrong): {len(disc)}, in "
         "`reports/pilot/discordant.tsv` with each tool's evidence for review.",
     ]
     (args.reports / "concordance.md").write_text("\n".join(lines) + "\n")

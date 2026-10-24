@@ -4,13 +4,15 @@ Each rule returns a table with one row per genome and drug: predicted ("R" or "S
 evidence (markers that triggered the call). Rules are deliberately simple and documented, so the
 concordance analysis measures what known mechanisms explain, not a tuned model.
 
-AMRFinderPlus rules (Type == AMR only):
+AMRFinderPlus rules (Type == AMR only). For every drug, the chromosomal oqxA/oqxB efflux genes
+(intrinsic in K. pneumoniae) are ignored. Efflux-regulator variants (oqxR, ramR, acrR, marR,
+soxR/soxS, ramA) are ignored by the core rule and included only by the "+regulators" rule,
+because many are lineage polymorphisms rather than resistance mechanisms.
   meropenem      acquired gene with Subclass CARBAPENEM (carbapenemases; porin mutations excluded)
-  ciprofloxacin  quinolone point mutation (gyrA/parC/parE) or acquired quinolone gene;
-                 chromosomal oqxA/oqxB excluded (intrinsic in K. pneumoniae)
+  ciprofloxacin  quinolone target mutation (gyrA/parC/parE) or acquired quinolone gene
   gentamicin     Subclass GENTAMICIN, or a 16S rRNA methyltransferase (armA, rmt*, npmA)
   colistin       any element with Class or Subclass COLISTIN (mcr genes, mgrB/pmrAB/phoPQ variants)
-  tigecycline    Subclass TIGECYCLINE (tet(X), tmexCD-toprJ, ramR/acrR variants where reported)
+  tigecycline    Subclass TIGECYCLINE (core: acquired tet(X), tmexCD-toprJ)
 
 Kleborate rules (kpsc AMR columns):
   meropenem      Bla_Carb_acquired
@@ -28,6 +30,8 @@ import pandas as pd
 
 DRUGS = ("meropenem", "ciprofloxacin", "gentamicin", "colistin", "tigecycline")
 RMTASE = re.compile(r"^(armA|rmt|npmA)", re.IGNORECASE)
+INTRINSIC = re.compile(r"^oqx[AB](\d|$)", re.IGNORECASE)
+REGULATOR = re.compile(r"^(oqxR|ramR|ramA|acrR|marR|soxR|soxS)(_|$)", re.IGNORECASE)
 KLEB_GENT = re.compile(r"^(aac\(3\)|aacC|ant\(2''\)|aadB|armA|rmt|npmA)", re.IGNORECASE)
 KLEB_COLUMNS = {
     "meropenem": ("Bla_Carb_acquired",),
@@ -45,20 +49,20 @@ def _col(df: pd.DataFrame, *names: str) -> pd.Series:
     return pd.Series("", index=df.index)
 
 
-def amrfinder_markers(amr: pd.DataFrame) -> pd.DataFrame:
+def amrfinder_markers(amr: pd.DataFrame, include_regulators: bool = False) -> pd.DataFrame:
     """Return long table genome_id, drug, marker for every AMRFinderPlus hit a rule uses."""
     symbol = _col(amr, "Element symbol", "Gene symbol")
     etype = _col(amr, "Type", "Element type").str.upper()
     subtype = _col(amr, "Subtype", "Element subtype").str.upper()
     cls = _col(amr, "Class").str.upper()
     sub = _col(amr, "Subclass").str.upper()
-    is_amr = etype == "AMR"
+    is_amr = (etype == "AMR") & ~symbol.str.match(INTRINSIC)
+    if not include_regulators:
+        is_amr &= ~symbol.str.match(REGULATOR)
     point = subtype.str.startswith("POINT")
     masks = {
         "meropenem": is_amr & ~point & sub.str.contains("CARBAPENEM"),
-        "ciprofloxacin": is_amr
-        & (cls.str.contains("QUINOLONE") | sub.str.contains("QUINOLONE"))
-        & ~symbol.str.match(r"^oqx[AB]", case=False),
+        "ciprofloxacin": is_amr & (cls.str.contains("QUINOLONE") | sub.str.contains("QUINOLONE")),
         "gentamicin": is_amr & (sub.str.contains("GENTAMICIN") | symbol.str.match(RMTASE)),
         "colistin": is_amr & (cls.str.contains("COLISTIN") | sub.str.contains("COLISTIN")),
         "tigecycline": is_amr & sub.str.contains("TIGECYCLINE"),

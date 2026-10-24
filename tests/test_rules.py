@@ -27,6 +27,10 @@ AMR = pd.DataFrame(
         amr_row("2", "aac(3)-IId", "AMINOGLYCOSIDE", "GENTAMICIN"),
         amr_row("2", "mgrB_Q30STOP", "COLISTIN", "COLISTIN", subtype="POINT_DISRUPT"),
         amr_row("2", "fieF", "EFFLUX", "EFFLUX", etype="STRESS"),
+        amr_row("3", "oqxA10", "PHENICOL/QUINOLONE", "TIGECYCLINE/QUINOLONE"),
+        amr_row("3", "oqxR_D95E", "QUINOLONE", "TIGECYCLINE/QUINOLONE", subtype="POINT"),
+        amr_row("3", "ramR_T50IfsTer23", "TETRACYCLINE", "TIGECYCLINE", subtype="POINT_DISRUPT"),
+        amr_row("4", "tet(X4)", "TETRACYCLINE", "TIGECYCLINE"),
     ]
 )
 
@@ -38,7 +42,7 @@ def pred(markers, genomes, drug, gid):
 
 def test_amrfinder_rules():
     m = amrfinder_markers(AMR)
-    g = ["1", "2", "3"]
+    g = ["1", "2", "3", "4"]
     assert pred(m, g, "meropenem", "1").predicted == "R"
     assert pred(m, g, "meropenem", "1").evidence == "blaKPC-2"
     assert pred(m, g, "meropenem", "2").predicted == "S"  # porin mutation alone
@@ -48,6 +52,18 @@ def test_amrfinder_rules():
     assert pred(m, g, "gentamicin", "2").evidence == "aac(3)-IId"
     assert pred(m, g, "colistin", "2").evidence == "mgrB_Q30STOP"
     assert pred(m, g, "colistin", "3").predicted == "S"
+    # intrinsic oqxAB and regulator variants are ignored by the core rule
+    assert pred(m, g, "tigecycline", "3").predicted == "S"
+    assert pred(m, g, "ciprofloxacin", "3").predicted == "S"
+    assert pred(m, g, "tigecycline", "4").evidence == "tet(X4)"
+
+
+def test_amrfinder_regulator_rule():
+    m = amrfinder_markers(AMR, include_regulators=True)
+    g = ["1", "2", "3", "4"]
+    assert pred(m, g, "tigecycline", "3").evidence == "oqxR_D95E;ramR_T50IfsTer23"
+    assert pred(m, g, "ciprofloxacin", "3").evidence == "oqxR_D95E"
+    assert pred(m, g, "ciprofloxacin", "2").predicted == "S"  # oqxB still intrinsic
 
 
 def test_kleborate_rules():
