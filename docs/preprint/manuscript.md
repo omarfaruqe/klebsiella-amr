@@ -45,10 +45,14 @@ exceeded the rule under random splitting (balanced accuracy 0.844 and 0.842 vers
 differences −0.085 and −0.083, both excluding zero) and under study-aware splitting, but fell
 below it under lineage-aware splitting (0.731 and 0.709 versus 0.759; +0.028, 95% CI +0.002 to
 +0.052, and +0.050, +0.026 to +0.075). The margin over logistic regression is marginal, that over
-gradient boosting clearer.
+gradient boosting clearer. A predictor using sequence type alone reached 0.737 for meropenem but
+only 0.554 for colistin, and study-aware and lineage-aware splits each left the other
+dimension 74–87% overlapping.
 
-**Conclusions.** The apparent superiority of machine learning for colistin is attributable to
-lineage information rather than resistance determinants, and reverses when lineages are held out.
+**Conclusions.** The apparent superiority of machine learning for colistin reverses when
+lineages are held out. It is not explained by lineage labels themselves: a sequence-type-only
+predictor reached just 0.554, so what the models lose is a finer-grained resemblance between
+related isolates.
 More fundamentally, the mechanistic composition of colistin resistance differs substantially
 between public genome collections, so neither rules nor models transfer reliably — a limit that
 random and even study-aware validation conceals. We recommend that genomic AMR evaluations report
@@ -123,7 +127,7 @@ both a deposited and a re-interpreted call existed they agreed in 92.9–97.2% o
 Three policies were fixed in advance and recorded as decision records in the repository:
 intermediate and conflicting labels are excluded; colistin labels are restricted to broth
 microdilution, the only method EUCAST accepts for colistin MICs; and study-level label sets judged
-implausible on review are flagged and excluded with evidence recorded (one flag applied, §3.8).
+implausible on review are flagged and excluded with evidence recorded (one flag applied, §3.9).
 Tigecycline has no EUCAST breakpoint for *K. pneumoniae*, so deposited calls were used.
 
 ### 2.3 Assembly quality control and genotyping
@@ -196,7 +200,15 @@ selected on training studies only (≥3 genomes, >50% resistant) and applied to 
 The disruption tier, being mechanism-specified and fitted to nothing, was evaluated in the same
 framework for comparison.
 
-### 2.8 Benchmark
+### 2.8 Attributing performance to lineage
+
+To test directly, rather than infer, how much performance is obtainable from lineage, we built a
+predictor using sequence type alone: for each test genome it returns the majority label of that
+genome's sequence type among training genomes, falling back to the overall training majority when
+the type is unseen. It uses no resistance determinant. We also measured, for each split scheme,
+the fraction of test genomes sharing a sequence type or a BioProject with any training genome.
+
+### 2.9 Benchmark
 
 Features were 226 binary indicators per genome: AMRFinderPlus gene families (allele suffixes
 collapsed, OXA-48-like kept distinct from other OXA enzymes), 100 point-mutation calls, 33
@@ -218,7 +230,7 @@ resistant and 10 susceptible genomes. Differences between predictors were assess
 bootstrap over held-out genomes (2,000 resamples), resampling once per iteration and recomputing
 both predictors on the same resampled set.
 
-### 2.9 Reproducibility
+### 2.10 Reproducibility
 
 All analyses are deterministic for a fixed seed (20261024). Code, pinned environments, manifests,
 decision records, reports and figures are at https://github.com/omarfaruqe/klebsiella-amr.
@@ -388,11 +400,10 @@ intervals exclude zero, but the rule's margin over logistic regression under lin
 splitting does so only barely, and should be read as comparable performance rather than
 superiority; the margin over gradient boosting is clearer.
 
-The models had access to the same *mgrB* features as the rule. That they nonetheless lost ground
-only when sequence types were held out indicates their advantage under laxer splitting came from
-lineage information rather than from resistance determinants. The margin by which the rule wins
-under lineage-aware splitting is small, and the practical claim is not that rules are superior but
-that the models' apparent superiority is an artefact of validation design.
+The models had access to the same *mgrB* features as the rule, and lost ground only when
+sequence types were held out. The margin by which the rule leads under lineage-aware splitting is
+small, and the practical claim is not that rules are superior but that the models' apparent
+superiority is an artefact of validation design.
 
 Across drugs, random-split optimism — balanced accuracy under random splitting minus the lower of
 the two grouped splits — was 0.007–0.042 for meropenem, ciprofloxacin and gentamicin, but
@@ -401,7 +412,29 @@ under every split including lineage-aware (differences −0.203 and −0.107), t
 predictors remain weak. Temporal validation was interpretable only for meropenem, ciprofloxacin and
 gentamicin; colistin (34 test genomes, one resistant) and tigecycline (28, none) were not evaluable.
 
-### 3.8 Much apparent genotype error is label artefact
+### 3.8 The leaked signal is finer-grained than sequence type
+
+A predictor using sequence type alone, with no resistance determinant of any kind, reached 0.737
+balanced accuracy for meropenem, 0.728 for ciprofloxacin and 0.713 for gentamicin under random
+splitting, confirming that lineage carries substantial predictive signal in this cohort. For those
+three drugs the models nonetheless reached ~0.95 and did not degrade when sequence types were held
+out, so their performance rests on resistance determinants rather than lineage.
+
+Colistin behaved differently, and not as we had expected. Sequence type alone reached only 0.554
+under random splitting, despite 91% of test genomes sharing a type with training data. Colistin
+resistance is therefore poorly predicted by sequence type: both phenotypes occur within the same
+types. Yet the models still fell from 0.844 to 0.731 when types were held out. The signal they
+lose is thus not sequence-type membership as such, but something finer-grained that co-varies with
+it — plausibly accessory-genome similarity among closely related isolates within a type. We report
+this because it corrects a natural but incorrect reading of the split results: the models were not
+simply memorising lineage labels.
+
+The two grouping schemes also proved not to be substitutes. Under study-aware splitting, 74–83% of
+test genomes still shared a sequence type with training data; under lineage-aware splitting for
+colistin, 87% still shared a BioProject. Each scheme leaves the other dimension largely
+unconstrained, so grouping on both would be stricter than either alone.
+
+### 3.9 Much apparent genotype error is label artefact
 
 **Meropenem.** Of 2,118 carbapenemase carriers, 326 tested susceptible, strongly enzyme-dependent:
 52.9% of OXA-48-like carriers (182/344) and 75.0% of VIM carriers (33/44) versus 5.9% of KPC
@@ -454,9 +487,12 @@ The heterogeneity result (§3.6) is in our view the most important, and the leas
 nothing fitted, the same mechanism-specified rule achieved 39.5% sensitivity in one collection and
 70.6% in another. Colistin resistance is simply constituted differently in different isolate sets.
 This bounds what any method can achieve: a model trained where *mgrB* explains 70% of resistance
-will underperform where it explains 40%, however well regularised. It also explains the crossover
-in §3.7 — models can exploit lineage structure when lineages recur between training and test, and
-that resource disappears exactly when it is most needed, on genuinely novel lineages.
+will underperform where it explains 40%, however well regularised. It also bears on the crossover
+in §3.7. We initially read that crossover as the models memorising lineage, but the sequence-type
+baseline in §3.8 shows otherwise: for colistin, type alone predicts barely better than chance.
+What the models lose when types are held out is therefore a finer-grained resemblance between
+related isolates, not type identity — a resource that likewise disappears on genuinely novel
+lineages, but one that a reader should not mistake for simple label memorisation.
 
 We want to be careful not to overstate the comparison with machine learning. The rule leads under
 lineage-aware splitting by 0.028 and 0.050 balanced-accuracy points; the intervals exclude zero,
@@ -500,7 +536,13 @@ mechanistic label on those categories therefore remains an inference, albeit a w
 3. **State and harmonise the breakpoint standard, and report sensitivity to borderline labels.**
 4. **Use lineage-aware splits and report the gap from random splitting.** The gap was under one
    point where rules work and 11–15 points where they do not.
-5. **Report per-collection performance, not only pooled.** Pooled estimates concealed a two-fold
+5. **Group on study and lineage together, not either alone.** In our cohort, study-aware splits
+   still shared a sequence type with training data for 74–83% of test genomes, and lineage-aware
+   splits for colistin still shared a BioProject for 87%. Each leaves the other dimension largely
+   unconstrained.
+6. **Report a lineage-only baseline.** It costs nothing and distinguishes a model that has learned
+   a mechanism from one that has learned who its neighbours are.
+7. **Report per-collection performance, not only pooled.** Pooled estimates concealed a two-fold
    range in our data.
 
 ---
