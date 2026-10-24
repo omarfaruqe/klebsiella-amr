@@ -4,7 +4,7 @@ Inputs:  data/curated/cohort_labels.parquet, data/curated/ast_records.parquet,
          data/raw/bvbrc_genome/<date>/genome.jsonl, config/qc.toml
 Outputs: data/curated/genome_qc.parquet (not tracked)
          reports/cohort/qc_report.md, reports/cohort/qc_funnel.csv,
-         reports/cohort/pilot_sample.tsv (tracked)
+         reports/cohort/pilot_sample.tsv, reports/cohort/qc_pass_genomes.tsv (tracked)
 """
 
 from __future__ import annotations
@@ -276,6 +276,10 @@ def main() -> None:
 
     qc.to_parquet(args.curated / "genome_qc.parquet", index=False)
     funnel.to_csv(args.reports / "qc_funnel.csv", index=False)
+    cohort = qc.loc[qc["qc_pass"], ["genome_id", "st", "assembly_accession"]]
+    cohort.sort_values("genome_id").to_csv(
+        args.reports / "qc_pass_genomes.tsv", sep="\t", index=False
+    )
     if not frozen:
         sample.to_csv(sample_path, sep="\t", index=False)
     write_report(

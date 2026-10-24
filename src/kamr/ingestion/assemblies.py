@@ -109,6 +109,9 @@ def main() -> None:
     parser.add_argument("--out", type=Path, default=Path("data/assemblies"))
     parser.add_argument("--manifests", type=Path, default=Path("snapshots"))
     parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument(
+        "--manifest-name", default="assemblies-pilot", help="manifest file prefix in snapshots/"
+    )
     parser.add_argument("--limit", type=int, default=0, help="only the first N genomes (testing)")
     args = parser.parse_args()
 
@@ -132,7 +135,7 @@ def main() -> None:
     table = pd.DataFrame(rows).sort_values("genome_id")
     day = dt.datetime.now(dt.UTC).strftime("%Y-%m-%d")
     args.manifests.mkdir(parents=True, exist_ok=True)
-    manifest = args.manifests / f"assemblies-pilot-{day}.tsv"
+    manifest = args.manifests / f"{args.manifest_name}-{day}.tsv"
     table.drop(columns=["file"]).to_csv(manifest, sep="\t", index=False)
     print("\nstatus counts:")
     print(table["status"].value_counts().to_string())
