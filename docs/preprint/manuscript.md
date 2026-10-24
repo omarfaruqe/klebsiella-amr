@@ -39,8 +39,9 @@ sensitivity in-sample but 0.9 points when variants were selected out-of-sample, 
 discarded. Against machine learning, the ordering inverted with validation stringency: models
 exceeded the rule under random splitting (balanced accuracy 0.844 and 0.842 versus 0.759; paired
 differences −0.085 and −0.083, both excluding zero) and under study-aware splitting, but fell
-below it under lineage-aware splitting (0.731 and 0.709 versus 0.759; +0.028, 95% CI +0.003 to
-+0.052, and +0.050, +0.026 to +0.075).
+below it under lineage-aware splitting (0.731 and 0.709 versus 0.759; +0.028, 95% CI +0.002 to
++0.052, and +0.050, +0.026 to +0.075). The margin over logistic regression is marginal, that over
+gradient boosting clearer.
 
 **Conclusions.** The apparent superiority of machine learning for colistin is attributable to
 lineage information rather than resistance determinants, and reverses when lineages are held out.
@@ -347,8 +348,10 @@ fall below, the rule line as grouping tightens.
 Paired bootstrap differences (rule minus model, 95% interval) confirm the reversal: under random
 splitting the models are ahead by 0.085 (−0.113 to −0.059) and 0.083 (−0.111 to −0.054); under
 study-aware splitting by 0.063 (−0.088 to −0.037) and 0.051 (−0.078 to −0.026); under lineage-aware
-splitting the rule is ahead by 0.028 (+0.003 to +0.052) and 0.050 (+0.026 to +0.075). All six
-intervals exclude zero.
+splitting the rule is ahead by 0.028 (+0.002 to +0.052) and 0.050 (+0.026 to +0.075). All six
+intervals exclude zero, but the rule's margin over logistic regression under lineage-aware
+splitting does so only barely, and should be read as comparable performance rather than
+superiority; the margin over gradient boosting is clearer.
 
 The models had access to the same *mgrB* features as the rule. That they nonetheless lost ground
 only when sequence types were held out indicates their advantage under laxer splitting came from
@@ -417,9 +420,10 @@ will underperform where it explains 40%, however well regularised. It also expla
 in §3.6 — models can exploit lineage structure when lineages recur between training and test, and
 that resource disappears exactly when it is most needed, on genuinely novel lineages.
 
-We want to be careful not to overstate the comparison with machine learning. The rule wins under
-lineage-aware splitting by 0.028 and 0.050 balanced-accuracy points; these intervals exclude zero
-but the margins are small, and for tigecycline the models win under every split. The defensible
+We want to be careful not to overstate the comparison with machine learning. The rule leads under
+lineage-aware splitting by 0.028 and 0.050 balanced-accuracy points; the intervals exclude zero,
+but the first does so by 0.002 and is better described as parity than as an advantage, and for
+tigecycline the models win under every split. The defensible
 claim is not that rules beat models, but that the models' advantage under conventional validation
 is attributable to information that will not be present in deployment. Yu and colleagues
 demonstrated this across species using clade-based splits [1]; the contribution here is to show it

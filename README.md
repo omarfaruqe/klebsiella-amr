@@ -33,7 +33,8 @@ genomes with laboratory susceptibility results.
 3. **Models beat the rule under random splitting and lose to it under lineage-aware splitting.**
    For colistin, logistic regression scores 0.844 balanced accuracy under random splits against
    the rule's 0.759, but 0.731 when sequence types are held out. Paired bootstrap intervals
-   exclude zero in both directions. The models had the same *mgrB* features available; their
+   exclude zero in both directions, though the rule's lineage-aware margin over logistic
+   regression is slim (+0.028, 95% CI +0.002 to +0.052) and is better read as parity. The models had the same *mgrB* features available; their
    advantage under laxer splitting came from lineage information, which will not be present on
    novel lineages.
 

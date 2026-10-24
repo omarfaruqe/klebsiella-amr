@@ -1,6 +1,6 @@
 # Leakage-aware benchmark
 
-- Generated (UTC): 2026-10-24T15:00:28+00:00
+- Generated (UTC): 2026-10-24T15:56:33+00:00
 - Features: 226 (reports/benchmark/feature_summary.md); flagged labels excluded
 - Predictors: rule (AMRFinderPlus core; colistin + mgrB), logreg, gboost
 - Splits: random 5-fold; study = 5-fold grouped by BioProject; lineage = 5-fold grouped by ST; temporal = train on earlier, test on the latest ~20% of dated genomes
@@ -16,7 +16,7 @@
 | ciprofloxacin | rule | 0.935 | 0.935 | 0.935 | 0.911 |
 | colistin | gboost | 0.842 | 0.810 | 0.709 | n/a |
 | colistin | logreg | 0.844 | 0.822 | 0.731 | n/a |
-| colistin | rule | 0.808 | 0.808 | 0.808 | n/a |
+| colistin | rule | 0.759 | 0.759 | 0.759 | n/a |
 | gentamicin | gboost | 0.925 | 0.886 | 0.911 | 0.912 |
 | gentamicin | logreg | 0.924 | 0.882 | 0.916 | 0.911 |
 | gentamicin | rule | 0.906 | 0.906 | 0.906 | 0.916 |
@@ -51,7 +51,7 @@
 | ciprofloxacin | rule | 0.936 | 0.936 | 0.936 | 0.910 |
 | colistin | gboost | 0.844 | 0.823 | 0.713 | n/a |
 | colistin | logreg | 0.846 | 0.834 | 0.738 | n/a |
-| colistin | rule | 0.803 | 0.803 | 0.803 | n/a |
+| colistin | rule | 0.763 | 0.763 | 0.763 | n/a |
 | gentamicin | gboost | 0.948 | 0.939 | 0.938 | 0.943 |
 | gentamicin | logreg | 0.947 | 0.935 | 0.943 | 0.940 |
 | gentamicin | rule | 0.959 | 0.959 | 0.959 | 0.960 |

@@ -302,3 +302,33 @@ Balanced accuracy, all test labels (flagged labels excluded):
   minimum of 10 R and 10 S per test set.
 - Headline: on public AMR data, random splits overstate model performance most where rules
   fail (colistin, tigecycline), because models learn lineage and study markers.
+
+# Review round: robustness checks and reframing (2026-10-24)
+
+A self-review against high-impact-journal standards raised eight major concerns. Three were
+testable immediately (src/kamr/analysis/mgrb_robustness.py, reports/review/mgrb_robustness.md):
+
+- Assembly-quality confound: refuted. Within the least fragmented contig quartile, 81% of
+  mgrB-disrupted genomes were colistin-resistant vs 4% of intact; the gap persisted in all
+  quartiles. Median contigs: disrupted 116, intact 104. Assembly-structure disruption calls
+  76% R vs sequence-level 86% R vs intact 12%.
+- Circularity of the missense tier: confirmed. Leave-one-study-out selection: missense adds
+  0.9 points (47.0% -> 47.9%) vs 19.1 points in-sample (41.7% -> 60.8%). Tier discarded from
+  all rules and from the benchmark.
+- Baseline choice: Kleborate (which already calls MgrB truncations) is the correct comparator.
+  Gain is +6.0 points (39.5% -> 45.5%), not +39.0 over AMRFinderPlus.
+
+New finding: the unfitted disruption rule ranges 39.5%-70.6% sensitivity across held-out
+studies (pooled 47.0%). Mechanism composition of colistin resistance differs between
+collections; in PRJEB10018 (162 R) mgrB explains under 40%.
+
+Benchmark re-run with the disruption-only colistin rule (balanced accuracy 0.759) plus a paired
+bootstrap (src/kamr/benchmark/compare.py, 2,000 resamples). Colistin rule minus model:
+random -0.085 / -0.083, study -0.063 / -0.051, lineage +0.028 (+0.003 to +0.052) / +0.050
+(+0.026 to +0.075). All exclude zero: models lead under random and study splits, the rule leads
+under lineage-aware splits. The minimum-class guard was added to compare.py so degenerate
+temporal splits are omitted rather than scored.
+
+Manuscript reframed around mechanism heterogeneity (docs/preprint/manuscript.md); README and
+figures regenerated. Figure 1 now shows disruption-only tiers; Figure 3 (new) shows per-study
+transfer.

@@ -199,7 +199,7 @@ def colistin_figure(table: pd.DataFrame, theme: str, out: Path) -> None:
     axes[0].set_yticks(ys, table["rule"].tolist())
     axes[0].tick_params(axis="y", colors=t["ink2"], labelsize=9)
     fig.suptitle(
-        "A targeted mgrB check more than doubles colistin sensitivity",
+        "A targeted mgrB check recovers part of the colistin gap",
         x=0.0,
         y=1.06,
         ha="left",
@@ -264,6 +264,7 @@ def transfer_figure(studies: pd.DataFrame, pooled: float, theme: str, out: Path)
     ax.set_yticks(list(ys), [f"{r.study}  (n={r.n_R} R)" for r in d.itertuples()])
     ax.tick_params(axis="y", colors=t["ink2"], labelsize=9)
     ax.set_xlim(0, 0.85)
+    ax.set_ylim(-0.5, len(d) - 0.1)  # headroom above the top study for the pooled label
     ax.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0, decimals=0))
     fig.suptitle(
         "The same unfitted rule transfers unevenly between collections",
@@ -334,10 +335,9 @@ def colistin_table(path: Path) -> pd.DataFrame:
     keep = [
         "AMRFinderPlus",
         "AMRFinderPlus + mgrB disrupted",
-        "AMRFinderPlus + mgrB disrupted or missense",
         "Kleborate",
-        "Kleborate + mgrB disrupted or missense",
-        "mgrB disrupted or missense alone",
+        "Kleborate + mgrB disrupted",
+        "mgrB disrupted alone",
     ]
     return pd.DataFrame(rows).set_index("rule").loc[keep].reset_index()
 
