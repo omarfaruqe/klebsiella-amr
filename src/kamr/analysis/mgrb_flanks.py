@@ -214,6 +214,7 @@ def main() -> None:
 
     d = t[t.group == "disrupted"]
     i = t[t.group == "intact"]
+    analysed = d[d.flank_bp >= MIN_FLANK_BP]
     L = [
         "# Do mgrB contig breaks look like IS insertions?",
         "",
@@ -245,8 +246,11 @@ def main() -> None:
         "",
         "## 2. Are mgrB-adjacent contig ends repetitive within their own genome?",
         "",
-        f"Flank lengths analysed: median {d.flank_bp.median():.0f} bp "
-        f"(range {d.flank_bp.min():.0f}-{d.flank_bp.max():.0f}); controls are length-matched.",
+        f"Flank lengths analysed: median {analysed.flank_bp.median():.0f} bp "
+        f"(range {analysed.flank_bp.min():.0f}-{analysed.flank_bp.max():.0f}); "
+        f"{len(d) - len(analysed)} of {len(d)} genomes had under {MIN_FLANK_BP} bp "
+        "between mgrB and the contig end and were not analysed here. Controls are "
+        "length-matched.",
         "",
     ]
     if "copies_in_genome" in d and d.copies_in_genome.notna().any():
@@ -277,7 +281,8 @@ def main() -> None:
         "## 3. Do the same sequences recur at mgrB across independent genomes?",
         "",
         f"{shared:,} of {len(flanks):,} mgrB-adjacent flanks ({shared / max(len(flanks), 1):.0%}) "
-        "match a flank from a different genome at >=90% identity over >=200 bp.",
+        f"match a flank from a different genome at >=90% identity over >=80% of the shorter "
+        f"sequence (minimum {MIN_FLANK_BP} bp).",
         "",
         "Idiosyncratic assembly artefacts would not be shared between isolates; mobile elements",
         "would. This does not identify which element is involved, which requires either an IS",

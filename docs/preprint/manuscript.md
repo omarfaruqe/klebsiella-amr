@@ -31,7 +31,11 @@ disruption raised colistin sensitivity from 28.3% (95% CI 24.0–33.2) to 56.7% 
 AMRFinderPlus and from 39.5% (34.6–44.6) to 45.5% (40.5–50.6) for Kleborate, which already calls
 MgrB truncations. The association was not an artefact of assembly fragmentation: within the
 quartile of least fragmented assemblies, 81% of *mgrB*-disrupted genomes were resistant against
-4% of intact ones, and the gap persisted across all quartiles. Crucially, leave-one-study-out
+4% of intact ones, and the gap persisted across all quartiles. The breaks carried
+insertion-sequence signatures: they lay a median of 79 bp from *mgrB* against 80,470 bp in
+genomes with intact *mgrB*, the adjacent sequence was multi-copy within its own assembly more
+often than length-matched control contig ends (72% versus 35% with three or more copies), and 98%
+of these sequences recurred in unrelated isolates. Crucially, leave-one-study-out
 analysis showed sensitivity of this unfitted rule ranging from 39.5% to 70.6% between
 collections; in the largest single study *mgrB* disruption accounted for under 40% of colistin
 resistance. A second tier based on *mgrB* missense variants appeared to add 19.1 points of
@@ -119,7 +123,7 @@ both a deposited and a re-interpreted call existed they agreed in 92.9–97.2% o
 Three policies were fixed in advance and recorded as decision records in the repository:
 intermediate and conflicting labels are excluded; colistin labels are restricted to broth
 microdilution, the only method EUCAST accepts for colistin MICs; and study-level label sets judged
-implausible on review are flagged and excluded with evidence recorded (one flag applied, §3.6).
+implausible on review are flagged and excluded with evidence recorded (one flag applied, §3.8).
 Tigecycline has no EUCAST breakpoint for *K. pneumoniae*, so deposited calls were used.
 
 ### 2.3 Assembly quality control and genotyping
@@ -167,7 +171,20 @@ position 1, because tblastn translates alternative start codons (GTG, TTG) as V 
 M. An initial implementation using percentage identity classified 6,048 genomes as missense at
 exactly 97.9% identity — a single artefactual mismatch at the start codon.
 
-### 2.6 Validating the *mgrB* rule
+### 2.6 Testing the insertion-sequence interpretation
+
+The `split_contigs`, `contig_break` and `partial` categories are inferences from assembly
+structure, so we tested three predictions that follow from IS insertion but not from incidental
+fragmentation. First, position: the break should coincide with *mgrB*, compared against genomes
+with intact *mgrB*. Second, repetitiveness: sequence at the *mgrB*-adjacent contig end should have
+copies elsewhere in the same assembly. Because contig ends are repeat-enriched in general, this was
+compared against randomly chosen other contig ends in the same assemblies, truncated to the same
+length as each genome's *mgrB* flank. Third, recurrence: the same sequences should appear at *mgrB*
+in unrelated isolates. Flanks were taken as up to 600 bp of contig end adjacent to *mgrB* (minimum
+50 bp) and compared by blastn at ≥95% identity (within genome) or ≥90% (between genomes) over ≥80%
+of the flank.
+
+### 2.7 Validating the *mgrB* rule
 
 Because three disruption categories are inferred from assembly structure, we tested whether the
 association with phenotype could reflect assembly fragmentation by comparing contig counts and N50
@@ -179,7 +196,7 @@ selected on training studies only (≥3 genomes, >50% resistant) and applied to 
 The disruption tier, being mechanism-specified and fitted to nothing, was evaluated in the same
 framework for comparison.
 
-### 2.7 Benchmark
+### 2.8 Benchmark
 
 Features were 226 binary indicators per genome: AMRFinderPlus gene families (allele suffixes
 collapsed, OXA-48-like kept distinct from other OXA enzymes), 100 point-mutation calls, 33
@@ -201,7 +218,7 @@ resistant and 10 susceptible genomes. Differences between predictors were assess
 bootstrap over held-out genomes (2,000 resamples), resampling once per iteration and recomputing
 both predictors on the same resampled set.
 
-### 2.8 Reproducibility
+### 2.9 Reproducibility
 
 All analyses are deterministic for a fixed seed (20261024). Code, pinned environments, manifests,
 decision records, reports and figures are at https://github.com/omarfaruqe/klebsiella-amr.
@@ -284,7 +301,25 @@ The gap is widest, not narrowest, among the least fragmented assemblies. Disrupt
 from assembly structure behaved similarly to sequence-level calls (76% versus 86% resistant,
 against 12% for intact *mgrB*), indicating that the assembly-break categories carry genuine signal.
 
-### 3.4 A plausible missense tier does not survive out-of-sample selection
+### 3.4 The contig breaks carry insertion-sequence signatures
+
+Among the 328 genomes whose *mgrB* disruption was inferred from assembly structure, the break
+coincided with the gene: median distance from the *mgrB* fragment to the contig end was 79 bp, with
+63% within 100 bp and 87% within 1 kb. In 328 matched genomes with intact *mgrB*, the gene lay a
+median of 80,470 bp from any contig end, and 0% were within 100 bp. Whatever terminates these
+assemblies is located at *mgrB* specifically.
+
+The adjacent sequence behaved like a mobile element. Of 255 genomes with at least 50 bp of flank,
+82% had a high-identity copy elsewhere in their own assembly and 72% had three or more (median 5),
+against 66% and 35% (median 2) for length-matched random contig ends from the same assemblies. And
+249 of 255 flanks (98%) matched a flank from a different genome, which idiosyncratic assembly
+artefacts would not.
+
+Together these support the interpretation that the assembly-inferred categories represent IS
+insertions in *mgrB*. They do not identify which element is involved, nor confirm insertion in any
+individual genome; both require an IS reference database or long-read assemblies of these isolates.
+
+### 3.5 A plausible missense tier does not survive out-of-sample selection
 
 Missense variants were enriched among resistant isolates — M27K (25 R / 3 S), T21N (9 / 0), N42Y
 (7 / 0), K43I (7 / 0), C28W (4 / 1), C39G (3 / 0) — and C28 and C39 are the two cysteines of this
@@ -300,7 +335,7 @@ We report this negative result because the failure mode is instructive: the vari
 individually plausible, the structural rationale was real, and the in-sample improvement was large
 and would have survived cross-validation that did not group by study.
 
-### 3.5 Mechanism composition differs between collections
+### 3.6 Mechanism composition differs between collections
 
 The disruption tier is fitted to nothing, so its leave-one-study-out performance measures transfer
 rather than overfitting. It varied substantially:
@@ -328,7 +363,7 @@ a statement about the isolates: the mechanistic composition of colistin resistan
 differs between collections, presumably reflecting differences in clonal background, geography and
 selection history. Any fixed rule, and any model trained on one collection, inherits this limit.
 
-### 3.6 The ordering of rules and models inverts with validation stringency
+### 3.7 The ordering of rules and models inverts with validation stringency
 
 | Split | Rule + *mgrB* | Logistic regression | Gradient boosting |
 |---|---|---|---|
@@ -366,7 +401,7 @@ under every split including lineage-aware (differences −0.203 and −0.107), t
 predictors remain weak. Temporal validation was interpretable only for meropenem, ciprofloxacin and
 gentamicin; colistin (34 test genomes, one resistant) and tigecycline (28, none) were not evaluable.
 
-### 3.7 Much apparent genotype error is label artefact
+### 3.8 Much apparent genotype error is label artefact
 
 **Meropenem.** Of 2,118 carbapenemase carriers, 326 tested susceptible, strongly enzyme-dependent:
 52.9% of OXA-48-like carriers (182/344) and 75.0% of VIM carriers (33/44) versus 5.9% of KPC
@@ -399,8 +434,11 @@ The *mgrB* result is the smallest of the three but the most concrete. A two-minu
 47-codon locus recovers 28 points of colistin sensitivity over AMRFinderPlus — though only six over
 Kleborate, which already detects truncation, and we think the six-point figure is the one that
 should be quoted. The mechanism is instructive even where the increment is modest: the categories
-carrying most signal are not sequence features but assembly artefacts, contig boundaries that
-happen to be diagnostic because an IS element has landed in a very short gene. Screens that ask
+carrying most signal are not sequence features but assembly artefacts, contig boundaries that are
+diagnostic because an IS element has landed in a very short gene. Three independent lines of
+evidence support that reading (§3.4) — the breaks sit a median of 79 bp from *mgrB* against 80 kb
+in intact genomes, the adjacent sequence is multi-copy within its own assembly beyond what
+length-matched contig ends show, and 98% of these sequences recur in unrelated isolates. Screens that ask
 "which genes are present?" cannot see this; a screen that asks "is this locus whole?" can. That
 generalises to any resistance determinant whose loss, rather than presence, confers the phenotype.
 
@@ -412,12 +450,12 @@ this failure mode is common in curated resistance-determinant catalogues assembl
 observational association, and it is invisible to any validation scheme that does not group by
 study.
 
-The heterogeneity result (§3.5) is in our view the most important, and the least avoidable. With
+The heterogeneity result (§3.6) is in our view the most important, and the least avoidable. With
 nothing fitted, the same mechanism-specified rule achieved 39.5% sensitivity in one collection and
 70.6% in another. Colistin resistance is simply constituted differently in different isolate sets.
 This bounds what any method can achieve: a model trained where *mgrB* explains 70% of resistance
 will underperform where it explains 40%, however well regularised. It also explains the crossover
-in §3.6 — models can exploit lineage structure when lineages recur between training and test, and
+in §3.7 — models can exploit lineage structure when lineages recur between training and test, and
 that resource disappears exactly when it is most needed, on genuinely novel lineages.
 
 We want to be careful not to overstate the comparison with machine learning. The rule leads under
@@ -447,11 +485,11 @@ beyond the one flagged study. Colistin and tigecycline have modest numbers of re
 calls from assemblies: copy number, expression, plasmid context and promoter-region insertions are
 not represented, and the 144 colistin-resistant isolates with intact *mgrB* coding sequence likely
 include promoter insertions we cannot see. Hyperparameters were fixed rather than tuned, so the
-models are reasonable defaults rather than optimised systems. Most importantly, *mgrB* disruption
-was validated against phenotype but not against long-read sequencing; confirming that contig-break
-calls correspond to IS insertions in individual genomes requires assemblies we did not generate,
-and until that is done the mechanistic interpretation of those categories remains an inference from
-assembly structure, however well it predicts phenotype.
+models are reasonable defaults rather than optimised systems. Finally, while the positional, repeat-content and
+cross-genome evidence in §3.4 collectively supports the IS interpretation, we did not identify
+which element is involved or confirm insertion in any individual genome; that requires an IS
+reference database or long-read assemblies of these isolates, neither of which we generated. The
+mechanistic label on those categories therefore remains an inference, albeit a well-supported one.
 
 ### 4.2 Recommendations
 

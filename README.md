@@ -10,9 +10,12 @@ genomes with laboratory susceptibility results.
    AMRFinderPlus explains 28% of broth-microdilution colistin resistance. Adding a check for
    disrupted *mgrB* raises this to 57%. Against Kleborate, which already calls MgrB truncations,
    the gain is smaller — 40% to 46% — and that is the honest increment over the state of the art.
-   Many disruptions appear as assembly breaks inside the gene, consistent with insertion
-   sequences; the association is not explained by assembly fragmentation (see the quartile
-   analysis in `reports/review/mgrb_robustness.md`).
+   Many disruptions appear as assembly breaks inside the gene. Three tests support the
+   insertion-sequence reading: the breaks sit a median of 79 bp from *mgrB* against 80 kb in
+   intact genomes, the adjacent sequence is multi-copy beyond what length-matched contig ends
+   show, and 98% of it recurs across unrelated isolates
+   (`reports/review/mgrb_flanks.md`). The association is also not explained by assembly
+   fragmentation (`reports/review/mgrb_robustness.md`).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="reports/figures/colistin_mgrb_dark.png">
@@ -71,6 +74,7 @@ quantifies how far the estimate depends on which collection the test genomes cam
 | Leakage-aware benchmark | `src/kamr/benchmark/` | `reports/benchmark/results.md` |
 | Paired comparisons between predictors | `src/kamr/benchmark/compare.py` | `reports/benchmark/comparisons.md` |
 | mgrB robustness checks | `src/kamr/analysis/mgrb_robustness.py` | `reports/review/mgrb_robustness.md` |
+| mgrB insertion-sequence signature test | `src/kamr/analysis/mgrb_flanks.py` | `reports/review/mgrb_flanks.md` |
 | Figures | `src/kamr/reporting/figures.py` | `reports/figures/` |
 
 Decisions are recorded as ADRs in `docs/adr/`, and every run is logged in `docs/spike-log.md`.
@@ -103,6 +107,7 @@ python -m kamr.analysis.concordance --results results/cohort \
 python -m kamr.analysis.review_meropenem
 python -m kamr.analysis.mgrb --jobs 16
 python -m kamr.analysis.mgrb_robustness
+python -m kamr.analysis.mgrb_flanks
 python -m kamr.analysis.review_gentamicin
 python -m kamr.benchmark.features
 python -m kamr.benchmark.run
@@ -110,7 +115,7 @@ python -m kamr.benchmark.compare
 python -m kamr.reporting.figures
 ```
 
-Tests: `pytest -q` (75 tests). Lint and format: `ruff check . && ruff format --check .`.
+Tests: `pytest -q` (79 tests). Lint and format: `ruff check . && ruff format --check .`.
 
 ## Layout
     src/kamr/      Python package (ingestion, curation, pipeline, analysis, benchmark, reporting)
