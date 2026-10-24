@@ -6,38 +6,56 @@ genomes with laboratory susceptibility results.
 
 ## Key findings
 
-1. **Random train/test splits overstate model performance most where rules fail.** For colistin
-   and tigecycline, models look 11-15 points better under random splits than when whole studies
-   or lineages are held out. For meropenem, ciprofloxacin and gentamicin, simple rules match or
-   beat the models once leakage is removed.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="reports/figures/benchmark_splits_dark.png">
-  <img alt="Balanced accuracy of rule, logistic regression and gradient boosting under random, study-aware and lineage-aware splits for five drugs" src="reports/figures/benchmark_splits_light.png">
-</picture>
-
-2. **Standard tools miss most colistin resistance; a targeted *mgrB* check recovers it.**
+1. **Standard tools miss most colistin resistance; a targeted *mgrB* check recovers part of it.**
    AMRFinderPlus explains 28% of broth-microdilution colistin resistance. Adding a check for
-   disrupted or mutated *mgrB* raises this to 67%, at a cost of 3.5 points of specificity. Many
-   disruptions show up as assembly breaks inside the gene, consistent with insertion sequences.
+   disrupted *mgrB* raises this to 57%. Against Kleborate, which already calls MgrB truncations,
+   the gain is smaller — 40% to 46% — and that is the honest increment over the state of the art.
+   Many disruptions appear as assembly breaks inside the gene, consistent with insertion
+   sequences; the association is not explained by assembly fragmentation (see the quartile
+   analysis in `reports/review/mgrb_robustness.md`).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="reports/figures/colistin_mgrb_dark.png">
   <img alt="Colistin sensitivity and specificity with 95% intervals for each rule, with and without the mgrB check" src="reports/figures/colistin_mgrb_light.png">
 </picture>
 
-3. **Many "errors" are label effects, not missing biology.**
-   - Meropenem: 93% of carbapenemase carriers that test susceptible (with an MIC) are above the
-     EUCAST carbapenemase screening cut-off; most carry OXA-48-like or VIM enzymes.
-   - Gentamicin: 71% of unexplained resistant isolates sit at 4 mg/L, one dilution above the
-     EUCAST breakpoint; the original CLSI-based labs had called 160 of 162 of them susceptible.
-   - One study's gentamicin labels are biologically implausible (rmtB carriers at MIC 1 mg/L)
-     and are flagged.
+2. **The same unfitted rule transfers unevenly between collections.** Leave-one-study-out,
+   sensitivity ranges from 39.5% to 70.6%. Nothing is fitted, so this is not overfitting: the
+   mechanistic composition of colistin resistance genuinely differs between isolate sets. In the
+   largest collection, *mgrB* disruption accounts for under 40% of resistance. This bounds what
+   any rule or model can achieve on new data.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="reports/figures/colistin_transfer_dark.png">
+  <img alt="Sensitivity of the mgrB disruption rule in each held-out study, ranging from 39.5% to 70.6%" src="reports/figures/colistin_transfer_light.png">
+</picture>
+
+3. **Models beat the rule under random splitting and lose to it under lineage-aware splitting.**
+   For colistin, logistic regression scores 0.844 balanced accuracy under random splits against
+   the rule's 0.759, but 0.731 when sequence types are held out. Paired bootstrap intervals
+   exclude zero in both directions. The models had the same *mgrB* features available; their
+   advantage under laxer splitting came from lineage information, which will not be present on
+   novel lineages.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="reports/figures/benchmark_splits_dark.png">
+  <img alt="Balanced accuracy of rule, logistic regression and gradient boosting under random, study-aware and lineage-aware splits for five drugs" src="reports/figures/benchmark_splits_light.png">
+</picture>
+
+4. **A plausible determinant tier did not survive out-of-sample selection.** *mgrB* missense
+   variants enriched among resistant isolates — including substitutions at both structural
+   cysteines — appeared to add 19.1 points of sensitivity in-sample and 0.9 points when selected
+   leave-one-study-out. The tier was discarded. It is reported as a cautionary result.
+
+5. **Many "errors" are label effects, not missing biology.** 93% of carbapenemase carriers that
+   test meropenem-susceptible exceed the EUCAST carbapenemase screening cut-off; 71% of
+   unexplained gentamicin-resistant isolates sit one dilution above the breakpoint, where 160 of
+   162 CLSI-tested records had been called susceptible by the originating laboratory.
 
 ## How it differs from existing tools
 Pathogenwatch, Kleborate and AMRFinderPlus report genotypes. This project measures how well those
 genotypes predict laboratory phenotype on harmonised labels, explains the disagreements, and
-shows how much the estimate depends on keeping related isolates out of the test set.
+quantifies how far the estimate depends on which collection the test genomes came from.
 
 ## Pipeline
 
@@ -50,10 +68,12 @@ shows how much the estimate depends on keeping related isolates out of the test 
 | Genotype-phenotype concordance | `src/kamr/analysis/concordance.py` | `reports/cohort/concordance.md` |
 | Discordance review (meropenem, colistin/mgrB, gentamicin) | `src/kamr/analysis/` | `reports/review/` |
 | Leakage-aware benchmark | `src/kamr/benchmark/` | `reports/benchmark/results.md` |
+| Paired comparisons between predictors | `src/kamr/benchmark/compare.py` | `reports/benchmark/comparisons.md` |
+| mgrB robustness checks | `src/kamr/analysis/mgrb_robustness.py` | `reports/review/mgrb_robustness.md` |
 | Figures | `src/kamr/reporting/figures.py` | `reports/figures/` |
 
 Decisions are recorded as ADRs in `docs/adr/`, and every run is logged in `docs/spike-log.md`.
-The model card is `docs/model-card.md`.
+The model card is `docs/model-card.md`; a manuscript draft is `docs/preprint/manuscript.md`.
 
 ## Reproduce the results
 
@@ -81,13 +101,15 @@ python -m kamr.analysis.concordance --results results/cohort \
     --title "Cohort genotype-phenotype concordance"
 python -m kamr.analysis.review_meropenem
 python -m kamr.analysis.mgrb --jobs 16
+python -m kamr.analysis.mgrb_robustness
 python -m kamr.analysis.review_gentamicin
 python -m kamr.benchmark.features
 python -m kamr.benchmark.run
+python -m kamr.benchmark.compare
 python -m kamr.reporting.figures
 ```
 
-Tests: `pytest -q` (73 tests). Lint and format: `ruff check . && ruff format --check .`.
+Tests: `pytest -q` (75 tests). Lint and format: `ruff check . && ruff format --check .`.
 
 ## Layout
     src/kamr/      Python package (ingestion, curation, pipeline, analysis, benchmark, reporting)

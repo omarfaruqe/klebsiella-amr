@@ -19,6 +19,7 @@ import numpy as np
 import pandas as pd
 
 SEED = 20261024
+MIN_PER_CLASS = 10  # must match kamr.benchmark.run; degenerate splits are not comparable
 PAIRS = [("rule", "logreg"), ("rule", "gboost"), ("logreg", "gboost")]
 
 
@@ -65,6 +66,8 @@ def main() -> None:
         ).reset_index()
         if wide[["rule", "logreg", "gboost"]].isna().any().any() or wide["y"].nunique() < 2:
             continue
+        if min(int(wide.y.sum()), int((1 - wide.y).sum())) < MIN_PER_CLASS:
+            continue  # same guard as the benchmark: too few of one class to compare
         for x, y_ in PAIRS:
             rows.append(
                 {
@@ -85,6 +88,7 @@ def main() -> None:
         f"- {a.n_boot:,} paired bootstrap resamples of held-out genomes, seed {SEED}",
         "- Difference is balanced accuracy of A minus B; interval is the 2.5–97.5 percentile",
         "- 'Yes' means the 95% interval excludes zero",
+        f"- Splits with fewer than {MIN_PER_CLASS} genomes of either class are omitted",
         "",
         "| Drug | Split | Comparison | Difference | 95% interval | Distinguishable |",
         "|---|---|---|---|---|---|",

@@ -1,11 +1,17 @@
 """Static figures for the README and write-up, in light and dark variants.
 
-Figure 1 (benchmark_splits): balanced accuracy of each predictor under random, study-aware and
+Figure 2 (benchmark_splits): balanced accuracy of each predictor under random, study-aware and
 lineage-aware splits, one small panel per drug on a shared y-axis. A falling line is performance
 that a random split attributed to the model but that does not survive grouping.
 
-Figure 2 (colistin_mgrb): colistin sensitivity and specificity with 95% Wilson intervals for each
-rule, with and without the targeted mgrB check (broth-microdilution labels, ADR-003).
+Figure 1 (colistin_mgrb): colistin sensitivity and specificity with 95% Wilson intervals for each
+rule, with and without the targeted mgrB check (broth-microdilution labels, ADR-003). Only
+mechanism-specified disruption is shown; the missense tier is excluded because leave-one-study-out
+selection reduces its contribution from 19.1 to 0.9 points.
+
+Figure 3 (colistin_transfer): sensitivity of the unfitted mgrB disruption rule in each held-out
+study, showing that the mechanistic composition of colistin resistance differs between
+collections.
 
 Colors follow the project's validated categorical palette (3 slots, all-pairs CVD-safe in both
 modes). Lines carry direct text labels in addition to the legend, so identity never depends on
@@ -215,6 +221,88 @@ def colistin_figure(table: pd.DataFrame, theme: str, out: Path) -> None:
     plt.close(fig)
 
 
+def transfer_figure(studies: pd.DataFrame, pooled: float, theme: str, out: Path) -> None:
+    """Per-held-out-study sensitivity of the unfitted mgrB disruption rule."""
+    t = THEMES[theme]
+    fig, ax = plt.subplots(figsize=(8.5, 3.6))
+    fig.patch.set_facecolor(t["surface"])
+    style(ax, t)
+    ax.grid(axis="y", visible=False)
+    ax.grid(axis="x", color=t["grid"], linewidth=0.8)
+    d = studies.sort_values("sens")
+    ys = range(len(d))
+    ax.axvline(pooled, color=t["muted"], linewidth=1.5, linestyle=(0, (4, 3)), zorder=1)
+    ax.annotate(
+        f"pooled {pooled:.0%}",
+        (pooled, len(d) - 0.35),
+        xytext=(5, 0),
+        textcoords="offset points",
+        fontsize=8.5,
+        color=t["muted"],
+    )
+    for y, r in zip(ys, d.itertuples(), strict=True):
+        ax.plot([0, r.sens], [y, y], color=t["grid"], linewidth=1.5, zorder=1)
+        ax.plot(
+            r.sens,
+            y,
+            "o",
+            color=t["series"][0],
+            markersize=9,
+            markeredgecolor=t["surface"],
+            markeredgewidth=1.5,
+            zorder=3,
+        )
+        ax.annotate(
+            f"{r.sens:.0%}",
+            (r.sens, y),
+            xytext=(9, 0),
+            textcoords="offset points",
+            va="center",
+            fontsize=8.5,
+            color=t["ink2"],
+        )
+    ax.set_yticks(list(ys), [f"{r.study}  (n={r.n_R} R)" for r in d.itertuples()])
+    ax.tick_params(axis="y", colors=t["ink2"], labelsize=9)
+    ax.set_xlim(0, 0.85)
+    ax.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0, decimals=0))
+    fig.suptitle(
+        "The same unfitted rule transfers unevenly between collections",
+        x=0.0,
+        y=1.04,
+        ha="left",
+        color=t["ink"],
+        fontsize=13,
+        fontweight="bold",
+    )
+    fig.text(
+        0.0,
+        -0.09,
+        "Sensitivity of mgrB disruption alone in each held-out study. Nothing is "
+        "fitted, so the spread reflects\ndiffering mechanistic composition of colistin "
+        "resistance, not overfitting.",
+        color=t["muted"],
+        fontsize=8.5,
+        ha="left",
+    )
+    fig.savefig(out, dpi=200, facecolor=t["surface"], bbox_inches="tight")
+    plt.close(fig)
+
+
+def transfer_table(path: Path) -> tuple[pd.DataFrame, float]:
+    """Parse per-study disruption-only sensitivity from reports/review/mgrb_robustness.md."""
+    text = path.read_text().split("## 2. Leave-one-study-out", 1)[1].split("## 3.", 1)[0]
+    rows = []
+    for line in text.splitlines():
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) != 7 or not cells[0].startswith("PRJ"):
+            continue
+        rows.append(
+            {"study": cells[0], "n_R": int(cells[1]), "sens": float(cells[3].rstrip("%")) / 100}
+        )
+    pooled = float(text.split("Disrupted only (nothing fitted): ")[1].split("%")[0]) / 100
+    return pd.DataFrame(rows), pooled
+
+
 def colistin_table(path: Path) -> pd.DataFrame:
     """Parse the broth-microdilution rules table from reports/review/colistin_mgrb.md."""
     text = path.read_text().split("### colistin: rules with and without the mgrB check", 1)[1]
@@ -258,6 +346,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--results", type=Path, default=Path("reports/benchmark/results.csv"))
     parser.add_argument("--colistin", type=Path, default=Path("reports/review/colistin_mgrb.md"))
+    parser.add_argument(
+        "--robustness", type=Path, default=Path("reports/review/mgrb_robustness.md")
+    )
     parser.add_argument("--out", type=Path, default=Path("reports/figures"))
     args = parser.parse_args()
 
@@ -266,10 +357,12 @@ def main() -> None:
     args.out.mkdir(parents=True, exist_ok=True)
     results = pd.read_csv(args.results)
     colistin = colistin_table(args.colistin)
+    studies, pooled = transfer_table(args.robustness)
     for theme in THEMES:
         benchmark_figure(results, theme, args.out / f"benchmark_splits_{theme}.png")
         colistin_figure(colistin, theme, args.out / f"colistin_mgrb_{theme}.png")
-    print(f"wrote {len(THEMES) * 2} figures to {args.out}/")
+        transfer_figure(studies, pooled, theme, args.out / f"colistin_transfer_{theme}.png")
+    print(f"wrote {len(THEMES) * 3} figures to {args.out}/")
 
 
 if __name__ == "__main__":
