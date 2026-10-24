@@ -1,6 +1,6 @@
 # Cohort QC and data-quality report
 
-- Generated (UTC): 2026-10-23T23:41:37+00:00
+- Generated (UTC): 2026-10-24T02:08:22+00:00
 - Genome metadata: `data/raw/bvbrc_genome/2026-10-23/genome.jsonl`
 - Thresholds: `config/qc.toml`
 
@@ -9,14 +9,15 @@
 | Step | Remaining | Removed |
 |---|---|---|
 | labelled genomes with metadata | 6,817 | 0 |
-| species | 6,817 | 0 |
-| assembly_stats_present | 6,817 | 0 |
-| min_length | 6,801 | 16 |
-| max_length | 6,774 | 27 |
-| max_contigs | 6,674 | 100 |
-| min_n50 | 6,674 | 0 |
-| checkm_completeness | 6,670 | 4 |
-| checkm_contamination | 6,655 | 15 |
+| species_field | 6,817 | 0 |
+| genome_name_species | 6,813 | 4 |
+| assembly_stats_present | 6,813 | 0 |
+| min_length | 6,798 | 15 |
+| max_length | 6,771 | 27 |
+| max_contigs | 6,671 | 100 |
+| min_n50 | 6,671 | 0 |
+| checkm_completeness | 6,667 | 4 |
+| checkm_contamination | 6,652 | 15 |
 
 CheckM values missing (not failed): 0 genomes.
 Genomes without an assembly accession: 4,190.
@@ -28,7 +29,7 @@ Genomes without an assembly accession: 4,190.
 | meropenem | 1,854 | 3,687 | 372 | 33.5% |
 | ciprofloxacin | 3,441 | 1,199 | 60 | 74.2% |
 | gentamicin | 2,113 | 2,647 | 36 | 44.4% |
-| colistin | 418 | 1,486 | 0 | 22.0% |
+| colistin | 418 | 1,483 | 0 | 22.0% |
 | tigecycline | 261 | 687 | 116 | 27.5% |
 
 ## Colistin labels by testing method (QC-passing genomes)
@@ -39,7 +40,7 @@ EUCAST requires broth microdilution for colistin MICs.
 label             R     S  conflict
 method                             
 Agar dilution     6    14         0
-Broth dilution  367  1164         2
+Broth dilution  367  1161         2
 Disk diffusion   18    68         1
 MIC              27   250         0
 not reported     17    26         1
@@ -47,7 +48,7 @@ not reported     17    26         1
 
 ## Collection year (QC-passing genomes)
 
-Missing year: 2,269 of 6,655.
+Missing year: 2,266 of 6,652.
 
 | Period | Genomes |
 |---|---|
@@ -92,10 +93,10 @@ Missing year: 2,269 of 6,655.
 | BioProject | Genomes | Share |
 |---|---|---|
 | PRJEB10018 | 1,476 | 22.2% |
-| PRJNA376414 | 1,467 | 22.0% |
+| PRJNA376414 | 1,467 | 22.1% |
 | PRJEB27256 | 648 | 9.7% |
 | PRJEB28400 | 332 | 5.0% |
-| missing | 329 | 4.9% |
+| missing | 326 | 4.9% |
 | PRJEB31361 | 248 | 3.7% |
 | PRJEB5065 | 245 | 3.7% |
 | PRJDB10842 | 166 | 2.5% |
@@ -104,7 +105,7 @@ Missing year: 2,269 of 6,655.
 
 ## Pilot sample
 
-524 genomes in `reports/cohort/pilot_sample.tsv`, 331 distinct STs.
+524 genomes in `reports/cohort/pilot_sample.tsv`, 331 distinct STs; 1 no longer pass QC.
 
 | Drug | R in sample | S in sample |
 |---|---|---|
