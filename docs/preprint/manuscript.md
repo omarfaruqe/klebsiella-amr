@@ -475,9 +475,8 @@ None declared.
 
 ## 7. References
 
-> **Note for submission:** references [1] and [2] were verified directly against the source
-> during preparation. The remaining entries are standard tool and database citations whose
-> bibliographic details should be confirmed against the publisher record before submission.
+All references below were verified against the publisher record during preparation
+(2026-10-24).
 
 1. Yu Y, Wheeler NE, Barquist L. Biased sampling driven by bacterial population structure
    confounds machine learning prediction of antimicrobial resistance. *PLOS Biology*. 2025;
@@ -485,13 +484,16 @@ None declared.
 2. The European Committee on Antimicrobial Susceptibility Testing. Breakpoint tables for
    interpretation of MICs and zone diameters. Version 16.1, valid from 2026-06-24.
    https://www.eucast.org
-3. Lam MMC, Wick RR, Watts SC, et al. A genomic surveillance framework and genotyping tool for
-   *Klebsiella pneumoniae* and its related species complex. *Nature Communications*.
-   2021;12:4188.
-4. Feldgarden M, Brover V, Gonzalez-Escalona N, et al. AMRFinderPlus and the Reference Gene
+3. Lam MMC, Wick RR, Watts SC, Cerdeira LT, Wyres KL, Holt KE. A genomic surveillance framework
+   and genotyping tool for *Klebsiella pneumoniae* and its related species complex. *Nature
+   Communications*. 2021;12:4188. doi:10.1038/s41467-021-24448-3
+4. Feldgarden M, Brover V, Gonzalez-Escalona N, Frye JG, Haendiges J, Haft DH, Hoffmann M,
+   Pettengill JB, Prasad AB, Tillman GE, Tyson GH, Klimke W. AMRFinderPlus and the Reference Gene
    Catalog facilitate examination of the genomic links among antimicrobial resistance, stress
-   response, and virulence. *Scientific Reports*. 2021;11:12728.
+   response, and virulence. *Scientific Reports*. 2021;11(1).
+   doi:10.1038/s41598-021-91456-0
 5. Olson RD, Assaf R, Brettin T, et al. Introducing the Bacterial and Viral Bioinformatics
-   Resource Center (BV-BRC). *Nucleic Acids Research*. 2023;51(D1):D678–D689.
+   Resource Center (BV-BRC): a resource combining PATRIC, IRD and ViPR. *Nucleic Acids Research*.
+   2023;51(D1):D678–D689. PMID:36350631
 6. Pedregosa F, Varoquaux G, Gramfort A, et al. Scikit-learn: machine learning in Python.
    *Journal of Machine Learning Research*. 2011;12:2825–2830.
