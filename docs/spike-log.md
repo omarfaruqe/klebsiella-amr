@@ -140,3 +140,18 @@ Full report: reports/cohort/qc_report.md. Decisions recorded in ADR-003:
 - Two BioProjects hold 44% of genomes: study-aware splits are required.
 - Collection year missing for 34%; dated genomes concentrate in 2010-2014.
 - First pilot (per_stratum = 50) gave 265 genomes over 223 STs; raised to per_stratum = 100.
+
+## Part 3: pilot assemblies and tool run (2026-10-24 UTC, server)
+- 524 pilot assemblies downloaded from the BV-BRC genome_sequence API in 3 min; all passed
+  format and length checks (snapshots/assemblies-pilot-2026-10-24.tsv on the server). The
+  BV-BRC FTP route timed out from the server, so the API is tried first.
+- AMRFinderPlus + Kleborate, 8 jobs x 4 threads on 32 cores: 49 min wall time, 12 h CPU.
+  523 of 524 genomes completed both tools.
+- Failure: 573.46141. Kleborate rejected it as outside the K. pneumoniae species complex; its
+  species module calls Citrobacter freundii (strong match). BV-BRC metadata contradicts itself:
+  species "Klebsiella pneumoniae" but genome_name "Citrobacter freundii PBIO1966".
+- QC fix: the species check now requires both the species field and the genome name to match
+  (steps species_field and genome_name_species). This removes 3 of 6,655 QC-passing genomes
+  (2 E. coli, 1 C. freundii); only 573.46141 is in the pilot sample.
+- The pilot sample is not re-drawn, because the tool run used it; 573.46141 is excluded from
+  pilot analysis. Kleborate's sequence-based species call is the final species QC.

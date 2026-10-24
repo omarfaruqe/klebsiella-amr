@@ -73,19 +73,21 @@ def test_qc_filters_and_funnel(tmp_path):
             genome("4", contigs=900),
             genome("5", checkm_completeness=None, checkm_contamination=None),
             genome("6", checkm_contamination=9.0),
+            genome("7", genome_name="Citrobacter freundii PBIO1966"),
             genome("1"),
         ],
     )
     qc, funnel = apply_qc(meta, CFG)
     reasons = qc.set_index("genome_id")["qc_fail_reason"].to_dict()
-    assert len(qc) == 6
-    assert reasons["2"] == "species"
+    assert len(qc) == 7
+    assert reasons["2"] == "species_field"
+    assert reasons["7"] == "genome_name_species"
     assert reasons["3"] == "min_length"
     assert reasons["4"] == "max_contigs"
     assert reasons["6"] == "checkm_contamination"
     assert set(qc.loc[qc["qc_pass"], "genome_id"]) == {"1", "5"}
     assert funnel.iloc[-1]["remaining"] == 2
-    assert int(funnel["removed"].sum()) == 4
+    assert int(funnel["removed"].sum()) == 5
 
 
 def test_select_sample_covers_strata_and_spreads_sts():

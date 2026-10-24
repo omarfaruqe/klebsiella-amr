@@ -53,11 +53,20 @@ def load_metadata(path: Path) -> pd.DataFrame:
 def apply_qc(meta: pd.DataFrame, cfg: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Return per-genome QC results and a funnel table (filters applied in order)."""
     a = cfg["assembly"]
-    name = meta["species"].fillna("").astype(str) + " " + meta["genome_name"].fillna("").astype(str)
+    pattern = a["species_pattern"]
+    species_ok = (
+        meta["species"].fillna("").astype(str).str.contains(pattern, case=False, regex=False)
+    )
+    # BV-BRC records can contradict themselves (e.g. species "Klebsiella pneumoniae" with
+    # genome_name "Citrobacter freundii ..."), so the genome name must agree as well.
+    name_ok = (
+        meta["genome_name"].fillna("").astype(str).str.contains(pattern, case=False, regex=False)
+    )
     comp = meta["checkm_completeness"]
     cont = meta["checkm_contamination"]
     steps = [
-        ("species", name.str.contains(a["species_pattern"], case=False, regex=False)),
+        ("species_field", species_ok),
+        ("genome_name_species", name_ok),
         ("assembly_stats_present", meta[["genome_length", "contigs"]].notna().all(axis=1)),
         ("min_length", meta["genome_length"] >= a["min_length"]),
         ("max_length", meta["genome_length"] <= a["max_length"]),
