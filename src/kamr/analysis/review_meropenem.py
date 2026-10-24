@@ -37,6 +37,7 @@ ESBL_AMPC = re.compile(
     r"^bla(CTX-M|DHA|CMY|ACT|FOX|MOX|ACC|SHV-(2|5|12|27|31|38)|TEM-(10|12|26|52))"
 )
 PORIN = re.compile(r"^ompK3[56]", re.IGNORECASE)
+SCREENING_CUTOFF = 0.125  # EUCAST guideline on detection of resistance mechanisms
 MIC_BINS = [0, 0.125, 0.25, 0.5, 1, 2, 8, 1e9]
 MIC_LABELS = ["<=0.125", "0.25", "0.5", "1", "2", "4-8", ">8"]
 
@@ -173,7 +174,9 @@ def main() -> None:
     mic_fp = pd.crosstab(fp["family_group"], fp["mic_bin"].astype(str)).reindex(
         columns=[c for c in MIC_LABELS if c in set(fp["mic_bin"].astype(str))], fill_value=0
     )
-    near = int(fp["mic_bin"].astype(str).isin(["1", "2"]).sum())
+    fp_mic = fp[fp["mic"].notna()]
+    near = int(fp_mic["mic_bin"].astype(str).isin(["1", "2"]).sum())
+    above_screen = int((fp_mic["mic"] > SCREENING_CUTOFF).sum())
 
     def route(df: pd.DataFrame) -> pd.Series:
         esbl = df["esbl_ampc"] != ""
@@ -209,8 +212,14 @@ def main() -> None:
         "",
         "## 2. MIC of susceptible carbapenemase carriers (mg/L)",
         "",
-        f"{near:,} of {len(fp):,} false positives sit at 1-2 mg/L, within two doubling dilutions "
-        "of the breakpoint.",
+        f"{len(fp_mic):,} of {len(fp):,} false positives have an MIC; the rest have only a "
+        "reported S call.",
+        f"- {near:,} of {len(fp_mic):,} ({near / max(len(fp_mic), 1):.0%}) sit at 1-2 mg/L,"
+        " within two doubling dilutions of the S breakpoint.",
+        f"- {above_screen:,} of {len(fp_mic):,} ({above_screen / max(len(fp_mic), 1):.0%}) are"
+        " above the EUCAST carbapenemase screening cut-off"
+        f" (meropenem MIC > {SCREENING_CUTOFF:g} mg/L): consistent with a carbapenemase"
+        " even though clinically S.",
         "",
         *md_table(mic_fp, "Family"),
         "",

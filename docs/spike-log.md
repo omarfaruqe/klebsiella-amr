@@ -209,3 +209,19 @@ Findings to review (reports/cohort/discordant.tsv, 1,740 genome-drug pairs):
 - gentamicin: 314 resistant isolates with no detected gentamicin mechanism.
 - colistin: 263 broth-microdilution resistant isolates unexplained by AMRFinderPlus.
 - The pilot's conclusions hold on the full cohort with much narrower intervals.
+
+# Sprint 2: discordance review
+
+## Part 1: meropenem (2026-10-24, server; reports/review/meropenem.md)
+- 2,118 carbapenemase carriers; 326 test S (rule false positives). 3,423 non-carriers; 62 test R.
+- Share testing S by family: KPC 5.9% (75/1,278), NDM 10.0% (28/280), OXA-48-like 52.9%
+  (182/344), VIM 75.0% (33/44), IMP 27.3% (6/22), multiple 0.7% (1/149). OXA-48-like and VIM
+  account for 215 of 326 false positives.
+- 240 of the 326 have an MIC: 191 (80%) at 1-2 mg/L and only 16 at or below 0.125 mg/L, the
+  EUCAST carbapenemase screening cut-off. Most "false positives" are carbapenemase producers
+  that are clinically susceptible, not genotype errors.
+- Resistant non-carriers: 51 of 62 carry an ESBL/AmpC (29 with an OmpK35/36 defect, 22 without);
+  but 624 susceptible non-carriers have ESBL/AmpC plus a porin defect, so the combination is a
+  risk factor rather than a predictor.
+- PRJEB10018 contributes 158 of 326 false positives (48%); ST15 is the commonest ST among them.
+  Strong study clustering, supporting study-aware splits (ADR-003).
