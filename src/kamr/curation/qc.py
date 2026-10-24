@@ -233,7 +233,8 @@ def write_report(
         "## Pilot sample",
         "",
         f"{len(sample):,} genomes in `reports/cohort/pilot_sample.tsv`, "
-        f"{sample['st'].nunique():,} distinct STs.",
+        f"{sample['st'].nunique():,} distinct STs; "
+        f"{int((~sample['genome_id'].isin(passing)).sum())} no longer pass QC.",
         "",
         "| Drug | R in sample | S in sample |",
         "|---|---|---|",
@@ -250,6 +251,9 @@ def main() -> None:
     parser.add_argument("--config", type=Path, default=Path("config/qc.toml"))
     parser.add_argument("--curated", type=Path, default=Path("data/curated"))
     parser.add_argument("--reports", type=Path, default=Path("reports/cohort"))
+    parser.add_argument(
+        "--resample", action="store_true", help="re-draw the pilot sample even if one exists"
+    )
     args = parser.parse_args()
 
     cfg = tomllib.loads(args.config.read_text())
@@ -259,12 +263,21 @@ def main() -> None:
     meta = load_metadata(args.metadata)
 
     qc, funnel = apply_qc(meta, cfg)
-    sample = select_sample(qc, labels, drugs, cfg["sample"]["per_stratum"], cfg["sample"]["seed"])
-    sample = sample.merge(qc[["genome_id", "assembly_accession"]], on="genome_id", how="left")
+    sample_path = args.reports / "pilot_sample.tsv"
+    frozen = sample_path.exists() and not args.resample
+    if frozen:
+        # The pilot sample is frozen once tools have run on it; re-draw only with --resample.
+        sample = pd.read_csv(sample_path, sep="\t", dtype=str)
+        print(f"using frozen pilot sample {sample_path} ({len(sample)} genomes)")
+    else:
+        per_stratum, seed = cfg["sample"]["per_stratum"], cfg["sample"]["seed"]
+        sample = select_sample(qc, labels, drugs, per_stratum, seed)
+        sample = sample.merge(qc[["genome_id", "assembly_accession"]], on="genome_id", how="left")
 
     qc.to_parquet(args.curated / "genome_qc.parquet", index=False)
     funnel.to_csv(args.reports / "qc_funnel.csv", index=False)
-    sample.to_csv(args.reports / "pilot_sample.tsv", sep="\t", index=False)
+    if not frozen:
+        sample.to_csv(sample_path, sep="\t", index=False)
     write_report(
         qc, funnel, labels, records, sample, drugs, args.metadata, args.reports / "qc_report.md"
     )
