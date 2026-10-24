@@ -1,0 +1,276 @@
+genome_id	drug	label	AMRFinderPlus_evidence	AMRFinderPlus+regulators_evidence	Kleborate_evidence	AMRFinderPlus_predicted	AMRFinderPlus+regulators_predicted	Kleborate_predicted	st
+573.13967	ciprofloxacin	R		ramR_L156CfsTer71		S	R	S	ST1823
+573.14297	ciprofloxacin	R				S	S	S	ST1444
+573.14431	ciprofloxacin	R				S	S	S	ST4097
+573.14506	ciprofloxacin	R				S	S	S	ST3578
+573.28633	ciprofloxacin	R				S	S	S	ST45
+573.29590	ciprofloxacin	R				S	S	S	ST23
+573.31139	ciprofloxacin	R				S	S	S	ST348
+573.4090	ciprofloxacin	R		oqxR_D95E;oqxR_V113I		S	R	S	ST3699
+573.4161	ciprofloxacin	R				S	S	S	ST1180
+573.66980	ciprofloxacin	R				S	S	S	ST10
+573.14237	ciprofloxacin	S	aac(6')-Ib-cr5	aac(6')-Ib-cr5;oqxR_D95E	aac(6')-Ib-cr.v2	R	R	R	ST1602
+573.24353	ciprofloxacin	S	qnrB2	qnrB2;ramR_A105SfsTer17	qnrB2.v1^	R	R	R	ST834
+573.24449	ciprofloxacin	S	aac(6')-Ib-cr5	aac(6')-Ib-cr5	aac(6')-Ib-cr.v2	R	R	R	ST1966
+573.26080	ciprofloxacin	S	qnrB	qnrB		R	R	S	ST1536
+573.26150	ciprofloxacin	S	aac(6')-Ib-cr5;qnrB1	aac(6')-Ib-cr5;qnrB1	aac(6')-Ib-cr.v2;qnrB1.v2^	R	R	R	ST1427
+573.26299	ciprofloxacin	S	qnrS1	qnrS1	qnrS1	R	R	R	ST219
+573.4112	ciprofloxacin	S	aac(6')-Ib-cr5	aac(6')-Ib-cr5	aac(6')-Ib-cr.v2	R	R	R	ST3704
+573.66037	ciprofloxacin	S	aac(6')-Ib-cr5;gyrA_S83I;parC_S80I;qnrB91;qnrS1	aac(6')-Ib-cr5;gyrA_S83I;parC_S80I;qnrB91;qnrS1	GyrA:p.Ser83Ile;ParC:p.Ser80Ile;aac(6')-Ib-cr.v2;qnrS1	R	R	R	ST273
+573.66079	ciprofloxacin	S	qnrS1	qnrS1	qnrS1	R	R	R	ST1691
+573.20063	colistin	R				S	S	S	ST3603
+573.20064	colistin	R				S	S	S	ST340
+573.2018	colistin	R			mgrb:c.T132del	S	S	R	ST258
+573.2023	colistin	R				S	S	S	ST258
+573.20455	colistin	R				S	S	S	ST104
+573.20713	colistin	R	mgrB_M27K	mgrB_M27K		R	R	S	ST101
+573.20722	colistin	R			mgrb:p.Lys2fs	S	S	R	ST437
+573.20734	colistin	R			mgrb:p.Lys2fs	S	S	R	ST437
+573.20739	colistin	R			mgrb:p.Lys2fs	S	S	R	ST437
+573.20752	colistin	R				S	S	S	ST37
+573.20809	colistin	R				S	S	S	ST15
+573.20832	colistin	R				S	S	S	ST15
+573.20853	colistin	R				S	S	S	ST2333
+573.20856	colistin	R	phoQ_L96P	phoQ_L96P		R	R	S	ST13
+573.20861	colistin	R	pmrB_S85R	pmrB_S85R		R	R	S	ST336
+573.20902	colistin	R			mgrb:p.Lys2fs	S	S	R	ST437
+573.21170	colistin	R			mgrb:c.G69del	S	S	R	ST392
+573.21184	colistin	R				S	S	S	ST395
+573.21189	colistin	R				S	S	S	ST395
+573.21220	colistin	R				S	S	S	ST340
+573.21251	colistin	R				S	S	S	ST525
+573.21256	colistin	R			mgrb:c.C119del	S	S	R	ST107
+573.21264	colistin	R				S	S	S	ST281
+573.21269	colistin	R				S	S	S	ST23
+573.21271	colistin	R				S	S	S	ST3003
+573.21297	colistin	R				S	S	S	ST101
+573.21331	colistin	R			mgrb:c.G76del	S	S	R	ST11
+573.21366	colistin	R			mgrb:c.T72del	S	S	R	ST512
+573.21408	colistin	R			mgrb:c.A125del	S	S	R	ST340
+573.21447	colistin	R				S	S	S	ST11
+573.21452	colistin	R				S	S	S	ST704
+573.21454	colistin	R				S	S	S	ST280
+573.21476	colistin	R				S	S	S	ST405
+573.21545	colistin	R				S	S	S	ST392
+573.21552	colistin	R				S	S	S	ST45
+573.21659	colistin	R				S	S	S	ST383
+573.21691	colistin	R			mgrb:c.G116del	S	S	R	ST101
+573.21747	colistin	R	mgrB_G37S	mgrB_G37S		R	R	S	ST512
+573.21831	colistin	R			mgrb:c.A129del	S	S	R	ST258
+573.21833	colistin	R			mgrb:c.A129del	S	S	R	ST258
+573.21859	colistin	R				S	S	S	ST323
+573.21967	colistin	R			mgrb:c.A118del	S	S	R	ST11
+573.24318	colistin	R				S	S	S	ST14
+573.24328	colistin	R			mgrb:c.A125del	S	S	R	ST340
+573.24329	colistin	R			mgrb:c.A125del	S	S	R	ST340
+573.24338	colistin	R			mgrb:c.A125del	S	S	R	ST340
+573.24430	colistin	R			mgrb:p.Thr40fs	S	S	R	ST258
+573.29870	colistin	R				S	S	S	ST101
+573.29890	colistin	R				S	S	S	ST307
+573.29938	colistin	R	mgrB_D31N	mgrB_D31N		R	R	S	ST45
+573.29940	colistin	R				S	S	S	ST512
+573.29951	colistin	R				S	S	S	ST512
+573.29958	colistin	R			mgrb:c.G116del	S	S	R	ST3499
+573.29969	colistin	R				S	S	S	ST512
+573.29996	colistin	R				S	S	S	ST101
+573.46122	colistin	R				S	S	S	ST307
+573.46152	colistin	R				S	S	S	ST307
+573.46174	colistin	R				S	S	S	ST307
+573.46836	colistin	R				S	S	S	ST147
+573.5624	colistin	R				S	S	S	ST258
+573.5638	colistin	R			mgrb:c.A74del	S	S	R	ST11
+573.5779	colistin	R				S	S	S	ST437
+573.7025	colistin	R				S	S	S	ST461
+573.24353	colistin	S	mcr-9.1	mcr-9.1	mcr-9.1	R	R	R	ST834
+573.24426	colistin	S	mgrB_K3Ter	mgrB_K3Ter	mgrb:p.Lys2fs	R	R	R	ST1213
+573.29913	colistin	S	mgrB_G37YfsTer1	mgrB_G37YfsTer1	mgrb:p.Ser36fs	R	R	R	ST1519
+573.29914	colistin	S	mgrB_G37YfsTer1	mgrB_G37YfsTer1	mgrb:p.Ser36fs	R	R	R	ST3498
+573.13754	gentamicin	R				S	S	S	ST1758
+573.13911	gentamicin	R				S	S	S	ST3792
+573.14775	gentamicin	R				S	S	S	ST745
+573.14805	gentamicin	R				S	S	S	ST1519
+573.15507	gentamicin	R				S	S	S	ST3395
+573.20063	gentamicin	R				S	S	S	ST3603
+573.22561	gentamicin	R				S	S	S	ST3003
+573.23202	gentamicin	R	armA	armA		R	R	S	ST410
+573.24347	gentamicin	R	aac(6')-Ib	aac(6')-Ib		R	R	S	ST418
+573.28633	gentamicin	R				S	S	S	ST45
+573.29898	gentamicin	R	aac(6')-Ib	aac(6')-Ib		R	R	S	ST395
+573.29914	gentamicin	R	aac(6')-Ib'	aac(6')-Ib'		R	R	S	ST3498
+573.4055	gentamicin	R	aac(6')-Ib'	aac(6')-Ib'		R	R	S	ST3707
+573.4090	gentamicin	R	aac(6')-Ib'	aac(6')-Ib'		R	R	S	ST3699
+573.4091	gentamicin	R	aac(6')-Ib'	aac(6')-Ib'		R	R	S	ST1683
+573.4160	gentamicin	R	aac(6')-Ib	aac(6')-Ib		R	R	S	ST253
+573.4161	gentamicin	R				S	S	S	ST1180
+573.4191	gentamicin	R	aac(6')-Ib'	aac(6')-Ib'		R	R	S	ST1562
+573.4200	gentamicin	R				S	S	S	ST158
+573.4212	gentamicin	R	aac(6')-Ib'	aac(6')-Ib'		R	R	S	ST2273
+573.66044	gentamicin	R				S	S	S	ST3409
+573.66440	gentamicin	R				S	S	S	ST656
+573.67193	gentamicin	R				S	S	S	ST13
+573.67309	gentamicin	R	aac(3)-IIe	aac(3)-IIe		R	R	S	ST133
+573.67336	gentamicin	R	aac(3)-IIe	aac(3)-IIe		R	R	S	ST133
+573.13182	gentamicin	S	aac(3)-IId	aac(3)-IId	aac(3)-IId^	R	R	R	ST405
+573.24244	gentamicin	S	aac(3)-Ib	aac(3)-Ib	aac(3)-Ib	R	R	R	ST1473
+573.24354	gentamicin	S	aac(6')-Ib'	aac(6')-Ib'		R	R	S	ST34
+573.25569	gentamicin	S	aac(3)-Ia	aac(3)-Ia	aac(3)-Ia*	R	R	R	ST383
+573.29956	gentamicin	S	aac(6')-Ib4	aac(6')-Ib4		R	R	S	ST253
+573.29959	gentamicin	S	aac(6')-Ib4	aac(6')-Ib4		R	R	S	ST1505
+573.5644	gentamicin	S	aac(3)-Ia	aac(3)-Ia	aac(3)-Ia*	R	R	R	ST383
+573.5800	gentamicin	S	ant(2'')-Ia	ant(2'')-Ia	ant(2'')-Ia	R	R	R	ST323
+573.65930	gentamicin	S	aac(6')-IIc	aac(6')-IIc		R	R	S	ST12
+573.65974	gentamicin	S	aac(6')-Ib	aac(6')-Ib		R	R	S	ST716
+573.66003	gentamicin	S	aac(6')-Ib	aac(6')-Ib		R	R	S	ST12
+573.66021	gentamicin	S	aac(6')-Ib	aac(6')-Ib		R	R	S	ST105
+573.66046	gentamicin	S	aac(6')-Ib	aac(6')-Ib		R	R	S	ST12
+573.66047	gentamicin	S	aac(6')-Ib	aac(6')-Ib		R	R	S	ST12
+573.12783	meropenem	R				S	S	S	ST1161
+573.13182	meropenem	R				S	S	S	ST405
+573.14276	meropenem	R				S	S	S	ST462
+573.14506	meropenem	R				S	S	S	ST3578
+573.15618	meropenem	R				S	S	S	ST323
+573.20064	meropenem	R				S	S	S	ST340
+573.20722	meropenem	R				S	S	S	ST437
+573.24307	meropenem	R				S	S	S	ST30
+573.24376	meropenem	R				S	S	S	ST163
+573.24431	meropenem	R				S	S	S	
+573.24449	meropenem	R				S	S	S	ST1966
+573.28633	meropenem	R				S	S	S	ST45
+573.66453	meropenem	R				S	S	S	ST20
+573.14435	meropenem	S	blaKPC-2	blaKPC-2	KPC-2	R	R	R	ST1107
+573.20853	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST2333
+573.21154	meropenem	S	blaOXA-427	blaOXA-427		R	R	S	ST1942
+573.21256	meropenem	S	blaOXA-162	blaOXA-162	OXA-162	R	R	R	ST107
+573.21264	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST281
+573.21269	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST23
+573.21476	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST405
+573.21490	meropenem	S	blaOXA-204	blaOXA-204	OXA-204	R	R	R	ST1709
+573.21552	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST45
+573.21577	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST1307
+573.21658	meropenem	S	blaKPC-3	blaKPC-3	KPC-3	R	R	R	ST292
+573.21967	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST11
+573.29959	meropenem	S	blaVIM-1	blaVIM-1	VIM-1	R	R	R	ST1505
+573.66046	meropenem	S	blaIMP-1	blaIMP-1	IMP-1	R	R	R	ST12
+573.66047	meropenem	S	blaIMP-1	blaIMP-1	IMP-1	R	R	R	ST12
+573.66101	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST20
+573.66103	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST133
+573.66104	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST2981
+573.66105	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST20
+573.66110	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST3519
+573.66122	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST922
+573.66128	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST20
+573.66133	meropenem	S	blaNDM-1	blaNDM-1	NDM-1	R	R	R	ST36
+573.66137	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST922
+573.66149	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST2974
+573.66571	meropenem	S	blaNDM-1	blaNDM-1	NDM-1	R	R	R	ST359
+573.67181	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST3514
+573.67190	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST15
+573.67193	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST13
+573.67262	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST14
+573.67266	meropenem	S	blaNDM-1	blaNDM-1	NDM-1	R	R	R	ST307
+573.67282	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST188
+573.67292	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST13
+573.67309	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST133
+573.67311	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST392
+573.67317	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST3514
+573.67331	meropenem	S	blaOXA-48	blaOXA-48	OXA-48	R	R	R	ST23
+573.18541	tigecycline	R				S	S	S	ST11
+573.2023	tigecycline	R	rpsJ_V57L	rpsJ_V57L		R	R	S	ST258
+573.24321	tigecycline	R				S	S	S	ST231
+573.24351	tigecycline	R	rpsJ_V57L	rpsJ_V57L		R	R	S	ST16
+573.24354	tigecycline	R				S	S	S	ST34
+573.25569	tigecycline	R				S	S	S	ST383
+573.26110	tigecycline	R		ramR_A19V		S	R	S	ST15
+573.26148	tigecycline	R				S	S	S	ST34
+573.26239	tigecycline	R		acrR_V165I;acrR_Y114F		S	R	S	ST2941
+573.26275	tigecycline	R				S	S	S	ST13
+573.26286	tigecycline	R				S	S	S	ST29
+573.29875	tigecycline	R				S	S	S	ST101
+573.29890	tigecycline	R				S	S	S	ST307
+573.29898	tigecycline	R				S	S	S	ST395
+573.29913	tigecycline	R				S	S	S	ST1519
+573.29914	tigecycline	R		ramR_H103PfsTer52		S	R	S	ST3498
+573.29918	tigecycline	R				S	S	S	ST395
+573.29938	tigecycline	R				S	S	S	ST45
+573.29940	tigecycline	R				S	S	S	ST512
+573.29951	tigecycline	R		ramR_D152Y		S	R	S	ST512
+573.29969	tigecycline	R				S	S	S	ST512
+573.29971	tigecycline	R				S	S	S	ST147
+573.29996	tigecycline	R				S	S	S	ST101
+573.30003	tigecycline	R				S	S	S	ST307
+573.46836	tigecycline	R		ramR_Q122Ter		S	R	S	ST147
+573.46842	tigecycline	R		ramR_Q122Ter		S	R	S	ST147
+573.46868	tigecycline	R				S	S	S	ST147
+573.5624	tigecycline	R				S	S	S	ST258
+573.5661	tigecycline	R				S	S	S	ST1530
+573.5663	tigecycline	R				S	S	S	ST656
+573.5677	tigecycline	R				S	S	S	ST231
+573.5687	tigecycline	R				S	S	S	ST16
+573.5706	tigecycline	R		ramR_A19V		S	R	S	ST15
+573.5719	tigecycline	R		acrR_V165I;acrR_Y114F		S	R	S	ST3837
+573.5800	tigecycline	R				S	S	S	ST323
+573.5802	tigecycline	R		acrR_V165I;acrR_Y114F;oqxR_D95E		S	R	S	ST477
+573.5807	tigecycline	R				S	S	S	ST16
+573.5818	tigecycline	R				S	S	S	ST378
+573.5824	tigecycline	R		acrR_V165I;acrR_Y114F		S	R	S	ST3837
+573.66101	tigecycline	R				S	S	S	ST20
+573.66103	tigecycline	R				S	S	S	ST133
+573.66104	tigecycline	R		acrR_V165I;acrR_Y114F		S	R	S	ST2981
+573.66105	tigecycline	R				S	S	S	ST20
+573.66110	tigecycline	R				S	S	S	ST3519
+573.66118	tigecycline	R				S	S	S	ST883
+573.66121	tigecycline	R				S	S	S	ST37
+573.66122	tigecycline	R				S	S	S	ST922
+573.66123	tigecycline	R				S	S	S	ST27
+573.66126	tigecycline	R				S	S	S	ST160
+573.66128	tigecycline	R				S	S	S	ST20
+573.66130	tigecycline	R				S	S	S	ST610
+573.66132	tigecycline	R				S	S	S	ST834
+573.66133	tigecycline	R				S	S	S	ST36
+573.66134	tigecycline	R				S	S	S	ST922
+573.66137	tigecycline	R				S	S	S	ST922
+573.66138	tigecycline	R				S	S	S	ST45
+573.66143	tigecycline	R				S	S	S	ST25
+573.66146	tigecycline	R				S	S	S	ST3181
+573.66147	tigecycline	R				S	S	S	ST111
+573.66149	tigecycline	R				S	S	S	ST2974
+573.66158	tigecycline	R				S	S	S	ST48
+573.66166	tigecycline	R				S	S	S	ST151
+573.66171	tigecycline	R				S	S	S	ST48
+573.67181	tigecycline	R				S	S	S	ST3514
+573.67183	tigecycline	R				S	S	S	ST23
+573.67185	tigecycline	R				S	S	S	ST34
+573.67190	tigecycline	R		ramR_A19V		S	R	S	ST15
+573.67193	tigecycline	R		ramR_I88N		S	R	S	ST13
+573.67195	tigecycline	R				S	S	S	ST1373
+573.67214	tigecycline	R				S	S	S	ST490
+573.67224	tigecycline	R				S	S	S	ST26
+573.67225	tigecycline	R				S	S	S	ST1380
+573.67229	tigecycline	R				S	S	S	ST26
+573.67233	tigecycline	R				S	S	S	ST26
+573.67238	tigecycline	R				S	S	S	ST3178
+573.67239	tigecycline	R				S	S	S	ST274
+573.67242	tigecycline	R		oqxR_D95E;oqxR_V113I		S	R	S	ST3517
+573.67249	tigecycline	R				S	S	S	ST111
+573.67252	tigecycline	R				S	S	S	ST323
+573.67257	tigecycline	R				S	S	S	ST11
+573.67259	tigecycline	R				S	S	S	ST29
+573.67261	tigecycline	R				S	S	S	ST14
+573.67262	tigecycline	R				S	S	S	ST14
+573.67265	tigecycline	R		acrR_M109I		S	R	S	ST37
+573.67266	tigecycline	R				S	S	S	ST307
+573.67269	tigecycline	R				S	S	S	ST23
+573.67287	tigecycline	R				S	S	S	ST3518
+573.67292	tigecycline	R		ramR_Q122Ter		S	R	S	ST13
+573.67305	tigecycline	R				S	S	S	ST252
+573.67309	tigecycline	R				S	S	S	ST133
+573.67311	tigecycline	R				S	S	S	ST392
+573.67317	tigecycline	R				S	S	S	ST3514
+573.67326	tigecycline	R				S	S	S	ST791
+573.67330	tigecycline	R				S	S	S	ST323
+573.67331	tigecycline	R				S	S	S	ST23
+573.67335	tigecycline	R				S	S	S	ST258
+573.67336	tigecycline	R				S	S	S	ST133
+573.67674	tigecycline	R				S	S	S	ST37
+573.67678	tigecycline	R				S	S	S	ST26
+573.7362	tigecycline	R		ramR_Y59CfsTer13		S	R	S	ST11

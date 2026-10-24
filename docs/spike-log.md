@@ -155,3 +155,32 @@ Full report: reports/cohort/qc_report.md. Decisions recorded in ADR-003:
   (2 E. coli, 1 C. freundii); only 573.46141 is in the pilot sample.
 - The pilot sample is not re-drawn, because the tool run used it; 573.46141 is excluded from
   pilot analysis. Kleborate's sequence-based species call is the final species QC.
+
+## Part 4: pilot concordance (2026-10-24 UTC, server)
+`python -m kamr.analysis.concordance` on 523 pilot genomes (573.46141 excluded).
+Full tables: reports/pilot/concordance.md, reports/pilot/concordance.csv; discordant
+genome-drug pairs with each tool's evidence: reports/pilot/discordant.tsv.
+
+| Drug | Sensitivity AMRFinderPlus / Kleborate | Specificity AMRFinderPlus / Kleborate |
+|---|---|---|
+| meropenem | 92.3% / 92.3% | 85.7% / 86.1% |
+| ciprofloxacin | 94.7% / 94.7% | 92.7% / 93.5% |
+| gentamicin | 91.6% / 83.8% | 94.2% / 97.9% |
+| colistin (broth microdilution) | 24.7% / 44.2% | 95.3% / 95.3% |
+| tigecycline | 2.0% / 0.0% (19.0% with regulators) | 100% / 100% (85.0% with regulators) |
+
+Findings:
+- First run of the rules exposed two rule errors, not tool errors: AMRFinderPlus assigns the
+  intrinsic chromosomal oqxAB pump to tigecycline as well as quinolones (88 of 91 tigecycline
+  false positives), and it reports efflux-regulator variants (oqxR, ramR, acrR) that are mostly
+  lineage polymorphisms (21 of 26 ciprofloxacin false positives). Fix: oqxAB ignored for all
+  drugs; regulator variants moved to a separate "AMRFinderPlus+regulators" rule.
+- Regulator variants add sensitivity only for tigecycline (2% -> 19%, 15 extra false positives);
+  for ciprofloxacin they add 1.1 points of sensitivity and cost 13.7 points of specificity.
+- Kleborate reports only acquired tigecycline genes (Tgc_acquired) and no regulator mutations.
+- Meropenem, ciprofloxacin and gentamicin are largely explained by known mechanisms (controls).
+- Colistin and tigecycline resistance is mostly unexplained by either tool: the targets where a
+  learned model could add something in the benchmark. Expected colistin gap: mgrB disruption by
+  insertion sequences, which assembly-based gene and point-mutation searches miss.
+- Meropenem false positives (carbapenemase present, phenotype S) and false negatives (R without
+  a carbapenemase) are listed for review in discordant.tsv.
