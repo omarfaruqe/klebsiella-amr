@@ -652,8 +652,9 @@ design. Predictive values across a range of prevalences are tabulated in
 Code, pinned environments, provenance manifests (queries, timestamps, SHA-256 checksums), decision
 records, reports and figures are at https://github.com/omarfaruqe/klebsiella-amr. Genome assemblies
 and AST records are from BV-BRC. Derived tables regenerate deterministically from the documented
-pipeline. A model card is at `docs/model-card.md`. An archived snapshot of the code at
-submission is deposited at Zenodo (DOI to be inserted on deposit).
+pipeline. A model card is at `docs/model-card.md`. An archived snapshot of the code as submitted
+is deposited at Zenodo (version DOI 10.5281/zenodo.23634240; all versions:
+10.5281/zenodo.23634239).
 
 Internal genome assemblies and AST records are from BV-BRC. The external validation cohort (§2.10)
 derives from NCBI Pathogen Detection; the SQL that retrieved it is version-controlled with the code
