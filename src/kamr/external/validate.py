@@ -42,6 +42,7 @@ from kamr.analysis.mgrb import (
     read_hits,
     run_tblastn,
 )
+from kamr.analysis.rules import amrfinder_markers
 
 
 def mgrb_status(assemblies: Path, genomes: list[str], hit_dir: Path, jobs: int) -> pd.DataFrame:
@@ -77,6 +78,38 @@ def evaluate(labels: pd.DataFrame, tables: dict[str, pd.Series]) -> pd.DataFrame
         m = metrics(df.dropna())
         rows.append({"rule": name, "n": len(df.dropna()), **m})
     return pd.DataFrame(rows)
+
+
+def composition(
+    labels: pd.DataFrame, amr: pd.DataFrame, status: pd.DataFrame
+) -> tuple[pd.Series, pd.Series]:
+    """What explains each resistant isolate, and which acquired determinants were seen.
+
+    Section 3.6 claims the mechanistic composition of colistin resistance differs between
+    collections. This measures that composition on an independent collection instead of inferring
+    it from the sensitivity gap.
+    """
+    res = labels.loc[labels["label"] == "R", "genome_id"]
+    markers = amrfinder_markers(amr[amr["genome_id"].isin(set(res))])
+    markers = markers[markers["drug"] == "colistin"]
+    with_determinant = set(markers["genome_id"])
+    disrupted = set(status.loc[status["mgrb_disrupted"], "genome_id"])
+
+    def label_for(g: str) -> str:
+        d, m = g in with_determinant, g in disrupted
+        if d and m:
+            return "both"
+        if d:
+            return "acquired determinant"
+        if m:
+            return "mgrB disrupted"
+        return "unexplained"
+
+    cats = pd.Series([label_for(g) for g in res], name="category")
+    order = ["acquired determinant", "mgrB disrupted", "both", "unexplained"]
+    counts = cats.value_counts().reindex(order).fillna(0).astype(int)
+    genes = markers.groupby("marker")["genome_id"].nunique().sort_values(ascending=False)
+    return counts, genes
 
 
 def table(res: pd.DataFrame) -> list[str]:
@@ -118,6 +151,7 @@ def main() -> None:
     tables = colistin_rules(amr, kl, status, genomes)
 
     overall = evaluate(lab, tables)
+    comp, genes = composition(lab, amr, status)
     mic_only = lab[lab["label_source"] == "mic_eucast"]
     mic = evaluate(mic_only, tables)
 
@@ -148,6 +182,18 @@ def main() -> None:
         "## All external isolates",
         "",
         *table(overall),
+        "",
+        f"## Mechanism composition among the {counts.get('R', 0):,} resistant isolates",
+        "",
+        "| Explanation | Isolates | Share |",
+        "|---|---|---|",
+        *[f"| {k} | {v:,} | {v / max(comp.sum(), 1):.1%} |" for k, v in comp.items()],
+        "",
+        "Acquired determinants detected by AMRFinderPlus, by gene:",
+        "",
+        "| Determinant | Resistant isolates |",
+        "|---|---|",
+        *[f"| {k} | {v:,} |" for k, v in genes.items()],
         "",
         f"## Restricted to MIC-derived labels (n = {len(mic_only):,})",
         "",

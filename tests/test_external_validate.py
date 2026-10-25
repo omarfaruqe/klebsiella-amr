@@ -51,3 +51,58 @@ def test_table_renders_intervals_per_rule():
     lines = table(evaluate(labels(g), tab))
     assert lines[0].startswith("| Rule |")
     assert len([ln for ln in lines if ln.startswith("| rule A")]) == 1
+
+
+def test_composition_separates_determinant_from_mgrb_and_unexplained():
+    from kamr.external.validate import composition
+
+    g = [f"GCA_{i}.1" for i in range(4)]
+    lab = pd.DataFrame({"genome_id": g, "label": ["R"] * 4})
+    # g0 has mcr only, g1 mgrB only, g2 both, g3 neither
+    amr = pd.DataFrame(
+        {
+            "genome_id": [g[0], g[2]],
+            "Element symbol": ["mcr-1.1", "mcr-9"],
+            "Type": ["AMR", "AMR"],
+            "Subtype": ["AMR", "AMR"],
+            "Class": ["COLISTIN", "COLISTIN"],
+            "Subclass": ["COLISTIN", "COLISTIN"],
+        }
+    )
+    status = pd.DataFrame(
+        {
+            "genome_id": g,
+            "mgrb_status": ["intact", "absent", "absent", "intact"],
+            "mgrb_disrupted": [False, True, True, False],
+        }
+    )
+    counts, genes = composition(lab, amr, status)
+    assert counts["acquired determinant"] == 1
+    assert counts["mgrB disrupted"] == 1
+    assert counts["both"] == 1
+    assert counts["unexplained"] == 1
+    assert set(genes.index) == {"mcr-1.1", "mcr-9"}
+
+
+def test_composition_ignores_susceptible_isolates():
+    from kamr.external.validate import composition
+
+    g = ["GCA_0.1", "GCA_1.1"]
+    lab = pd.DataFrame({"genome_id": g, "label": ["R", "S"]})
+    amr = pd.DataFrame(
+        {
+            "genome_id": [g[1]],
+            "Element symbol": ["mcr-1.1"],
+            "Type": ["AMR"],
+            "Subtype": ["AMR"],
+            "Class": ["COLISTIN"],
+            "Subclass": ["COLISTIN"],
+        }
+    )
+    status = pd.DataFrame(
+        {"genome_id": g, "mgrb_status": ["intact"] * 2, "mgrb_disrupted": [False, False]}
+    )
+    counts, genes = composition(lab, amr, status)
+    assert counts.sum() == 1
+    assert counts["unexplained"] == 1
+    assert genes.empty
