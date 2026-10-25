@@ -5,6 +5,18 @@ This module tests whether the differences between predictors are larger than sam
 resampling genomes with replacement and recomputing each pairwise difference on the same
 resampled set (paired, so the comparison is not inflated by between-resample variation).
 
+Every drug, split scheme and predictor pair is compared, which is a family of tests rather than
+one, so some intervals will exclude zero by chance alone. Reporting only the per-comparison
+intervals would overstate what the benchmark establishes. Each comparison therefore also carries
+a two-sided bootstrap p-value and a Benjamini-Hochberg q-value computed across the whole family,
+together with whether it would survive the far stricter Bonferroni threshold.
+Benjamini-Hochberg is the primary correction: these comparisons are positively dependent (they
+share predictors, genomes and folds), and controlling the false discovery rate is the appropriate
+goal for a benchmark that is mapping where differences exist rather than testing one hypothesis.
+
+The p-value resolution is bounded by the number of resamples: with B resamples no p-value below
+1/B is distinguishable, and such values are reported at that floor rather than as zero.
+
 Input:  data/features/oof_predictions.parquet (written by kamr.benchmark.run)
 Output: reports/benchmark/comparisons.md, reports/benchmark/comparisons.csv
 """
@@ -30,6 +42,32 @@ def balanced_accuracy(y: np.ndarray, pred: np.ndarray) -> float:
     return (pred[pos].mean() + (1 - pred[neg]).mean()) / 2
 
 
+def bootstrap_pvalue(diffs: np.ndarray) -> float:
+    """Two-sided bootstrap p-value for H0: the difference is zero.
+
+    Twice the smaller tail mass on either side of zero, floored at 1/B because no finer
+    resolution exists with B resamples. Returns 1.0 for an empty distribution.
+    """
+    if not len(diffs):
+        return 1.0
+    tail = min(float(np.mean(diffs <= 0)), float(np.mean(diffs >= 0)))
+    return float(min(1.0, max(2.0 * tail, 1.0 / len(diffs))))
+
+
+def bh_qvalues(pvalues: np.ndarray) -> np.ndarray:
+    """Benjamini-Hochberg adjusted p-values, order preserved."""
+    p = np.asarray(pvalues, dtype=float)
+    m = len(p)
+    if not m:
+        return p
+    order = np.argsort(p)
+    ranked = p[order] * m / np.arange(1, m + 1)
+    ranked = np.minimum.accumulate(ranked[::-1])[::-1]  # enforce monotonicity
+    q = np.empty(m, dtype=float)
+    q[order] = np.minimum(ranked, 1.0)
+    return q
+
+
 def paired_bootstrap(
     wide: pd.DataFrame, a: str, b: str, n_boot: int, rng: np.random.Generator
 ) -> dict:
@@ -47,6 +85,8 @@ def paired_bootstrap(
         "lo": lo,
         "hi": hi,
         "excludes_zero": bool(lo > 0 or hi < 0),
+        "p": bootstrap_pvalue(diffs),
+        "n_boot": len(diffs),
     }
 
 
@@ -78,6 +118,10 @@ def main() -> None:
                 }
             )
     res = pd.DataFrame(rows)
+    res["q"] = bh_qvalues(res["p"].to_numpy())
+    bonferroni = 0.05 / len(res) if len(res) else float("nan")
+    res["survives_bh"] = res["q"] < 0.05
+    res["survives_bonferroni"] = res["p"] < bonferroni
     a.out.mkdir(parents=True, exist_ok=True)
     res.to_csv(a.out / "comparisons.csv", index=False, float_format="%.4f")
 
@@ -87,16 +131,24 @@ def main() -> None:
         f"- Generated (UTC): {dt.datetime.now(dt.UTC).isoformat(timespec='seconds')}",
         f"- {a.n_boot:,} paired bootstrap resamples of held-out genomes, seed {SEED}",
         "- Difference is balanced accuracy of A minus B; interval is the 2.5–97.5 percentile",
-        "- 'Yes' means the 95% interval excludes zero",
         f"- Splits with fewer than {MIN_PER_CLASS} genomes of either class are omitted",
+        f"- Family of {len(res)} comparisons; q is the Benjamini-Hochberg adjusted p-value",
+        f"- Bonferroni threshold for this family is p < {bonferroni:.5f}",
+        f"- p is floored at 1/{a.n_boot:,} = {1 / a.n_boot:.5f}, the resolution of the bootstrap",
         "",
-        "| Drug | Split | Comparison | Difference | 95% interval | Distinguishable |",
-        "|---|---|---|---|---|---|",
+        f"Uncorrected, {int(res['excludes_zero'].sum())} of {len(res)} intervals exclude zero; "
+        f"{int(res['survives_bh'].sum())} survive Benjamini-Hochberg at 5% and "
+        f"{int(res['survives_bonferroni'].sum())} survive Bonferroni.",
+        "",
+        "| Drug | Split | Comparison | Difference | 95% interval | p | BH q | Survives BH |",
+        "|---|---|---|---|---|---|---|---|",
     ]
     for r in res.itertuples():
+        pstr = f"<{1 / a.n_boot:.4f}" if r.p <= 1 / a.n_boot else f"{r.p:.4f}"
         L.append(
             f"| {r.drug} | {r.scheme} | {r.model_a} vs {r.model_b} | {r.diff:+.3f} | "
-            f"{r.lo:+.3f} to {r.hi:+.3f} | {'Yes' if r.excludes_zero else 'No'} |"
+            f"{r.lo:+.3f} to {r.hi:+.3f} | {pstr} | {r.q:.4f} | "
+            f"{'Yes' if r.survives_bh else 'No'} |"
         )
     (a.out / "comparisons.md").write_text("\n".join(L) + "\n")
     print("\n".join(L))
