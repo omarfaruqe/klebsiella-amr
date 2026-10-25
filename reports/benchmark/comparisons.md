@@ -1,6 +1,6 @@
 # Paired comparisons between predictors
 
-- Generated (UTC): 2026-10-25T05:47:12+00:00
+- Generated (UTC): 2026-10-25T05:53:07+00:00
 - 2,000 paired bootstrap resamples of held-out genomes, seed 20261024
 - Difference is balanced accuracy of A minus B; interval is the 2.5–97.5 percentile
 - Splits with fewer than 10 genomes of either class are omitted

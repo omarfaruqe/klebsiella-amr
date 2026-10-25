@@ -1,6 +1,6 @@
 # How much of model performance is lineage?
 
-- Generated (UTC): 2026-10-24T18:35:05+00:00
+- Generated (UTC): 2026-10-25T05:53:10+00:00
 - ST overlap: share of test genomes whose sequence type also appears in training
 - Lineage-only: predicts the majority label of the genome's sequence type in training,
   falling back to the overall training majority for unseen types. Uses no resistance
