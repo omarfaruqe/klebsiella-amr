@@ -47,8 +47,10 @@ discarded. Against machine learning, the ordering inverted with validation strin
 exceeded the rule under random splitting (balanced accuracy 0.844 and 0.842 versus 0.759; paired
 differences −0.085 and −0.083, both excluding zero) and under study-aware splitting, but fell
 below it under lineage-aware splitting (0.731 and 0.709 versus 0.759; +0.028, 95% CI +0.002 to
-+0.052, and +0.050, +0.026 to +0.075). The margin over logistic regression is marginal, that over
-gradient boosting clearer. A predictor using sequence type alone reached 0.737 for meropenem but
++0.052, and +0.050, +0.026 to +0.075). Correcting across the family of 54 comparisons, the
+reversal against gradient boosting survives both Benjamini–Hochberg and Bonferroni (q = 0.001)
+while that against logistic regression survives only the former (q = 0.045), so the latter is
+better read as parity. A predictor using sequence type alone reached 0.737 for meropenem but
 only 0.554 for colistin, and study-aware and lineage-aware splits each left the other
 dimension 74–95% overlapping. On 263 external isolates not in our cohort, the frozen rule reached
 77.8% sensitivity (67.6–85.5) at 99.5% specificity; the *mgrB* component performed as it did
@@ -240,6 +242,15 @@ resistant and 10 susceptible genomes. Differences between predictors were assess
 bootstrap over held-out genomes (2,000 resamples), resampling once per iteration and recomputing
 both predictors on the same resampled set.
 
+Comparing every drug, split scheme and predictor pair yields a family of 54 tests, not one, so some
+intervals will exclude zero by chance. Each comparison therefore also carries a two-sided bootstrap
+p-value, floored at 1/2,000 since no finer resolution exists, and a Benjamini–Hochberg q-value
+computed across the whole family. Benjamini–Hochberg is our primary correction: the comparisons
+share predictors, genomes and folds and are therefore positively dependent, and controlling the
+false discovery rate is the appropriate goal for a benchmark mapping where differences exist rather
+than testing a single hypothesis. We also report which comparisons survive the far stricter
+Bonferroni threshold (p < 0.00093), and we treat only those as established beyond doubt.
+
 ### 2.10 External validation
 
 Leave-one-study-out within BV-BRC holds out a study but not an aggregator: every such study was
@@ -426,9 +437,15 @@ Paired bootstrap differences (rule minus model, 95% interval) confirm the revers
 splitting the models are ahead by 0.085 (−0.113 to −0.059) and 0.083 (−0.111 to −0.054); under
 study-aware splitting by 0.063 (−0.088 to −0.037) and 0.051 (−0.078 to −0.026); under lineage-aware
 splitting the rule is ahead by 0.028 (+0.002 to +0.052) and 0.050 (+0.026 to +0.075). All six
-intervals exclude zero, but the rule's margin over logistic regression under lineage-aware
-splitting does so only barely, and should be read as comparable performance rather than
-superiority; the margin over gradient boosting is clearer.
+intervals exclude zero, but they are drawn from a family of 54 comparisons and do not survive
+correction equally. The rule's margin over gradient boosting under lineage-aware splitting holds
+at p < 0.0005 (Benjamini–Hochberg q = 0.001) and survives Bonferroni; its margin over logistic
+regression does not (p = 0.026, q = 0.045, Bonferroni threshold 0.00093). The reversal against
+gradient boosting is therefore established, while the reversal against logistic regression should
+be read as comparable performance rather than superiority. Across the family, 33 of 54 intervals
+excluded zero uncorrected, 31 survived Benjamini–Hochberg and 24 survived Bonferroni; the two that
+fell away under Benjamini–Hochberg were small ciprofloxacin study-aware differences (−0.008 and
+−0.005) on which no claim here rests.
 
 The models had access to the same *mgrB* features as the rule, and lost ground only when
 sequence types were held out. The margin by which the rule leads under lineage-aware splitting is
@@ -564,9 +581,10 @@ related isolates, not type identity — a resource that likewise disappears on g
 lineages, but one that a reader should not mistake for simple label memorisation.
 
 We want to be careful not to overstate the comparison with machine learning. The rule leads under
-lineage-aware splitting by 0.028 and 0.050 balanced-accuracy points; the intervals exclude zero,
-but the first does so by 0.002 and is better described as parity than as an advantage, and for
-tigecycline the models win under every split. The defensible
+lineage-aware splitting by 0.028 and 0.050 balanced-accuracy points; both intervals exclude zero,
+but after correcting across the 54-comparison family only the second survives a Bonferroni
+threshold, and the first is better described as parity than as an advantage. For tigecycline the
+models win under every split. The defensible
 claim is not that rules beat models, but that the models' advantage under conventional validation
 is attributable to information that will not be present in deployment. Yu and colleagues
 demonstrated this across species using clade-based splits [1]; the contribution here is to show it
