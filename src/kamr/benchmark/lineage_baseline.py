@@ -104,7 +104,7 @@ def main() -> None:
             )
     res = pd.DataFrame(rows)
     a.out.mkdir(parents=True, exist_ok=True)
-    res.to_csv(a.out / "lineage_baseline.csv", index=False, float_format="%.4f")
+    res.to_csv(a.out / "lineage_baseline.csv", index=False)
 
     def fmt(v: float) -> str:
         return "n/a" if pd.isna(v) else f"{v:.3f}"

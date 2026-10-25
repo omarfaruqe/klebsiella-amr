@@ -123,7 +123,7 @@ def main() -> None:
     res["survives_bh"] = res["q"] < 0.05
     res["survives_bonferroni"] = res["p"] < bonferroni
     a.out.mkdir(parents=True, exist_ok=True)
-    res.to_csv(a.out / "comparisons.csv", index=False, float_format="%.4f")
+    res.to_csv(a.out / "comparisons.csv", index=False)
 
     L = [
         "# Paired comparisons between predictors",
