@@ -150,10 +150,10 @@ genomes 6,652 passed. Requiring agreement between species field and genome name 
 genomes with internally inconsistent BV-BRC records, one independently confirmed as *Citrobacter
 freundii*.
 
-Assemblies were downloaded from BV-BRC by genome identifier — 63% of QC-passing genomes
+Assemblies were downloaded from BV-BRC [5] by genome identifier — 63% of QC-passing genomes
 (4,190/6,652) have no NCBI assembly accession — and validated for format and length. AMRFinderPlus
-4.2.7 (database 2026-08-07.1) was run in nucleotide mode with `--organism Klebsiella_pneumoniae
---plus`, and Kleborate 3.2.4 with Kaptive 3.2.2 using the `kpsc` preset. All 6,652 genomes
+4.2.7 [4] (database 2026-08-07.1) was run in nucleotide mode with `--organism Klebsiella_pneumoniae
+--plus`, and Kleborate 3.2.4 [3] with Kaptive 3.2.2 using the `kpsc` preset. All 6,652 genomes
 completed both tools (8.8 h wall time, ~140 CPU-hours, zero failures). A cross-machine
 verification script reproduces identical calls on macOS arm64 and Ubuntu x86_64.
 
@@ -173,7 +173,7 @@ a separate tier rather than folded into the core rule.
 
 ### 2.5 Targeted *mgrB* integrity check
 
-The MgrB reference protein (WP_002911375.1, 47 aa) was searched against each assembly with tblastn
+The MgrB reference protein (WP_002911375.1, 47 aa) was searched against each assembly with tblastn [9]
 (e-value ≤1e-5, hits ≥10 aa) and the best hit classified as **intact** (full-length, no residue
 differences); **missense** (full-length with substitutions); **premature_stop**;
 **frameshift_or_indel** (two fragments on one contig <300 bp apart); **insertion_assembled** (two
@@ -228,7 +228,7 @@ AMRFinderPlus functional subclasses, and two *mgrB* features. Features present i
 genomes were dropped.
 
 Three predictors were compared: the per-drug rule (for colistin including mechanism-specified
-*mgrB* disruption, but not the missense tier, for the reason given in §3.4); L2 logistic regression
+*mgrB* disruption, but not the missense tier, for the reason given in §3.4); L2 logistic regression [6]
 (C = 1, class-balanced); and gradient boosting (HistGradientBoostingClassifier, 200 iterations, 15
 leaves, class-balanced). Hyperparameters were fixed rather than tuned, since the object of study is
 validation design rather than peak performance.
@@ -236,7 +236,7 @@ validation design rather than peak performance.
 Four split schemes were used: random 5-fold; study-aware 5-fold grouped by BioProject;
 lineage-aware 5-fold grouped by sequence type; and temporal. Genomes with missing group metadata
 were assigned singleton groups so absent metadata can never merge unrelated isolates. Metrics are
-computed on pooled held-out predictions with 95% Wilson intervals, reported both on all test labels
+computed on pooled held-out predictions with 95% Wilson intervals [8], reported both on all test labels
 and with borderline-MIC labels removed. A split is scored only if its test set contains at least 10
 resistant and 10 susceptible genomes. Differences between predictors were assessed by paired
 bootstrap over held-out genomes (2,000 resamples), resampling once per iteration and recomputing
@@ -244,7 +244,7 @@ both predictors on the same resampled set.
 
 Comparing every drug, split scheme and predictor pair yields a family of 54 tests, not one, so some
 intervals will exclude zero by chance. Each comparison therefore also carries a two-sided bootstrap
-p-value, floored at 1/2,000 since no finer resolution exists, and a Benjamini–Hochberg q-value
+p-value, floored at 1/2,000 since no finer resolution exists, and a Benjamini–Hochberg [7] q-value
 computed across the whole family. Benjamini–Hochberg is our primary correction: the comparisons
 share predictors, genomes and folds and are therefore positively dependent, and controlling the
 false discovery rate is the appropriate goal for a benchmark mapping where differences exist rather
@@ -694,7 +694,7 @@ None declared.
 
 ## 9. References
 
-All references were verified against the publisher record during preparation (2026-10-24).
+All references were verified against the publisher record during preparation (references 1–6 on 2026-10-24, references 7–9 on 2026-10-25).
 
 1. Yu Y, Wheeler NE, Barquist L. Biased sampling driven by bacterial population structure confounds
    machine learning prediction of antimicrobial resistance. *PLOS Biology*. 2025; published
@@ -714,3 +714,12 @@ All references were verified against the publisher record during preparation (20
    2023;51(D1):D678–D689. PMID:36350631
 6. Pedregosa F, Varoquaux G, Gramfort A, et al. Scikit-learn: machine learning in Python. *Journal
    of Machine Learning Research*. 2011;12:2825–2830.
+7. Benjamini Y, Hochberg Y. Controlling the false discovery rate: a practical and powerful
+   approach to multiple testing. *Journal of the Royal Statistical Society: Series B
+   (Statistical Methodology)*. 1995;57(1):289–300. doi:10.1111/j.2517-6161.1995.tb02031.x
+8. Wilson EB. Probable inference, the law of succession, and statistical inference. *Journal of
+   the American Statistical Association*. 1927;22(158):209–212.
+   doi:10.1080/01621459.1927.10502953
+9. Camacho C, Coulouris G, Avagyan V, Ma N, Papadopoulos J, Bealer K, Madden TL. BLAST+:
+   architecture and applications. *BMC Bioinformatics*. 2009;10:421.
+   doi:10.1186/1471-2105-10-421
