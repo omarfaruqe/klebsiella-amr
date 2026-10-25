@@ -49,23 +49,25 @@ DRUG = "colistin"
 # that consumes it.
 SQL = """
 SELECT
-  i.biosample_acc,
+  a.biosample_acc,
   i.asm_acc,
-  i.bioproject_acc,
-  i.collection_date,
-  i.geo_loc_name,
-  i.taxgroup_name,
+  a.bioproject_acc,
+  a.collection_date,
+  a.geo_loc_name,
+  a.taxgroup_name,
   a.antibiotic,
   a.phenotype,
   a.mic,
   a.measurement_sign,
-  a.measurement_units,
-  a.testing_standard
+  -- the ast table has no units column: mic is mg/L by definition, disk_diffusion is mm.
+  -- Emitted explicitly so the consumer's unit guard stays meaningful.
+  CASE WHEN a.mic IS NOT NULL THEN 'mg/L' END AS measurement_units,
+  a.standard
 FROM `ncbi-pathogen-detect.pdbrowser.ast` AS a
 JOIN `ncbi-pathogen-detect.pdbrowser.isolates` AS i
   ON a.target_acc = i.target_acc
 WHERE a.antibiotic = 'colistin'
-  AND i.taxgroup_name = 'Klebsiella pneumoniae'
+  AND a.taxgroup_name = 'Klebsiella pneumoniae'
   AND i.asm_acc IS NOT NULL
 """
 
@@ -119,6 +121,18 @@ def read_export(path: Path) -> pd.DataFrame:
         )
     if missing:
         print(f"note: columns absent from export, treated as empty: {', '.join(sorted(missing))}")
+    # NCBI's ast table carries no units column: its `mic` field is mg/L by definition, and disk
+    # diffusion lives in a separate `disk_diffusion` field. Without this, every MIC would fail the
+    # unit guard below and silently fall back to the submitter's own interpretation, defeating the
+    # breakpoint harmonisation this module exists to perform. Stated loudly because it is an
+    # assumption about an external schema, not something the file asserts.
+    has_mic = out["mic"].str.strip() != ""
+    if has_mic.any() and not (out["unit"].str.strip() != "").any():
+        out.loc[has_mic, "unit"] = "mg/L"
+        print(
+            f"note: export carries no units column; treating {int(has_mic.sum()):,} MIC values as "
+            "mg/L per the NCBI ast schema, where disk diffusion is a separate field"
+        )
     return out
 
 
@@ -178,7 +192,8 @@ def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("export", type=Path, help="CSV/TSV from the documented BigQuery join")
     p.add_argument("--genomes", type=Path, default=Path("data/raw/bvbrc_genome"))
-    p.add_argument("--breakpoints", type=Path, default=Path("config/breakpoints_eucast_v16.1.csv"))
+    bp_default = Path("config/breakpoints_eucast_v16.1.csv")
+    p.add_argument("--breakpoints", type=Path, default=bp_default)
     p.add_argument("--out", type=Path, default=Path("data/external/ncbi"))
     p.add_argument("--reports", type=Path, default=Path("reports/external"))
     p.add_argument("--print-sql", action="store_true", help="print the BigQuery SQL and exit")

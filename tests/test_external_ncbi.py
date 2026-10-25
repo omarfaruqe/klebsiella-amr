@@ -121,3 +121,31 @@ def test_cohort_identifiers_reads_the_newest_snapshot(tmp_path):
 def test_cohort_identifiers_requires_a_snapshot(tmp_path):
     with pytest.raises(SystemExit, match="no BV-BRC genome snapshot"):
         cohort_identifiers(tmp_path / "absent")
+
+
+def test_export_without_units_column_treats_mic_as_mg_per_litre(tmp_path, breakpoints):
+    # NCBI's ast table has no units column: mic is mg/L by definition. Without this, every MIC
+    # would fail the unit guard and fall back to the submitter's interpretation, silently
+    # defeating the breakpoint harmonisation.
+    p = tmp_path / "e.csv"
+    p.write_text(
+        "biosample_acc,asm_acc,mic,measurement_sign,phenotype,standard\n"
+        "SAMN1,GCA_1.1,8,==,susceptible,CLSI\n"
+    )
+    out = read_export(p)
+    assert out["unit"].iloc[0] == "mg/L"
+    harmonised = harmonise(out, breakpoints)
+    assert harmonised["label_source"].iloc[0] == "mic_eucast"
+    assert harmonised["label"].iloc[0] == "R"
+
+
+def test_explicit_units_are_not_overridden(tmp_path, breakpoints):
+    # a real units column must win, so a disk diameter is never read as an MIC
+    p = tmp_path / "e.csv"
+    p.write_text(
+        "biosample_acc,asm_acc,mic,measurement_units,measurement_sign,phenotype\n"
+        "SAMN1,GCA_1.1,14,mm,==,susceptible\n"
+    )
+    out = read_export(p)
+    assert out["unit"].iloc[0] == "mm"
+    assert harmonise(out, breakpoints)["label_source"].iloc[0] == "submitted"
