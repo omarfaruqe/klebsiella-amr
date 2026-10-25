@@ -47,7 +47,7 @@ below it under lineage-aware splitting (0.731 and 0.709 versus 0.759; +0.028, 95
 +0.052, and +0.050, +0.026 to +0.075). The margin over logistic regression is marginal, that over
 gradient boosting clearer. A predictor using sequence type alone reached 0.737 for meropenem but
 only 0.554 for colistin, and study-aware and lineage-aware splits each left the other
-dimension 74–87% overlapping.
+dimension 74–95% overlapping.
 
 **Conclusions.** The apparent superiority of machine learning for colistin reverses when
 lineages are held out. It is not explained by lineage labels themselves: a sequence-type-only
@@ -429,10 +429,12 @@ it — plausibly accessory-genome similarity among closely related isolates with
 this because it corrects a natural but incorrect reading of the split results: the models were not
 simply memorising lineage labels.
 
-The two grouping schemes also proved not to be substitutes. Under study-aware splitting, 74–83% of
-test genomes still shared a sequence type with training data; under lineage-aware splitting for
-colistin, 87% still shared a BioProject. Each scheme leaves the other dimension largely
-unconstrained, so grouping on both would be stricter than either alone.
+The two grouping schemes also proved not to be substitutes. Under study-aware splitting, 74–88% of
+test genomes still shared a sequence type with training data; under lineage-aware splitting, 87–95%
+still shared a BioProject. Each scheme leaves the other dimension almost entirely unconstrained, so
+grouping on both would be stricter than either alone. Temporal splitting, often presented as the
+realistic option, constrained neither: 73–78% of test genomes shared a sequence type and 76–82% a
+BioProject with training data.
 
 ### 3.9 Much apparent genotype error is label artefact
 
@@ -537,9 +539,9 @@ mechanistic label on those categories therefore remains an inference, albeit a w
 4. **Use lineage-aware splits and report the gap from random splitting.** The gap was under one
    point where rules work and 11–15 points where they do not.
 5. **Group on study and lineage together, not either alone.** In our cohort, study-aware splits
-   still shared a sequence type with training data for 74–83% of test genomes, and lineage-aware
-   splits for colistin still shared a BioProject for 87%. Each leaves the other dimension largely
-   unconstrained.
+   still shared a sequence type with training data for 74–88% of test genomes, and lineage-aware
+   splits still shared a BioProject for 87–95%. Temporal splits constrained neither (73–78% and
+   76–82%). Each single scheme leaves the other dimension almost entirely unconstrained.
 6. **Report a lineage-only baseline.** It costs nothing and distinguishes a model that has learned
    a mechanism from one that has learned who its neighbours are.
 7. **Report per-collection performance, not only pooled.** Pooled estimates concealed a two-fold
