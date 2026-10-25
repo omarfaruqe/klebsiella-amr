@@ -593,6 +593,8 @@ cross-genome evidence in §3.4 collectively supports the IS interpretation, we d
 which element is involved or confirm insertion in any individual genome; that requires an IS
 reference database or long-read assemblies of these isolates, neither of which we generated. The
 mechanistic label on those categories therefore remains an inference, albeit a well-supported one.
+The external cohort did not advance this question: only one of its genomes fell into the
+assembled-insertion category, so the element remains unidentified there too.
 
 The external cohort has limitations of its own. It is small (263 isolates, 81 resistant), so its
 sensitivity interval spans 18 points. Its isolates are those whose submitters chose to deposit
@@ -604,6 +606,21 @@ though excluding them changed sensitivity by 0.5 points. For colistin specifical
 EUCAST breakpoints effectively coincide, so harmonisation altered one label among the 355
 records retrieved; it
 remains necessary for the other drugs but did little work here.
+
+Most importantly, this study measures discrimination, not clinical usefulness, and the two come
+apart. Sensitivity and specificity are properties of the rule; predictive values also depend on how
+common resistance is in the population tested, and 24% of our colistin-tested genomes are
+resistant — a surveillance figure far above most clinical settings. Applying the internal rule's
+56.7% sensitivity and 95.2% specificity at a 2% prevalence gives a positive predictive value of
+19.4%: four in five genotype-positive isolates would not be resistant. At our own cohort's
+prevalence the complementary error dominates, with a negative predictive value of 87.4%, meaning
+12.6% of genotype-negative isolates are resistant. For a last-line agent these two errors are not
+interchangeable — withholding colistin unnecessarily and administering it ineffectively carry
+different costs — and we performed no decision analysis weighing them. Nothing here establishes
+that genotypic prediction should inform colistin therapy, and we make no such claim: the rule's
+role in this paper is as a mechanism-specified baseline against which to measure validation
+design. Predictive values across a range of prevalences are tabulated in
+`reports/review/predictive_values.md`.
 
 ### 4.2 Recommendations
 
