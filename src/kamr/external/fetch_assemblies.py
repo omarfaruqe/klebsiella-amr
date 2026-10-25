@@ -11,6 +11,11 @@ NCBI permits three requests per second without an API key, so concurrency is del
 Outputs:
   data/external/ncbi/assemblies/<accession>.fna
   snapshots/ncbi-assemblies-<date>.json   provenance manifest with per-file SHA-256
+  snapshots/ncbi-assemblies-<date>.tsv    genome_id/status manifest for kamr.pipeline.run_tools
+
+The TSV deliberately matches the manifest shape run_tools already consumes, so the external set
+goes through the identical tool invocations as the internal cohort rather than a parallel code
+path that could drift from it.
 """
 
 from __future__ import annotations
@@ -170,12 +175,22 @@ def main() -> None:
         "files": sorted(results, key=lambda r: r["accession"]),
     }
     a.snapshots.mkdir(parents=True, exist_ok=True)
-    out = a.snapshots / f"ncbi-assemblies-{now.strftime('%Y-%m-%d')}.json"
+    stem = f"ncbi-assemblies-{now.strftime('%Y-%m-%d')}"
+    out = a.snapshots / f"{stem}.json"
     out.write_text(json.dumps(manifest, indent=2) + "\n")
+
+    # genome_id/status manifest in the shape kamr.pipeline.run_tools expects, so the external
+    # assemblies run through the same tool invocations as the internal cohort
+    tsv = a.snapshots / f"{stem}.tsv"
+    lines = ["genome_id\tstatus"]
+    for r in sorted(results, key=lambda r: r["accession"]):
+        lines.append(f"{r['accession']}\t{'ok' if r.get('sha256') else 'failed'}")
+    tsv.write_text("\n".join(lines) + "\n")
+
     print(f"\nusable: {len(ok):,}   unusable: {len(bad):,}")
     for r in bad:
         print(f"  {r['accession']}: {r['status']}")
-    print(f"wrote {out}")
+    print(f"wrote {out}\nwrote {tsv}")
 
 
 if __name__ == "__main__":
