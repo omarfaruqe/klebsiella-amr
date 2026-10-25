@@ -1,0 +1,264 @@
+genome_id	mgrb_status	mgrb_detail	mgrb_disrupted
+GCA_000401195.1	intact		False
+GCA_000406385.1	intact		False
+GCA_000406405.1	intact		False
+GCA_000406425.1	intact		False
+GCA_000406445.1	intact		False
+GCA_000406465.1	intact		False
+GCA_000406485.1	intact		False
+GCA_000406505.1	intact		False
+GCA_000406525.1	split_contigs	APVQ01000054.1;APVQ01000120.1	True
+GCA_000406545.1	intact		False
+GCA_000406565.1	contig_break	mgrB aa 1-41 at edge of APVZ01000112.1	True
+GCA_000406585.1	intact		False
+GCA_000406605.1	intact		False
+GCA_000406625.1	intact		False
+GCA_000406645.1	intact		False
+GCA_000406665.1	intact		False
+GCA_000406685.1	intact		False
+GCA_000406705.1	intact		False
+GCA_000406725.1	intact		False
+GCA_000406745.1	intact		False
+GCA_000406765.2	intact		False
+GCA_000406825.1	intact		False
+GCA_000406845.1	intact		False
+GCA_000406865.1	intact		False
+GCA_000406885.1	intact		False
+GCA_000408965.1	intact		False
+GCA_000408985.1	partial	mgrB aa 5-47	True
+GCA_000409005.1	partial	mgrB aa 1-38	True
+GCA_000409025.1	intact		False
+GCA_000409045.1	intact		False
+GCA_000409065.1	intact		False
+GCA_000409085.1	intact		False
+GCA_000409105.1	intact		False
+GCA_000409125.1	intact		False
+GCA_000417045.1	intact		False
+GCA_000417065.1	intact		False
+GCA_000417105.1	intact		False
+GCA_000417125.1	intact		False
+GCA_000417145.1	intact		False
+GCA_000417165.1	intact		False
+GCA_000417185.1	intact		False
+GCA_000417205.1	intact		False
+GCA_000417225.2	intact		False
+GCA_000417245.1	intact		False
+GCA_000417265.2	intact		False
+GCA_000417305.1	intact		False
+GCA_000417325.1	intact		False
+GCA_000417345.1	intact		False
+GCA_000417365.1	intact		False
+GCA_000417385.1	intact		False
+GCA_000417405.1	intact		False
+GCA_000417425.1	absent		True
+GCA_000417445.1	intact		False
+GCA_000417465.1	missense	C28Y	False
+GCA_000417485.1	intact		False
+GCA_000417545.1	intact		False
+GCA_000567225.2	premature_stop	stop in aligned protein at JCMW02000001.1	True
+GCA_000567245.1	intact		False
+GCA_000567265.1	intact		False
+GCA_000692935.1	intact		False
+GCA_000692975.1	intact		False
+GCA_000709225.1	partial	mgrB aa 5-47	True
+GCA_001709275.1	intact		False
+GCA_001709295.1	intact		False
+GCA_001720705.1	premature_stop	stop in aligned protein at MAGE01000025.1	True
+GCA_001720745.1	intact		False
+GCA_001720755.1	intact		False
+GCA_001720765.1	intact		False
+GCA_001720805.1	intact		False
+GCA_001720815.1	intact		False
+GCA_001720845.1	partial	mgrB aa 1-43	True
+GCA_001720865.1	absent		True
+GCA_001720905.1	partial	mgrB aa 1-38	True
+GCA_001875745.1	intact		False
+GCA_002246035.1	intact		False
+GCA_002246045.1	intact		False
+GCA_002246555.1	intact		False
+GCA_002246875.1	premature_stop	stop in aligned protein at NQAK01000059.1	True
+GCA_002248045.2	intact		False
+GCA_002248055.2	intact		False
+GCA_002248085.2	intact		False
+GCA_002248105.2	intact		False
+GCA_002248115.3	intact		False
+GCA_002248945.2	intact		False
+GCA_002248955.2	missense	V32G	False
+GCA_002251875.3	intact		False
+GCA_011682845.1	intact		False
+GCA_011682885.1	intact		False
+GCA_013450285.1	intact		False
+GCA_013450305.1	intact		False
+GCA_013450355.1	intact		False
+GCA_013450375.1	intact		False
+GCA_013450385.1	intact		False
+GCA_013450405.1	intact		False
+GCA_013450455.1	intact		False
+GCA_013450475.1	intact		False
+GCA_013867375.1	intact		False
+GCA_014826045.1	intact		False
+GCA_014840245.1	partial	mgrB aa 1-42	True
+GCA_014840295.1	intact		False
+GCA_014840305.1	intact		False
+GCA_014840315.1	split_contigs	JACYPD010000019.1;JACYPD010000025.1	True
+GCA_014840325.1	intact		False
+GCA_014840345.1	missense	K2E	False
+GCA_014840395.1	intact		False
+GCA_014840405.1	intact		False
+GCA_014840415.1	intact		False
+GCA_014840435.1	intact		False
+GCA_014840475.1	partial	mgrB aa 1-43	True
+GCA_014840495.1	intact		False
+GCA_014840505.1	intact		False
+GCA_014840535.1	split_contigs	JACYPL010000010.1;JACYPL010000024.1	True
+GCA_014840555.1	partial	mgrB aa 7-47	True
+GCA_014840575.1	partial	mgrB aa 1-43	True
+GCA_014840595.1	intact		False
+GCA_014840605.1	intact		False
+GCA_014840635.1	intact		False
+GCA_014840645.1	intact		False
+GCA_014840655.1	intact		False
+GCA_014840695.1	intact		False
+GCA_014840705.1	intact		False
+GCA_014840735.1	intact		False
+GCA_014840775.1	intact		False
+GCA_014840795.1	intact		False
+GCA_014842715.1	intact		False
+GCA_014842775.1	intact		False
+GCA_014842805.1	intact		False
+GCA_014946925.1	split_contigs	JADCQC010000014.1;JADCQC010000021.1	True
+GCA_014946935.1	intact		False
+GCA_014946945.1	split_contigs	JADCQD010000014.1;JADCQD010000020.1	True
+GCA_014946955.1	intact		False
+GCA_014947005.1	intact		False
+GCA_020985265.1	intact		False
+GCA_021773985.1	intact		False
+GCA_022316255.1	intact		False
+GCA_024580135.1	intact		False
+GCA_024580195.1	intact		False
+GCA_024580215.1	intact		False
+GCA_024580225.1	intact		False
+GCA_025367465.1	intact		False
+GCA_025367575.1	intact		False
+GCA_026413095.1	intact		False
+GCA_030026945.2	intact		False
+GCA_030128905.1	intact		False
+GCA_030128965.1	intact		False
+GCA_030128995.1	intact		False
+GCA_032463405.1	intact		False
+GCA_037287365.1	insertion_assembled	1177 bp between mgrB parts	True
+GCA_043858225.1	intact		False
+GCA_043858235.1	intact		False
+GCA_043858345.1	intact		False
+GCA_043858445.1	intact		False
+GCA_043859275.1	intact		False
+GCA_043859285.1	premature_stop	stop in aligned protein at DAZQQQ010000020.1	True
+GCA_043859295.1	intact		False
+GCA_043859305.1	intact		False
+GCA_043859365.1	intact		False
+GCA_043859485.1	intact		False
+GCA_043859495.1	intact		False
+GCA_043859615.1	intact		False
+GCA_043859635.1	intact		False
+GCA_043859655.1	partial	mgrB aa 1-41	True
+GCA_043859735.1	intact		False
+GCA_043859795.1	intact		False
+GCA_043859815.1	intact		False
+GCA_043859835.1	intact		False
+GCA_043859855.1	intact		False
+GCA_043859975.1	intact		False
+GCA_043859995.1	intact		False
+GCA_043860015.1	intact		False
+GCA_043860055.1	intact		False
+GCA_043860075.1	intact		False
+GCA_043860195.1	intact		False
+GCA_043860235.1	intact		False
+GCA_043860255.1	intact		False
+GCA_043860375.1	premature_stop	stop in aligned protein at DAZQRL010000022.1	True
+GCA_043860395.1	intact		False
+GCA_043860435.1	intact		False
+GCA_043860455.1	premature_stop	stop in aligned protein at DAZQRN010000022.1	True
+GCA_043860495.1	premature_stop	stop in aligned protein at DAZQRO010000023.1	True
+GCA_043861575.1	intact		False
+GCA_043861595.1	intact		False
+GCA_043861645.1	intact		False
+GCA_043861665.1	intact		False
+GCA_043863025.1	intact		False
+GCA_043863045.1	premature_stop	stop in aligned protein at DAZQSU010000024.1	True
+GCA_043863065.1	intact		False
+GCA_043863085.1	intact		False
+GCA_043863105.1	premature_stop	stop in aligned protein at DAZQST010000024.1	True
+GCA_043863125.1	intact		False
+GCA_043863145.1	intact		False
+GCA_043863165.1	intact		False
+GCA_043863185.1	split_contigs	DAZQTA010000007.1;DAZQTA010000024.1	True
+GCA_043863205.1	intact		False
+GCA_043863225.1	premature_stop	stop in aligned protein at DAZQTC010000025.1	True
+GCA_043863245.1	intact		False
+GCA_043863265.1	intact		False
+GCA_043863285.1	intact		False
+GCA_043863305.1	intact		False
+GCA_043863325.1	intact		False
+GCA_043863345.1	intact		False
+GCA_043863365.1	premature_stop	stop in aligned protein at DAZQTK010000023.1	True
+GCA_043863385.1	split_contigs	DAZQTI010000007.1;DAZQTI010000024.1	True
+GCA_043863405.1	intact		False
+GCA_043863445.1	intact		False
+GCA_043863475.1	intact		False
+GCA_043863495.1	intact		False
+GCA_043863515.1	intact		False
+GCA_043863535.1	intact		False
+GCA_043863555.1	intact		False
+GCA_043904745.1	intact		False
+GCA_043904785.1	intact		False
+GCA_043904805.1	intact		False
+GCA_043904825.1	absent		True
+GCA_043904845.1	intact		False
+GCA_043904865.1	intact		False
+GCA_043904885.1	intact		False
+GCA_043904905.1	intact		False
+GCA_043905145.1	intact		False
+GCA_043905165.1	intact		False
+GCA_043905185.1	split_contigs	DAZTKM010000015.1;DAZTKM010000027.1	True
+GCA_043905225.1	intact		False
+GCA_043905245.1	intact		False
+GCA_043905265.1	split_contigs	DAZTKN010000005.1;DAZTKN010000036.1	True
+GCA_043905285.1	intact		False
+GCA_043905305.1	intact		False
+GCA_043905325.1	intact		False
+GCA_043905345.1	intact		False
+GCA_043905355.1	intact		False
+GCA_043905385.1	intact		False
+GCA_043905405.1	intact		False
+GCA_043905425.1	intact		False
+GCA_043905445.1	intact		False
+GCA_043905465.1	intact		False
+GCA_043905485.1	contig_break	mgrB aa 14-47 at edge of DAZTLA010000129.1	True
+GCA_043905505.1	intact		False
+GCA_043905525.1	intact		False
+GCA_043905545.1	intact		False
+GCA_043905565.1	intact		False
+GCA_043905585.1	intact		False
+GCA_043905605.1	intact		False
+GCA_043905645.1	contig_break	mgrB aa 1-42 at edge of DAZTLH010000010.1	True
+GCA_043905665.1	intact		False
+GCA_045489995.1	intact		False
+GCA_045490015.1	intact		False
+GCA_045490105.1	intact		False
+GCA_045490115.1	intact		False
+GCA_045490155.1	intact		False
+GCA_045490175.1	intact		False
+GCA_045490195.1	intact		False
+GCA_045490215.1	intact		False
+GCA_045490225.1	intact		False
+GCA_045490265.1	intact		False
+GCA_045490325.1	intact		False
+GCA_045490355.1	intact		False
+GCA_045490435.1	intact		False
+GCA_045490455.1	intact		False
+GCA_045490475.1	intact		False
+GCA_045490555.1	intact		False
+GCA_051414815.1	intact		False
+GCA_051414825.1	intact		False
+GCA_051414835.1	intact		False
+GCA_055557455.1	intact		False

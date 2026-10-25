@@ -1,0 +1,1900 @@
+{
+  "source": "NCBI Datasets v2",
+  "endpoint": "https://api.ncbi.nlm.nih.gov/datasets/v2/genome/accession/<accession>/download?include_annotation_type=GENOME_FASTA",
+  "retrieved_utc": "2026-10-25T02:26:21+00:00",
+  "requested": 270,
+  "downloaded": 270,
+  "failed": 0,
+  "files": [
+    {
+      "accession": "GCA_000401195.1",
+      "status": "already present",
+      "contigs": 195,
+      "length": 5503448,
+      "sha256": "5b58dd80c3e65267f23ba02bc3952ee46bcf0bb7c22cd864338e3ad7a5d8add3"
+    },
+    {
+      "accession": "GCA_000406385.1",
+      "status": "already present",
+      "contigs": 321,
+      "length": 5672685,
+      "sha256": "55a5612ed5424766f7789174f82e2465575ed2c37cd158238f0b255a8afc7f96"
+    },
+    {
+      "accession": "GCA_000406405.1",
+      "status": "already present",
+      "contigs": 155,
+      "length": 5490156,
+      "sha256": "53198e9bc684b8880485966e4027d3ff23495051806c21d3d94a0970ee633c7d"
+    },
+    {
+      "accession": "GCA_000406425.1",
+      "status": "already present",
+      "contigs": 205,
+      "length": 5501391,
+      "sha256": "6c4b38652ec97fb8ba84b62c6e3e0a8704bc33911e798f5261a639583cbb4daf"
+    },
+    {
+      "accession": "GCA_000406445.1",
+      "status": "already present",
+      "contigs": 223,
+      "length": 5575547,
+      "sha256": "8f4bf2aaa79031087e1486f3702e1dd063e70bf9fbeef6bcf588f3a142621cdb"
+    },
+    {
+      "accession": "GCA_000406465.1",
+      "status": "already present",
+      "contigs": 220,
+      "length": 5571683,
+      "sha256": "434133b6da43e93a0febec9ffaa50978ca89d5cd79aa76386b2cc33ee25512f8"
+    },
+    {
+      "accession": "GCA_000406485.1",
+      "status": "already present",
+      "contigs": 148,
+      "length": 5389421,
+      "sha256": "d2a58914ad835412e8821dab6118c1504b4a2227ee111edd776d5b671cf5db43"
+    },
+    {
+      "accession": "GCA_000406505.1",
+      "status": "already present",
+      "contigs": 301,
+      "length": 5718845,
+      "sha256": "465ef343557a3be0bff62feb8e3a2cacbd12097e2dc3ae6aa7fd31a08de256a6"
+    },
+    {
+      "accession": "GCA_000406525.1",
+      "status": "already present",
+      "contigs": 231,
+      "length": 5532328,
+      "sha256": "6a088179bb18ffcdb64f1c84aa4533e492eaba5935ed120b49c2a11c7133ab6d"
+    },
+    {
+      "accession": "GCA_000406545.1",
+      "status": "already present",
+      "contigs": 216,
+      "length": 5624526,
+      "sha256": "9fe6d09c32ea69077b38eebb1f3d286262ee7d68c7931630533e88206c625e6f"
+    },
+    {
+      "accession": "GCA_000406565.1",
+      "status": "already present",
+      "contigs": 164,
+      "length": 5366546,
+      "sha256": "25f480a0582d37d2c357352f8f1ea0f7d93e42b53606a25f52ae05ed607dfefa"
+    },
+    {
+      "accession": "GCA_000406585.1",
+      "status": "already present",
+      "contigs": 200,
+      "length": 5472934,
+      "sha256": "cd709dd97cf207ede9e125f1f31e74281633abd15ac890d8038ea38dcaa0630c"
+    },
+    {
+      "accession": "GCA_000406605.1",
+      "status": "already present",
+      "contigs": 129,
+      "length": 5396453,
+      "sha256": "363881746d323e4282caba8ddcc4cd8398521877a09cddc535df8d87e9fc18e7"
+    },
+    {
+      "accession": "GCA_000406625.1",
+      "status": "already present",
+      "contigs": 205,
+      "length": 5468994,
+      "sha256": "0326e1b5ff95a393d45e41aa15e717291360cd23cf1d703fe017382724e0f336"
+    },
+    {
+      "accession": "GCA_000406645.1",
+      "status": "already present",
+      "contigs": 217,
+      "length": 5473881,
+      "sha256": "385367848e27597b5426048272844c4344895b411d2c57509c430eea3954bf8e"
+    },
+    {
+      "accession": "GCA_000406665.1",
+      "status": "already present",
+      "contigs": 202,
+      "length": 5502788,
+      "sha256": "a1212eb76ea52fb8ad971d823ec7180784d34904ca0b70dc268218fe56ec3ac3"
+    },
+    {
+      "accession": "GCA_000406685.1",
+      "status": "already present",
+      "contigs": 200,
+      "length": 5603708,
+      "sha256": "4aa362473ae571ebe0667fa3d7ef6c60ebb20aeffe643e89a95022184d363152"
+    },
+    {
+      "accession": "GCA_000406705.1",
+      "status": "already present",
+      "contigs": 232,
+      "length": 5550266,
+      "sha256": "2bcab4c56e7c125e7768a2c389aff1acad4c781991c01d99a8d09f3616e887b0"
+    },
+    {
+      "accession": "GCA_000406725.1",
+      "status": "already present",
+      "contigs": 175,
+      "length": 5476814,
+      "sha256": "73c8dc04b413d6a23f49c0db67ef2dbf7f08b8843b657ca833e6b67851289970"
+    },
+    {
+      "accession": "GCA_000406745.1",
+      "status": "already present",
+      "contigs": 213,
+      "length": 5488293,
+      "sha256": "5eca577d6a6c51827d03531f031f0b2976cb3041a7718842df5d779b666d6462"
+    },
+    {
+      "accession": "GCA_000406765.2",
+      "status": "already present",
+      "contigs": 5,
+      "length": 5547643,
+      "sha256": "3073b2bd1c9a0218edf62c5bd356c4860fcd4f3b966225afa5c1ae4efefd8d0f"
+    },
+    {
+      "accession": "GCA_000406825.1",
+      "status": "already present",
+      "contigs": 175,
+      "length": 5531658,
+      "sha256": "7769851ce87d3021712610a4409ba3839bcbd2b8da3a68a80fc22e4be85298e5"
+    },
+    {
+      "accession": "GCA_000406845.1",
+      "status": "already present",
+      "contigs": 155,
+      "length": 5354224,
+      "sha256": "722e15fb7d132300acf2fd79073353bc1c5cd1e90d98307aca29df1ed9ed2766"
+    },
+    {
+      "accession": "GCA_000406865.1",
+      "status": "already present",
+      "contigs": 213,
+      "length": 5558834,
+      "sha256": "27b5467d32b771a4f46d506ef86dedf2be50f8522df11e36efb5ece1135de7d6"
+    },
+    {
+      "accession": "GCA_000406885.1",
+      "status": "already present",
+      "contigs": 139,
+      "length": 5398867,
+      "sha256": "82abdd0144e8ee472e93c37e5416d2cc168b273a8e9da9658c53b3fb075d1666"
+    },
+    {
+      "accession": "GCA_000408965.1",
+      "status": "already present",
+      "contigs": 187,
+      "length": 5502006,
+      "sha256": "2e38162a0a91689f1ef6c49e5e40d8d064e0d023dd4ed0c005ac26e1fb0d897f"
+    },
+    {
+      "accession": "GCA_000408985.1",
+      "status": "already present",
+      "contigs": 154,
+      "length": 5424339,
+      "sha256": "d1c41f0642115804133a625947a0b6fcb2e61b77105a39a5603afac93d69fe93"
+    },
+    {
+      "accession": "GCA_000409005.1",
+      "status": "already present",
+      "contigs": 210,
+      "length": 5620790,
+      "sha256": "635dbe55d5b08307c834271f4ce78eb53c21a90bc5d9e8ffb84877c61ff105bd"
+    },
+    {
+      "accession": "GCA_000409025.1",
+      "status": "already present",
+      "contigs": 151,
+      "length": 5355272,
+      "sha256": "12d17e5ae83e543cf71abe672b4980091401e5fd5100cd26bb67d2bdb4a65482"
+    },
+    {
+      "accession": "GCA_000409045.1",
+      "status": "already present",
+      "contigs": 176,
+      "length": 5421295,
+      "sha256": "d4594d9c17423b0ec0c90646162859b19abb399477fe970fd668217cdf61b08a"
+    },
+    {
+      "accession": "GCA_000409065.1",
+      "status": "already present",
+      "contigs": 167,
+      "length": 5555255,
+      "sha256": "4e734f149059d1b3157c8548a19581a68445fd59ecdf5515e1ca650e27e44df8"
+    },
+    {
+      "accession": "GCA_000409085.1",
+      "status": "already present",
+      "contigs": 194,
+      "length": 5620362,
+      "sha256": "4abd112b494e3f74e75a03aef48a086c0375977a93302b7427751943adf22a99"
+    },
+    {
+      "accession": "GCA_000409105.1",
+      "status": "already present",
+      "contigs": 202,
+      "length": 5621477,
+      "sha256": "0db1a9197c7669f379c8b321bbd5c61a924dda203f92d146988c0cf5a9ef9394"
+    },
+    {
+      "accession": "GCA_000409125.1",
+      "status": "already present",
+      "contigs": 246,
+      "length": 5671251,
+      "sha256": "11aff1422652af99514b989a52b5710009451f68fcd6ba92cc80b0bd01637f13"
+    },
+    {
+      "accession": "GCA_000417045.1",
+      "status": "already present",
+      "contigs": 213,
+      "length": 5667894,
+      "sha256": "1a00fd599e5a67f5d83595c13098052f820d3e4d976853d3acb1d3a632560fee"
+    },
+    {
+      "accession": "GCA_000417065.1",
+      "status": "already present",
+      "contigs": 138,
+      "length": 5397800,
+      "sha256": "0956c07dc665790deeb8b47728642b0f53b99c2fb0e87babc201f301f12880e5"
+    },
+    {
+      "accession": "GCA_000417105.1",
+      "status": "already present",
+      "contigs": 137,
+      "length": 5398963,
+      "sha256": "14b952db1da14769ba7dde9c2204ece63708d8373622aea71d070c1be72d368e"
+    },
+    {
+      "accession": "GCA_000417125.1",
+      "status": "already present",
+      "contigs": 195,
+      "length": 5498288,
+      "sha256": "05e788feb8a2c32e8d77e624638a6f15a24d1a0ad20d57d80f589f7f58b35f6d"
+    },
+    {
+      "accession": "GCA_000417145.1",
+      "status": "already present",
+      "contigs": 233,
+      "length": 5681241,
+      "sha256": "6f7feb7ccc0625ed63c9fadad09b277e354d882bf4b5686dbe5ccc6e8e5f2253"
+    },
+    {
+      "accession": "GCA_000417165.1",
+      "status": "already present",
+      "contigs": 136,
+      "length": 5390751,
+      "sha256": "a742e7b8488a7d0217843342d204de331028fc227a73bddb1261c4cd8156b6ce"
+    },
+    {
+      "accession": "GCA_000417185.1",
+      "status": "already present",
+      "contigs": 141,
+      "length": 5407973,
+      "sha256": "980d253e49489a98c7a0d31c77360e6d6e1322b7922ac6e51835f262cd576a01"
+    },
+    {
+      "accession": "GCA_000417205.1",
+      "status": "already present",
+      "contigs": 168,
+      "length": 5450966,
+      "sha256": "d89836d67acea8c180fbeaeb542cffd0de3c79ba18be3b7591fb6e540a048b21"
+    },
+    {
+      "accession": "GCA_000417225.2",
+      "status": "already present",
+      "contigs": 4,
+      "length": 5710688,
+      "sha256": "e25c00984beae501fc3c573224e121f8e35512fe44f5f4b01bafbdfb628afbca"
+    },
+    {
+      "accession": "GCA_000417245.1",
+      "status": "already present",
+      "contigs": 194,
+      "length": 5617463,
+      "sha256": "4970e92f81728f97e577587cc3420e82e448d744e9163d4d1c8ad77a98012987"
+    },
+    {
+      "accession": "GCA_000417265.2",
+      "status": "already present",
+      "contigs": 4,
+      "length": 5523776,
+      "sha256": "4f79b12a95f4228c0e3926d162b1a39815b4386243796d07b549b7d9a75e42c6"
+    },
+    {
+      "accession": "GCA_000417305.1",
+      "status": "already present",
+      "contigs": 194,
+      "length": 5606925,
+      "sha256": "d029766c83250e6775a414bad759fd8e38aeccb4dd97865e127d74ded9f27991"
+    },
+    {
+      "accession": "GCA_000417325.1",
+      "status": "already present",
+      "contigs": 194,
+      "length": 5622301,
+      "sha256": "7a69f60a2f128cac5993f92f33a31fbfbd78896d549cd77d4dd4a85cf03fea5c"
+    },
+    {
+      "accession": "GCA_000417345.1",
+      "status": "already present",
+      "contigs": 188,
+      "length": 5610303,
+      "sha256": "1a5aea8b3a5a0aa8a30aa766e685b1cbaca2a545423a86a27289309f2598f8c2"
+    },
+    {
+      "accession": "GCA_000417365.1",
+      "status": "already present",
+      "contigs": 144,
+      "length": 5390028,
+      "sha256": "8a8a34767cce1825e753b6c291a0f4d43c96900118d11bad5bbc05d21020137a"
+    },
+    {
+      "accession": "GCA_000417385.1",
+      "status": "already present",
+      "contigs": 232,
+      "length": 5542623,
+      "sha256": "5c4934d0123bbd813f63ac92a22292d21f77df40d711ac47d2103f8bca506604"
+    },
+    {
+      "accession": "GCA_000417405.1",
+      "status": "already present",
+      "contigs": 206,
+      "length": 5498752,
+      "sha256": "2f7dd3106a101ebd7761918d3da10ccb52140239967ef91a804a5ebad05bcc03"
+    },
+    {
+      "accession": "GCA_000417425.1",
+      "status": "already present",
+      "contigs": 153,
+      "length": 5406392,
+      "sha256": "7359e3c1ff55c3dd039d343aad8ebf1e76b878213e5abb5faeac8f78dc1ddfe4"
+    },
+    {
+      "accession": "GCA_000417445.1",
+      "status": "already present",
+      "contigs": 151,
+      "length": 5541667,
+      "sha256": "30d42185844e2bcecbbe29fb7e0a915a6437c16e51091b614046f22624c7b5a2"
+    },
+    {
+      "accession": "GCA_000417465.1",
+      "status": "already present",
+      "contigs": 174,
+      "length": 5515994,
+      "sha256": "6beee214516094633b131e7f269830e2c82012bca4d07140eb33afb67801cf2e"
+    },
+    {
+      "accession": "GCA_000417485.1",
+      "status": "already present",
+      "contigs": 120,
+      "length": 5431615,
+      "sha256": "fb9052c8c4f46119cca9de475a4fba52b3140f5b5da54de8a86981d9c3848383"
+    },
+    {
+      "accession": "GCA_000417545.1",
+      "status": "already present",
+      "contigs": 186,
+      "length": 5616818,
+      "sha256": "4ec3ac72f88d9c68c16ef7d30212805a495d611c387ffc99f99de615f74e20c4"
+    },
+    {
+      "accession": "GCA_000567225.2",
+      "status": "already present",
+      "contigs": 5,
+      "length": 5399523,
+      "sha256": "2aab1e102a4a1ccc2e1dc8dc7cede3a783fcb2690296607092cd0d17320fb636"
+    },
+    {
+      "accession": "GCA_000567245.1",
+      "status": "already present",
+      "contigs": 5,
+      "length": 5716391,
+      "sha256": "32caf1bc01896e7356907c178f38231af582f687e7c7f461b24aa1ee15ffc293"
+    },
+    {
+      "accession": "GCA_000567265.1",
+      "status": "already present",
+      "contigs": 17,
+      "length": 5767522,
+      "sha256": "316235b6db6a88215c394b4833067485889df13ee55f0ced132d2afb70aa276f"
+    },
+    {
+      "accession": "GCA_000692935.1",
+      "status": "already present",
+      "contigs": 19,
+      "length": 5533311,
+      "sha256": "fe15fa058b3e494bc6995835e8c586ad681a0224542e2d7766124f264b2783bc"
+    },
+    {
+      "accession": "GCA_000692975.1",
+      "status": "already present",
+      "contigs": 8,
+      "length": 5778469,
+      "sha256": "4479f6af8ab2beea0de4490832a89b247e72fc096984881b4509b7a82853c5d7"
+    },
+    {
+      "accession": "GCA_000709225.1",
+      "status": "already present",
+      "contigs": 4,
+      "length": 5541575,
+      "sha256": "5b8503eaca31704832431c33f9ae923f0fc8c24e8fa3672bcd4678cb36eaa208"
+    },
+    {
+      "accession": "GCA_001709275.1",
+      "status": "already present",
+      "contigs": 5,
+      "length": 5805603,
+      "sha256": "4aa651f2a8b2efc8491f9b2f37c24b3833655966579d8f32883dfac60693f92b"
+    },
+    {
+      "accession": "GCA_001709295.1",
+      "status": "already present",
+      "contigs": 4,
+      "length": 5483848,
+      "sha256": "6efb4efd41926f1cc1672adce812301882f575f26081d9c117fd4b0caeef9493"
+    },
+    {
+      "accession": "GCA_001720705.1",
+      "status": "already present",
+      "contigs": 119,
+      "length": 5701390,
+      "sha256": "4f1bd2dc6b0e56bc3a152bf93261c43d84872afa1ffa1e68aab39b63ef75d808"
+    },
+    {
+      "accession": "GCA_001720745.1",
+      "status": "already present",
+      "contigs": 89,
+      "length": 5660430,
+      "sha256": "68c30929da424bfd3cb6382a83f01438e3240620584aba7b8d3ae303b987ff0c"
+    },
+    {
+      "accession": "GCA_001720755.1",
+      "status": "already present",
+      "contigs": 98,
+      "length": 5654489,
+      "sha256": "5836efcc8c7a599ea71f73bf4c6c316c5a15d218b8953aa44eb70216c0bc54bd"
+    },
+    {
+      "accession": "GCA_001720765.1",
+      "status": "already present",
+      "contigs": 63,
+      "length": 5551793,
+      "sha256": "0f494ecaf9fea6e318bd3a60bf11f18cbc776e65aecf3800db2cb58817b1f8eb"
+    },
+    {
+      "accession": "GCA_001720805.1",
+      "status": "already present",
+      "contigs": 105,
+      "length": 5712243,
+      "sha256": "2423b5e4b9210c237615855d164f413dda70094eb1f80cbb516851b2f6f68b52"
+    },
+    {
+      "accession": "GCA_001720815.1",
+      "status": "already present",
+      "contigs": 77,
+      "length": 5660703,
+      "sha256": "be6d7242dc991416daa7cdba3b99d9af64eceef8593d5bd8c7a46d161a5631db"
+    },
+    {
+      "accession": "GCA_001720845.1",
+      "status": "already present",
+      "contigs": 132,
+      "length": 5490193,
+      "sha256": "75c9c8a528158235a7a08c91a6d50ab3f83539e17ed4d1e0c8f93393d46d6edc"
+    },
+    {
+      "accession": "GCA_001720865.1",
+      "status": "already present",
+      "contigs": 93,
+      "length": 5718215,
+      "sha256": "d32647467b9b55978c07eb5f586efb2492b765ff977f928e537deb2d4d2dd24e"
+    },
+    {
+      "accession": "GCA_001720905.1",
+      "status": "already present",
+      "contigs": 75,
+      "length": 5614075,
+      "sha256": "1c35956c29cac219f9de792c0698ece141527eff6d8947ff78306c3130adfa54"
+    },
+    {
+      "accession": "GCA_001875745.1",
+      "status": "already present",
+      "contigs": 1,
+      "length": 5516831,
+      "sha256": "c1f9977d0e4a6a805f82ed1b58a694a355647db7c82bbf7fcbb1259205c5a6dd"
+    },
+    {
+      "accession": "GCA_002246035.1",
+      "status": "already present",
+      "contigs": 88,
+      "length": 5590810,
+      "sha256": "4b4486b771246b56d860a39f9783cb80d75e59558beef1649395e6635d3e62c5"
+    },
+    {
+      "accession": "GCA_002246045.1",
+      "status": "already present",
+      "contigs": 96,
+      "length": 5553042,
+      "sha256": "fbe6f5daac4e5b2202bd9afca02f3ade4bc75ee6e935570df4098ce67c44dfd7"
+    },
+    {
+      "accession": "GCA_002246555.1",
+      "status": "already present",
+      "contigs": 87,
+      "length": 5630466,
+      "sha256": "dfb1e0b15ef11e990af1f57361bca42b063014449294b41a3625e1be6bb22087"
+    },
+    {
+      "accession": "GCA_002246765.1",
+      "status": "already present",
+      "contigs": 129,
+      "length": 5476976,
+      "sha256": "8ae59559a87e3f5830a91bc8acc05a74e4c817af080c3d3d3aa10fd4e8e8e5e6"
+    },
+    {
+      "accession": "GCA_002246875.1",
+      "status": "already present",
+      "contigs": 90,
+      "length": 5629961,
+      "sha256": "2f5e44ba55994e9b064ff37fcd3e56c13b07ad5d5605832384dff5a7a969bd9c"
+    },
+    {
+      "accession": "GCA_002248045.2",
+      "status": "already present",
+      "contigs": 14,
+      "length": 5686277,
+      "sha256": "8505afb84171b09dd2507c4d0f78989cd957f0e34788f1b2a6f2c058e525edc4"
+    },
+    {
+      "accession": "GCA_002248055.2",
+      "status": "already present",
+      "contigs": 22,
+      "length": 5769160,
+      "sha256": "9aae8820f97c090dc695de4f372bbaeb8ec2f6a9bbdb44b7f023c73c7c879f14"
+    },
+    {
+      "accession": "GCA_002248085.2",
+      "status": "already present",
+      "contigs": 63,
+      "length": 5919826,
+      "sha256": "0c9ede7e9671e822a63b105f89c196b1f1b4ab03412b2ad5e800e23880733cfd"
+    },
+    {
+      "accession": "GCA_002248105.2",
+      "status": "already present",
+      "contigs": 12,
+      "length": 5741843,
+      "sha256": "65081a41863e6dd6b915f8de5d08e94c545ab092a4b7107acfc37ab20204778d"
+    },
+    {
+      "accession": "GCA_002248115.3",
+      "status": "already present",
+      "contigs": 11,
+      "length": 5827024,
+      "sha256": "e05c1ca71a094f9f47877e50439b02e0c444a4016cd1831db7fc3f4128e141e2"
+    },
+    {
+      "accession": "GCA_002248945.2",
+      "status": "already present",
+      "contigs": 11,
+      "length": 5493661,
+      "sha256": "22b12071f66fbc319f63bbcb50d746f2ed8e87fd26ef8207599fb64a7ac9cf97"
+    },
+    {
+      "accession": "GCA_002248955.2",
+      "status": "already present",
+      "contigs": 11,
+      "length": 5431303,
+      "sha256": "bb3c6bac86802f848622417637a1a51ab799824181256d9b9e6472ab48d1bbd2"
+    },
+    {
+      "accession": "GCA_002251875.3",
+      "status": "already present",
+      "contigs": 7,
+      "length": 5725168,
+      "sha256": "d8ca2dd49914e31dd724ec67ed6acc107090023f3ba27150ee8a20061b627c20"
+    },
+    {
+      "accession": "GCA_002796405.1",
+      "status": "already present",
+      "contigs": 1,
+      "length": 5087312,
+      "sha256": "071901e6ffde329f9a1c9e8f415933c247524ed98e86c9648036d41b75fd418b"
+    },
+    {
+      "accession": "GCA_002796425.1",
+      "status": "already present",
+      "contigs": 1,
+      "length": 5118619,
+      "sha256": "ca0d789d4f85ca3f9e66380e12bbe7403649695e44c63b115971dd49d99aa4d6"
+    },
+    {
+      "accession": "GCA_002796525.1",
+      "status": "already present",
+      "contigs": 2,
+      "length": 5332334,
+      "sha256": "e2432d6412a18373cffdddbd90b9675d438484ad7650a0bec832b90e4038733d"
+    },
+    {
+      "accession": "GCA_002948835.2",
+      "status": "already present",
+      "contigs": 6,
+      "length": 5453672,
+      "sha256": "9bcde840c7a1ed2ce735e2ba7826a3e65e8e945ff4bd2e097999be50d6cd3af8"
+    },
+    {
+      "accession": "GCA_011682845.1",
+      "status": "already present",
+      "contigs": 74,
+      "length": 5349235,
+      "sha256": "6c4ff07789e28cac3c8581c56cf066f9bcc7f3a155ed744280e44c6a99d443d5"
+    },
+    {
+      "accession": "GCA_011682885.1",
+      "status": "already present",
+      "contigs": 35,
+      "length": 5423123,
+      "sha256": "3199fe64e5b182a01fc5938262a97cea31d8c550e2c74cf6fed62fe0e126b94c"
+    },
+    {
+      "accession": "GCA_013450285.1",
+      "status": "already present",
+      "contigs": 77,
+      "length": 5497061,
+      "sha256": "231b0cac416ad0b0393af94728035d45e3d91d5381f65feacf7cabed2d1e7c2b"
+    },
+    {
+      "accession": "GCA_013450305.1",
+      "status": "already present",
+      "contigs": 74,
+      "length": 5488905,
+      "sha256": "bc17cd4ee3130a377a870acc9d7345a26d324a27cc76ebc3f192acc210df90ca"
+    },
+    {
+      "accession": "GCA_013450355.1",
+      "status": "already present",
+      "contigs": 61,
+      "length": 5532994,
+      "sha256": "c69dece9d11abfda499ff9300ca7c2dcd9eccfb9dcca0c51ef24f6876bc724e0"
+    },
+    {
+      "accession": "GCA_013450375.1",
+      "status": "already present",
+      "contigs": 84,
+      "length": 5364048,
+      "sha256": "8207cf7a23982847aac10d4763c736f940a2395c5cf8538c1440f4a98f31a9c1"
+    },
+    {
+      "accession": "GCA_013450385.1",
+      "status": "already present",
+      "contigs": 73,
+      "length": 5451661,
+      "sha256": "d870a5acd7d6f6a922fe3109de4881605c4b12a23e41fe201ca147d4bc4b87a9"
+    },
+    {
+      "accession": "GCA_013450405.1",
+      "status": "already present",
+      "contigs": 45,
+      "length": 5505505,
+      "sha256": "454fd7a028cc45aa60175fe98e711dfa1f816a0850e24f1caa593dddb551e19f"
+    },
+    {
+      "accession": "GCA_013450455.1",
+      "status": "already present",
+      "contigs": 82,
+      "length": 5430306,
+      "sha256": "a2999f6c63a63689b45a3d93865dc76d3c11200fb1a4522ba3b2ffd702b61654"
+    },
+    {
+      "accession": "GCA_013450475.1",
+      "status": "already present",
+      "contigs": 88,
+      "length": 5309907,
+      "sha256": "3dc7ba1fdefa9417d31ef2244752e0bd3925d61acfa9658becdfaf8bc2296ef6"
+    },
+    {
+      "accession": "GCA_013867375.1",
+      "status": "already present",
+      "contigs": 4,
+      "length": 5610399,
+      "sha256": "c8795650a64fea05ad9b2d681073d90e338af9af16a0d5a3d682c8604dd4570b"
+    },
+    {
+      "accession": "GCA_014826045.1",
+      "status": "already present",
+      "contigs": 3,
+      "length": 5655539,
+      "sha256": "bef6cee75f1025fdf318ec4534c8d02ae6b66a2fa1d3338f745785ac0ef1c57f"
+    },
+    {
+      "accession": "GCA_014840245.1",
+      "status": "already present",
+      "contigs": 134,
+      "length": 5864769,
+      "sha256": "47d6fea2b57d964058df4f900968cea6baefd31ab8a7ad057e5a01c4ffb156da"
+    },
+    {
+      "accession": "GCA_014840295.1",
+      "status": "already present",
+      "contigs": 95,
+      "length": 5700681,
+      "sha256": "1b7bc7c3547ec8733cc828c5d0b44480d7de60a102294d6734661ec7e001766e"
+    },
+    {
+      "accession": "GCA_014840305.1",
+      "status": "already present",
+      "contigs": 96,
+      "length": 5647265,
+      "sha256": "370c1a7d58400f75094db14d929c4f6f2653bd532f240b5e927843a7ec52ba6d"
+    },
+    {
+      "accession": "GCA_014840315.1",
+      "status": "already present",
+      "contigs": 100,
+      "length": 5895020,
+      "sha256": "f9983274af8f3a011c5af5518007c4c363e9a24de8347468486a95eac6ea5ef3"
+    },
+    {
+      "accession": "GCA_014840325.1",
+      "status": "already present",
+      "contigs": 126,
+      "length": 5750634,
+      "sha256": "12635d91ae5792e5cfd6ea804d55d1acbc59fb58985d198735802e5199ae7048"
+    },
+    {
+      "accession": "GCA_014840345.1",
+      "status": "already present",
+      "contigs": 125,
+      "length": 5870777,
+      "sha256": "63245f9793882eac1a30a55d0a07f1379436c08f0e6cee20b933227527532896"
+    },
+    {
+      "accession": "GCA_014840395.1",
+      "status": "already present",
+      "contigs": 90,
+      "length": 5881145,
+      "sha256": "96e73c15ae96ea20a46208d54fe751049e51ac2eba789b0ba06a145b9f2eac21"
+    },
+    {
+      "accession": "GCA_014840405.1",
+      "status": "already present",
+      "contigs": 80,
+      "length": 5943451,
+      "sha256": "bc0b820784cdc4c0af01b64ca18913ea6fc0a311d34e14de43b217a9d46d8b6c"
+    },
+    {
+      "accession": "GCA_014840415.1",
+      "status": "already present",
+      "contigs": 149,
+      "length": 5409046,
+      "sha256": "fc760c898a4419c9259e0128dde0dc2f7bae08b5edf9647bfc94955aded44036"
+    },
+    {
+      "accession": "GCA_014840435.1",
+      "status": "already present",
+      "contigs": 85,
+      "length": 5855306,
+      "sha256": "4c7b89a00320ae2e2e62086d7bcb5647470525e43c4bcf71dafc2a9d5c49f309"
+    },
+    {
+      "accession": "GCA_014840475.1",
+      "status": "already present",
+      "contigs": 89,
+      "length": 5754316,
+      "sha256": "04813606833ff56b18a12d92d89f288ca55b5821dd787d76c89f0ebb8aa75269"
+    },
+    {
+      "accession": "GCA_014840495.1",
+      "status": "already present",
+      "contigs": 69,
+      "length": 5721526,
+      "sha256": "659c4822e6fc8e7a67aeda3d1b9e18703c99a14dcfa6cd2cb71dffea5030ca52"
+    },
+    {
+      "accession": "GCA_014840505.1",
+      "status": "already present",
+      "contigs": 72,
+      "length": 5755239,
+      "sha256": "04bce7d3d70d87839b28983c9e268e954358ffa64bb0ef2b163076f4ae44e07a"
+    },
+    {
+      "accession": "GCA_014840535.1",
+      "status": "already present",
+      "contigs": 121,
+      "length": 5773891,
+      "sha256": "da7d0624762248d496aeba3a52789fe603391d62ea8a0478068b2ef65d5c91ff"
+    },
+    {
+      "accession": "GCA_014840555.1",
+      "status": "already present",
+      "contigs": 134,
+      "length": 5869562,
+      "sha256": "274b5292f3e2458e199eee24fffa413ca1b2ad49dd6c53583453c369a11be312"
+    },
+    {
+      "accession": "GCA_014840575.1",
+      "status": "already present",
+      "contigs": 63,
+      "length": 5514553,
+      "sha256": "c0b259c0a14389848b76a1f3cccfb76e81a6f305eca8bc28f85913ff1f316250"
+    },
+    {
+      "accession": "GCA_014840595.1",
+      "status": "already present",
+      "contigs": 111,
+      "length": 5846639,
+      "sha256": "8012550eaedb65c2e1ad4e402e30d9c40078d06eebfc2bfb6e0d83c5e98607e1"
+    },
+    {
+      "accession": "GCA_014840605.1",
+      "status": "already present",
+      "contigs": 90,
+      "length": 5630532,
+      "sha256": "24f31a9a9ea732bf49a3d8ff3391fc3afe40ee85cb4bcb447179bbce273ed328"
+    },
+    {
+      "accession": "GCA_014840635.1",
+      "status": "already present",
+      "contigs": 75,
+      "length": 5579117,
+      "sha256": "447fb73c7c3a7f72e1a63e8310e70800f3c44ee1859abe972208f542ae0f2443"
+    },
+    {
+      "accession": "GCA_014840645.1",
+      "status": "already present",
+      "contigs": 109,
+      "length": 5816877,
+      "sha256": "c2494fb5ec1024bf1222ed84fee27d8f17fca2437bfa7b9573ad8330b1566129"
+    },
+    {
+      "accession": "GCA_014840655.1",
+      "status": "already present",
+      "contigs": 31,
+      "length": 5391043,
+      "sha256": "9dbb5a7df1961b00a0e06758c5f6d23715db10e3b19ab128b47fc52de3927227"
+    },
+    {
+      "accession": "GCA_014840695.1",
+      "status": "already present",
+      "contigs": 63,
+      "length": 5479427,
+      "sha256": "f4077ac8bd1d7cad647d9858803d70833a6dd122041ee25ad57146f5ea35bd7a"
+    },
+    {
+      "accession": "GCA_014840705.1",
+      "status": "already present",
+      "contigs": 107,
+      "length": 5663961,
+      "sha256": "f61ff79426fe2cee46e66eaf2140bba7567e78fa655af1be7c698e7aade0505f"
+    },
+    {
+      "accession": "GCA_014840735.1",
+      "status": "already present",
+      "contigs": 47,
+      "length": 5390398,
+      "sha256": "0b484ae48b611cc1a5b0be9e000295e874a71e98fec4917abef4247b7568de98"
+    },
+    {
+      "accession": "GCA_014840775.1",
+      "status": "already present",
+      "contigs": 30,
+      "length": 5359589,
+      "sha256": "00068acc22016d1216aaa746e36d5a81630431867bc9bc572fb4063429d99538"
+    },
+    {
+      "accession": "GCA_014840795.1",
+      "status": "already present",
+      "contigs": 55,
+      "length": 5391767,
+      "sha256": "69a5cf6b8d6280afb1ee5f1eb898ff9a210cbc58227c78b73c4eac2f9ba38d3a"
+    },
+    {
+      "accession": "GCA_014842715.1",
+      "status": "already present",
+      "contigs": 124,
+      "length": 5597475,
+      "sha256": "85bf4987e67d4e325030a2101dc0e5c71295b227b76f47f8a2822a93fd80746d"
+    },
+    {
+      "accession": "GCA_014842775.1",
+      "status": "already present",
+      "contigs": 37,
+      "length": 5388633,
+      "sha256": "b85f7a0d0f450b4aac44c8d53753d1ef177611df4d56401c838a488337f8c7b2"
+    },
+    {
+      "accession": "GCA_014842805.1",
+      "status": "already present",
+      "contigs": 45,
+      "length": 5542808,
+      "sha256": "2c670f1015679403c0c83ffc27c2021350711ad4c0368593c7e928e61dbabf08"
+    },
+    {
+      "accession": "GCA_014946925.1",
+      "status": "already present",
+      "contigs": 90,
+      "length": 5707552,
+      "sha256": "23632e3d8cc3d4cb9b25c5232864df57d9b06cf487159b1137e029285b69bb90"
+    },
+    {
+      "accession": "GCA_014946935.1",
+      "status": "already present",
+      "contigs": 117,
+      "length": 5859485,
+      "sha256": "5f962b31b6ee7e29d540b97f08d3b6d5a34d13aaae4facbb60aa7789e22eb5e5"
+    },
+    {
+      "accession": "GCA_014946945.1",
+      "status": "already present",
+      "contigs": 80,
+      "length": 5706520,
+      "sha256": "d67decf476e5f345768d9952d916bb85991b0f9a9e16afd5d54bd6677f861884"
+    },
+    {
+      "accession": "GCA_014946955.1",
+      "status": "already present",
+      "contigs": 126,
+      "length": 5599544,
+      "sha256": "54bb9a4747899d64f563ed3af1840a300231e15ce15175c8f04043f2aef0798e"
+    },
+    {
+      "accession": "GCA_014947005.1",
+      "status": "already present",
+      "contigs": 155,
+      "length": 5469928,
+      "sha256": "d41aea9dfb390a9cd3cf819ff4740a4475cde0957f351fdb23c32f13c9d74793"
+    },
+    {
+      "accession": "GCA_020985265.1",
+      "status": "already present",
+      "contigs": 3,
+      "length": 5426819,
+      "sha256": "6ed576540fb6a7a60a01cb4f6d9bbc630116c89ed3203abb06e2b0340f02d12c"
+    },
+    {
+      "accession": "GCA_021773895.1",
+      "status": "already present",
+      "contigs": 58,
+      "length": 5107581,
+      "sha256": "707f40025029e10e6fc46c6dde78d55fefded3d47b03b56965a859e0ff460fd1"
+    },
+    {
+      "accession": "GCA_021773985.1",
+      "status": "already present",
+      "contigs": 151,
+      "length": 5421249,
+      "sha256": "06945906a24f07e90b6e09c19c2dfa804f737191d5f33121a7a4a8174d85da93"
+    },
+    {
+      "accession": "GCA_022316155.1",
+      "status": "already present",
+      "contigs": 58,
+      "length": 5107581,
+      "sha256": "ff6c05cc9f8d3c387565c8e9d05adef70e7d5748344147ae88165110e3b3ace5"
+    },
+    {
+      "accession": "GCA_022316255.1",
+      "status": "already present",
+      "contigs": 151,
+      "length": 5420329,
+      "sha256": "37116194176f1595f188952e08c11bb6ae6a9851efb7c91a1742a7a24153ff8a"
+    },
+    {
+      "accession": "GCA_024580135.1",
+      "status": "already present",
+      "contigs": 3,
+      "length": 5552314,
+      "sha256": "ccfee37ba10e4544a5305aaefb9aad7a4555a0977696497c4fc871b1ab43cd10"
+    },
+    {
+      "accession": "GCA_024580195.1",
+      "status": "already present",
+      "contigs": 5,
+      "length": 5772361,
+      "sha256": "262b242bee400b46d294bd4819842b063601050548ada0567edfe8ce3f18196d"
+    },
+    {
+      "accession": "GCA_024580215.1",
+      "status": "already present",
+      "contigs": 9,
+      "length": 5629569,
+      "sha256": "f9d43df27dae1c7da20a5f39bec4ca39a0d12ae233a7a205a94d99220c42854c"
+    },
+    {
+      "accession": "GCA_024580225.1",
+      "status": "already present",
+      "contigs": 8,
+      "length": 5737460,
+      "sha256": "9672521554f33f349d66e8e63b4a47465bb704824426f5baee199618f0efd6b8"
+    },
+    {
+      "accession": "GCA_025367465.1",
+      "status": "already present",
+      "contigs": 85,
+      "length": 5564039,
+      "sha256": "afd433085f00428f83330c6b38f160e96790424e98b8dd34245909b3308bb907"
+    },
+    {
+      "accession": "GCA_025367575.1",
+      "status": "already present",
+      "contigs": 83,
+      "length": 5564322,
+      "sha256": "f15b730deb9ca5945d052b80ec0ad3fed443409bcede8375a0f8cae65f099d7b"
+    },
+    {
+      "accession": "GCA_026413095.1",
+      "status": "already present",
+      "contigs": 48,
+      "length": 5658733,
+      "sha256": "3bbf3c289fec12693702e58ea89f4707244c7c7d73003640d5ca24f603ce7720"
+    },
+    {
+      "accession": "GCA_030026945.2",
+      "status": "already present",
+      "contigs": 112,
+      "length": 5496876,
+      "sha256": "8b6838140fcea74788b1386183c5822ce686625e62670116a2d0f5768dc497f6"
+    },
+    {
+      "accession": "GCA_030128905.1",
+      "status": "already present",
+      "contigs": 80,
+      "length": 5535122,
+      "sha256": "d072e330aa7b8826ec5e89004468e3560cdc34f276e7f853690d5337f805ad7b"
+    },
+    {
+      "accession": "GCA_030128965.1",
+      "status": "already present",
+      "contigs": 138,
+      "length": 5644110,
+      "sha256": "77312db5642c74a257ea3951ccfaf6591ee3ca21b30d7f4d7963d39dc0dc18f8"
+    },
+    {
+      "accession": "GCA_030128995.1",
+      "status": "already present",
+      "contigs": 104,
+      "length": 5541584,
+      "sha256": "6d8878b15b1494c5d81cb7488192e383749f84304dec42704ad84e4dd841c93f"
+    },
+    {
+      "accession": "GCA_032463405.1",
+      "status": "already present",
+      "contigs": 4,
+      "length": 5654105,
+      "sha256": "8353a00261de68bdda432840f275d3ed6170b46b47ac22c07fa29fd6e5acbaba"
+    },
+    {
+      "accession": "GCA_037287365.1",
+      "status": "already present",
+      "contigs": 3,
+      "length": 5859543,
+      "sha256": "482698244cd0b86a05f0e65c99fc68bbd991851465c116528d8bfa0ecdfbcfdd"
+    },
+    {
+      "accession": "GCA_043858225.1",
+      "status": "already present",
+      "contigs": 119,
+      "length": 5913997,
+      "sha256": "ffc20d5bf00ebd9c4fac8c88466f82fe2d53295933e6fc644470a19b99e9b2bc"
+    },
+    {
+      "accession": "GCA_043858235.1",
+      "status": "already present",
+      "contigs": 107,
+      "length": 5668268,
+      "sha256": "8469efef572cb6246a901301d113000165a7f5df0fb0a8b24d0ada511cb4d164"
+    },
+    {
+      "accession": "GCA_043858345.1",
+      "status": "already present",
+      "contigs": 126,
+      "length": 5755245,
+      "sha256": "4cf2c54740dc139f2d3f46a8efc52554ef5b1aeb469f1c05fe8fd326ed74cb4c"
+    },
+    {
+      "accession": "GCA_043858445.1",
+      "status": "already present",
+      "contigs": 89,
+      "length": 5729534,
+      "sha256": "58c05ae946ddf8db24bdadd2ccfc06a155052fe7f268bdc22e9c4f9a7e83e205"
+    },
+    {
+      "accession": "GCA_043859275.1",
+      "status": "already present",
+      "contigs": 72,
+      "length": 5609041,
+      "sha256": "88a75752704fec944c43deb7ea570b45d63d8fa8d24d6827ac19ececfd8e0c7c"
+    },
+    {
+      "accession": "GCA_043859285.1",
+      "status": "already present",
+      "contigs": 74,
+      "length": 5707762,
+      "sha256": "2e6c5933b44579e665905bdf2d6da66d8a41c63a3de54180abe054f48e5b50d0"
+    },
+    {
+      "accession": "GCA_043859295.1",
+      "status": "already present",
+      "contigs": 94,
+      "length": 6173504,
+      "sha256": "ae2471dcfd224f11a5d44cd393fd288c1c6ae07910dcff9f6c247e16867dbbdc"
+    },
+    {
+      "accession": "GCA_043859305.1",
+      "status": "already present",
+      "contigs": 96,
+      "length": 5778638,
+      "sha256": "f6e2e5b5e70f5da4e35c48f92dfcee888ac78d2ddfa4d2db0a46d7b5e64803d2"
+    },
+    {
+      "accession": "GCA_043859365.1",
+      "status": "already present",
+      "contigs": 119,
+      "length": 5986280,
+      "sha256": "a7b4bf42dcec3f6bce4eb46a9f8639f9f7d92c1b4dec221ba48cfd805698059a"
+    },
+    {
+      "accession": "GCA_043859485.1",
+      "status": "already present",
+      "contigs": 102,
+      "length": 5797345,
+      "sha256": "5c61f2f7d4fef3f55588002129f9d8ce372a82cac4a23bf44aecab0a7d56fa7f"
+    },
+    {
+      "accession": "GCA_043859495.1",
+      "status": "already present",
+      "contigs": 83,
+      "length": 6054856,
+      "sha256": "9ba29a037d6f04376aea3b1ad7d7c99c8efea85bf6f0f3e214283b1329017791"
+    },
+    {
+      "accession": "GCA_043859615.1",
+      "status": "already present",
+      "contigs": 112,
+      "length": 5790790,
+      "sha256": "3cf2552772cc9fe81b9c8eabba2074e12c319ab387a26583913a995e1e9597b9"
+    },
+    {
+      "accession": "GCA_043859635.1",
+      "status": "already present",
+      "contigs": 110,
+      "length": 5702106,
+      "sha256": "0c89d4174bd376f6e19b14116f7c7bcd3fe1a167bcabd0ebb51468598582bc00"
+    },
+    {
+      "accession": "GCA_043859655.1",
+      "status": "already present",
+      "contigs": 110,
+      "length": 5900439,
+      "sha256": "589b4435a3f97f6a95e6516fd96736ede8168d73fc2f1ea2c9a5757b07f50e9f"
+    },
+    {
+      "accession": "GCA_043859735.1",
+      "status": "already present",
+      "contigs": 101,
+      "length": 5785420,
+      "sha256": "0fb2ba853ce37b5c1b96a84693335ac764626ba2821fd74d4429c7b99050aca3"
+    },
+    {
+      "accession": "GCA_043859795.1",
+      "status": "already present",
+      "contigs": 129,
+      "length": 5905946,
+      "sha256": "5f2b6b3538418d8f3702040024d5dcba5e2c6abfb565eaf9756053049ac00242"
+    },
+    {
+      "accession": "GCA_043859815.1",
+      "status": "already present",
+      "contigs": 66,
+      "length": 6011877,
+      "sha256": "328f4d9d51701483af6e7c92b294ca2a76a1d695c00e86ec0c97016b67a53377"
+    },
+    {
+      "accession": "GCA_043859835.1",
+      "status": "already present",
+      "contigs": 84,
+      "length": 5788534,
+      "sha256": "5cdd7bf9a7eafa51267948838657b978c144aab1b94dc103bbc3f943fe1692e0"
+    },
+    {
+      "accession": "GCA_043859855.1",
+      "status": "already present",
+      "contigs": 83,
+      "length": 5491408,
+      "sha256": "e2a297ad815b20c0a1a70689c640163192728cbeb62c905a008beb9fd03077ea"
+    },
+    {
+      "accession": "GCA_043859975.1",
+      "status": "already present",
+      "contigs": 95,
+      "length": 5617306,
+      "sha256": "b4b584ba58bf8bac1f22650ec1e77117ce5c75db158ab24e616370f629afc634"
+    },
+    {
+      "accession": "GCA_043859995.1",
+      "status": "already present",
+      "contigs": 80,
+      "length": 5821811,
+      "sha256": "545ccfce21666035c192952996b77f43a5bfcf45a543bbd9e399bdacdd9e999b"
+    },
+    {
+      "accession": "GCA_043860015.1",
+      "status": "already present",
+      "contigs": 107,
+      "length": 5950991,
+      "sha256": "d94787aca651e33ef3aef1be3830c7a70c83c5b99d642c76092959482a37ad49"
+    },
+    {
+      "accession": "GCA_043860055.1",
+      "status": "already present",
+      "contigs": 122,
+      "length": 5838716,
+      "sha256": "cbd6f56e873850edce2a28f4d4bf591d529bf0700edde77f385fbf0690698237"
+    },
+    {
+      "accession": "GCA_043860075.1",
+      "status": "already present",
+      "contigs": 73,
+      "length": 5823382,
+      "sha256": "4c69b708391b0b4ed70bbb1e1a1628f22f7cba6ffbaee80d5c100205e2eebd51"
+    },
+    {
+      "accession": "GCA_043860195.1",
+      "status": "already present",
+      "contigs": 79,
+      "length": 5829018,
+      "sha256": "ca3da7d384610a5a9064e08e219e6fab2f3283a97f8d3c4322a71d9aae0ba45b"
+    },
+    {
+      "accession": "GCA_043860235.1",
+      "status": "already present",
+      "contigs": 125,
+      "length": 5913727,
+      "sha256": "66b29618afe600abc2e730e83bf1f3f1d282abdad8095a8ff18a8054b4ffd61a"
+    },
+    {
+      "accession": "GCA_043860255.1",
+      "status": "already present",
+      "contigs": 117,
+      "length": 5884746,
+      "sha256": "b66da969f094a40eda39b92011c717b2b3661976a92da64a1ccc3b801e853c4c"
+    },
+    {
+      "accession": "GCA_043860375.1",
+      "status": "already present",
+      "contigs": 114,
+      "length": 5718470,
+      "sha256": "ecf39ad47c41f8181f9517036ee5fb360d04ed654102b367a56efd8538ada134"
+    },
+    {
+      "accession": "GCA_043860395.1",
+      "status": "already present",
+      "contigs": 94,
+      "length": 6036359,
+      "sha256": "cc6ffdd0992c4ab775d7e26dc4cf28c85932145425ecb17e64ae9d8f8b7f20ab"
+    },
+    {
+      "accession": "GCA_043860435.1",
+      "status": "already present",
+      "contigs": 104,
+      "length": 5705262,
+      "sha256": "78eba363a5b327cc525bfcd9652defb5f1cd545f04adcfcb3f61308d3f1258f5"
+    },
+    {
+      "accession": "GCA_043860455.1",
+      "status": "already present",
+      "contigs": 108,
+      "length": 5681626,
+      "sha256": "0eaa5a1bbec770edd2325a79788acc5c8d1dd1bcfe1dd0398aea6091fe76e607"
+    },
+    {
+      "accession": "GCA_043860495.1",
+      "status": "already present",
+      "contigs": 117,
+      "length": 5741519,
+      "sha256": "c80222a35dcf011519531b9a0729e0b7de80776038901e66e87e6a1179f0b7ce"
+    },
+    {
+      "accession": "GCA_043861575.1",
+      "status": "already present",
+      "contigs": 91,
+      "length": 5944256,
+      "sha256": "36d66cf164483c28ff085562b5e072256db52fa4de738c82d609351c41f5e88f"
+    },
+    {
+      "accession": "GCA_043861595.1",
+      "status": "already present",
+      "contigs": 79,
+      "length": 5842420,
+      "sha256": "941b29781df6657f788d6ed981670f678869ab9951be51805c6bb217ef1fc32a"
+    },
+    {
+      "accession": "GCA_043861645.1",
+      "status": "already present",
+      "contigs": 106,
+      "length": 5671969,
+      "sha256": "d4512c6eda6064fe9ee84c30ef7e8a4184a7c5a70a6b3d67c4bb205db9091702"
+    },
+    {
+      "accession": "GCA_043861665.1",
+      "status": "already present",
+      "contigs": 85,
+      "length": 6053854,
+      "sha256": "5214138b70e72e19a262b2ee00a4021c3954fca274eb371c3d30c65c174b0dc9"
+    },
+    {
+      "accession": "GCA_043863025.1",
+      "status": "already present",
+      "contigs": 169,
+      "length": 6229871,
+      "sha256": "97348c1452ecdcd4a9d4e0b59a2d935fffdd5b1bc680810f3011d8c3168e4886"
+    },
+    {
+      "accession": "GCA_043863045.1",
+      "status": "already present",
+      "contigs": 110,
+      "length": 5878980,
+      "sha256": "3ad3bf101605b7267643e84b6632c4d620a752d9e42bd51793aacec3d26d984d"
+    },
+    {
+      "accession": "GCA_043863065.1",
+      "status": "already present",
+      "contigs": 109,
+      "length": 5830279,
+      "sha256": "871733a64ccfbd8f3b346ebb73f2f5d2d84c4c145cb8e84e7137213a96890d60"
+    },
+    {
+      "accession": "GCA_043863085.1",
+      "status": "already present",
+      "contigs": 93,
+      "length": 5982849,
+      "sha256": "4415b583bf20313db72ed391bd6594fbe4ed7f5c3e8b48c27be118581c3eeba5"
+    },
+    {
+      "accession": "GCA_043863105.1",
+      "status": "already present",
+      "contigs": 112,
+      "length": 5723632,
+      "sha256": "2cccffc7ef5b93c14529fc524dc2b22c1e1946b26850045f217e6e2d51422721"
+    },
+    {
+      "accession": "GCA_043863125.1",
+      "status": "already present",
+      "contigs": 94,
+      "length": 5853307,
+      "sha256": "68d407415edbf15ba609404d405a0227044ecbdc4f122b97f901182b4ed513ab"
+    },
+    {
+      "accession": "GCA_043863145.1",
+      "status": "already present",
+      "contigs": 136,
+      "length": 5876390,
+      "sha256": "702ba1e383214f675783b57ac46c5bba30d1c527676665872c2184a8898bc8ea"
+    },
+    {
+      "accession": "GCA_043863165.1",
+      "status": "already present",
+      "contigs": 96,
+      "length": 5604253,
+      "sha256": "46dedb28de37059c0df2378778ce175325e55acc213a136669bfeda94e109df5"
+    },
+    {
+      "accession": "GCA_043863185.1",
+      "status": "already present",
+      "contigs": 111,
+      "length": 5743920,
+      "sha256": "7a8c30c419880a45335d09593ce31ff34d843e8f7044339c04f0360fa9b1b720"
+    },
+    {
+      "accession": "GCA_043863205.1",
+      "status": "already present",
+      "contigs": 73,
+      "length": 5795854,
+      "sha256": "a7325e734ad68d4f4badd98e49d607a6fcc3150ad7b6a424bec10256d8b9926d"
+    },
+    {
+      "accession": "GCA_043863225.1",
+      "status": "already present",
+      "contigs": 112,
+      "length": 5870643,
+      "sha256": "3c8fbea13950828932e1fddf379f970f4585362e8ce233bd9db852b3d0ad9fd5"
+    },
+    {
+      "accession": "GCA_043863245.1",
+      "status": "already present",
+      "contigs": 134,
+      "length": 5873265,
+      "sha256": "7776647f5ab56ee7a17aa20de0ef4eb1c6fdab0294753c327991377bb8bef3cc"
+    },
+    {
+      "accession": "GCA_043863265.1",
+      "status": "already present",
+      "contigs": 115,
+      "length": 5904355,
+      "sha256": "ef1293b8219dd29eea72a98b343018274cc69dd6eb14eaa34e3bb98b793a4850"
+    },
+    {
+      "accession": "GCA_043863285.1",
+      "status": "already present",
+      "contigs": 94,
+      "length": 5774890,
+      "sha256": "486e62d3e47f3d5c3160bf6a5461ee9ac0c37572b65c832ec074a23a38f41180"
+    },
+    {
+      "accession": "GCA_043863305.1",
+      "status": "already present",
+      "contigs": 99,
+      "length": 5814138,
+      "sha256": "8b0741d919eb21a5a0b6fed1fa958df1daae6caa12d591cfca623f9fa56986a9"
+    },
+    {
+      "accession": "GCA_043863325.1",
+      "status": "already present",
+      "contigs": 91,
+      "length": 5783735,
+      "sha256": "6271ba6bd4aa040d0249b961f014afe74b4dc14efeb9a9457d60ed73a6043ee1"
+    },
+    {
+      "accession": "GCA_043863345.1",
+      "status": "already present",
+      "contigs": 100,
+      "length": 5606932,
+      "sha256": "6d723487e4b1ebe6031a496d546ce91547aec411f9239f701456902835de6aea"
+    },
+    {
+      "accession": "GCA_043863365.1",
+      "status": "already present",
+      "contigs": 107,
+      "length": 5756571,
+      "sha256": "04de1742f34d4c923c981acdc1df450354f94b8124d9abe58d1ae42a8d1044fd"
+    },
+    {
+      "accession": "GCA_043863385.1",
+      "status": "already present",
+      "contigs": 110,
+      "length": 5759614,
+      "sha256": "c1e039fa3971b2105a524459c07170406b8f31404a323247f86b4ab112a43b15"
+    },
+    {
+      "accession": "GCA_043863405.1",
+      "status": "already present",
+      "contigs": 96,
+      "length": 5940258,
+      "sha256": "9fb59a7adc60fcd1ccceb326c8c5901b3e404cac2843b7541eea2ca65d636d24"
+    },
+    {
+      "accession": "GCA_043863445.1",
+      "status": "already present",
+      "contigs": 185,
+      "length": 6096209,
+      "sha256": "e94dfce6a7c76b9db72bb863598b182f1bd2c7d265801c4ed546c93b25086fbb"
+    },
+    {
+      "accession": "GCA_043863475.1",
+      "status": "already present",
+      "contigs": 85,
+      "length": 5970054,
+      "sha256": "a932ee16ad0613251f7672d8fe8c0e76320f259d73c1b3ff1920453d24d5dea5"
+    },
+    {
+      "accession": "GCA_043863495.1",
+      "status": "already present",
+      "contigs": 122,
+      "length": 5781546,
+      "sha256": "609f06c2fed76a468a3614f5ee8f31aa7c346ff72e4da6bf04531226b10fa7fe"
+    },
+    {
+      "accession": "GCA_043863515.1",
+      "status": "already present",
+      "contigs": 103,
+      "length": 5687391,
+      "sha256": "887f651812b1e8a869012ab7167db02eaf7c7a39793d5a0f0fff66589c931e9a"
+    },
+    {
+      "accession": "GCA_043863535.1",
+      "status": "already present",
+      "contigs": 123,
+      "length": 6149742,
+      "sha256": "05c5d606174baa1d17ea009721b6da60b7f458ed67db81b77d5617667d68bdef"
+    },
+    {
+      "accession": "GCA_043863555.1",
+      "status": "already present",
+      "contigs": 111,
+      "length": 5799423,
+      "sha256": "8f151fa37404c82e01845b1139ba9f6857c6a1d7602c5f1a3f425e7b40820e32"
+    },
+    {
+      "accession": "GCA_043904745.1",
+      "status": "already present",
+      "contigs": 162,
+      "length": 5861117,
+      "sha256": "c4120fe0e7e264b8c3540d172fd3ce4d12ef95996af15f8bf066695386072fd9"
+    },
+    {
+      "accession": "GCA_043904785.1",
+      "status": "already present",
+      "contigs": 139,
+      "length": 6004491,
+      "sha256": "1acb2623a247ae50566172c82877e91793937685d740963dc0655da65615cd0c"
+    },
+    {
+      "accession": "GCA_043904805.1",
+      "status": "already present",
+      "contigs": 103,
+      "length": 5759137,
+      "sha256": "9b50b3c02785c6725ca271d68066265d25287b904d727cfaa51ceb9d64af9f48"
+    },
+    {
+      "accession": "GCA_043904825.1",
+      "status": "already present",
+      "contigs": 126,
+      "length": 6058717,
+      "sha256": "421f66f474787e2d28383074391e890184f380ecd1367da282bfc0411be39fb4"
+    },
+    {
+      "accession": "GCA_043904845.1",
+      "status": "already present",
+      "contigs": 144,
+      "length": 5919453,
+      "sha256": "e4ea80ec76d5553e197d787f489d6e54ea697a084b75e1eb3d8a5b9621f5df52"
+    },
+    {
+      "accession": "GCA_043904865.1",
+      "status": "already present",
+      "contigs": 107,
+      "length": 5616134,
+      "sha256": "52ba235a29845351f1c64fa7b1ef181b12424711e668284a53818bcc4dfa2c73"
+    },
+    {
+      "accession": "GCA_043904885.1",
+      "status": "already present",
+      "contigs": 92,
+      "length": 6001150,
+      "sha256": "64fbd6366e2434938a30763228336ad9f725353a31a2a33e574a66c232a5ee86"
+    },
+    {
+      "accession": "GCA_043904905.1",
+      "status": "already present",
+      "contigs": 105,
+      "length": 5741755,
+      "sha256": "31ad24dbc5da80f31deee68ae335bca6905137138a38a5095a23c44942a8faac"
+    },
+    {
+      "accession": "GCA_043905145.1",
+      "status": "already present",
+      "contigs": 85,
+      "length": 5629992,
+      "sha256": "3b4ec6a50d687bd6aeb3ac7f18235c78cb2e75f9144823628e969d4f7c4037ce"
+    },
+    {
+      "accession": "GCA_043905165.1",
+      "status": "already present",
+      "contigs": 86,
+      "length": 5747735,
+      "sha256": "f172021c3c423b3ea6ad017af5f9ad1c998a01b13353409e8e2998480cef9527"
+    },
+    {
+      "accession": "GCA_043905185.1",
+      "status": "already present",
+      "contigs": 143,
+      "length": 5874461,
+      "sha256": "0e77e26c564601424c1ed258555376617a82b91595fd71dc406c69a5e2b1abf7"
+    },
+    {
+      "accession": "GCA_043905225.1",
+      "status": "already present",
+      "contigs": 111,
+      "length": 5943390,
+      "sha256": "952b49ace3dda88b868bb698a7b934fb627a0103425e53acd76cef12afc99be9"
+    },
+    {
+      "accession": "GCA_043905245.1",
+      "status": "already present",
+      "contigs": 73,
+      "length": 5660071,
+      "sha256": "81c4b82918147485bd24cee2f1c9cc742e964561fc7eb0e637a50770b3a8a706"
+    },
+    {
+      "accession": "GCA_043905265.1",
+      "status": "already present",
+      "contigs": 111,
+      "length": 6001762,
+      "sha256": "eb200678d119ea24429c56c84be276173b9b2282867603ed98ebbabbc066e536"
+    },
+    {
+      "accession": "GCA_043905285.1",
+      "status": "already present",
+      "contigs": 93,
+      "length": 5685342,
+      "sha256": "df7904a77217554eb23d5cb28a40fa08582d453775c0be93853258ef259dd1c1"
+    },
+    {
+      "accession": "GCA_043905305.1",
+      "status": "already present",
+      "contigs": 100,
+      "length": 5750868,
+      "sha256": "19053ea02947b2ae026537e4d40e301a697b21620e723331a77068590f9180de"
+    },
+    {
+      "accession": "GCA_043905325.1",
+      "status": "already present",
+      "contigs": 129,
+      "length": 5915765,
+      "sha256": "2976ebf840d53f48aba2988efbc50c13bb3677c078f0559a5af4871f954f29ca"
+    },
+    {
+      "accession": "GCA_043905345.1",
+      "status": "already present",
+      "contigs": 142,
+      "length": 5915127,
+      "sha256": "34b11ae5d9a95c4001dca12d69821525236275ce7f01fe9e261dabbb22b51f39"
+    },
+    {
+      "accession": "GCA_043905355.1",
+      "status": "already present",
+      "contigs": 132,
+      "length": 5962546,
+      "sha256": "ae1f7487306611346c3b17c57b8051ba82e5e51e72bf346e2e7adc370658cba4"
+    },
+    {
+      "accession": "GCA_043905385.1",
+      "status": "already present",
+      "contigs": 125,
+      "length": 5923218,
+      "sha256": "3e12337e7c121fb535c7f4ac7e6f329b29471924cb65c8339141996aed4f91fa"
+    },
+    {
+      "accession": "GCA_043905405.1",
+      "status": "already present",
+      "contigs": 135,
+      "length": 5850198,
+      "sha256": "2e572e8f811da5c54dbe16b325443b97026232a53ad876d19585f9cd9d03f6a8"
+    },
+    {
+      "accession": "GCA_043905425.1",
+      "status": "already present",
+      "contigs": 129,
+      "length": 6239842,
+      "sha256": "57eec5d66a2293008b6a914a7350293b809e55775b9499c345af3718cc99aee0"
+    },
+    {
+      "accession": "GCA_043905445.1",
+      "status": "already present",
+      "contigs": 97,
+      "length": 5888874,
+      "sha256": "119d8cce13a01553a9fe38d48b8929615de780b3312f92fc50956a1fab897e98"
+    },
+    {
+      "accession": "GCA_043905465.1",
+      "status": "already present",
+      "contigs": 102,
+      "length": 5733282,
+      "sha256": "2b6d9fba471da4a87dd7c695872f1e4a08b4364108b4d7d609e03aaae0d4f2c0"
+    },
+    {
+      "accession": "GCA_043905485.1",
+      "status": "already present",
+      "contigs": 164,
+      "length": 6086064,
+      "sha256": "68fa73caab914bf0b3f721bfb9c7117fe32c527b836e97db8d8b9217cd0ea9dd"
+    },
+    {
+      "accession": "GCA_043905505.1",
+      "status": "already present",
+      "contigs": 127,
+      "length": 5944173,
+      "sha256": "c68a899605dcf30948b0388bed61845d4148960e62675d9df446252962080480"
+    },
+    {
+      "accession": "GCA_043905525.1",
+      "status": "already present",
+      "contigs": 88,
+      "length": 5746171,
+      "sha256": "70587bae73c86a9fbdce9a6895cf9791d34fa15f594bf2dfb991eec06a4e77c9"
+    },
+    {
+      "accession": "GCA_043905545.1",
+      "status": "already present",
+      "contigs": 115,
+      "length": 6049431,
+      "sha256": "0b0523a06b55564b3cc55540ce82b92768a8a38a6b3b61fe304f3c339760de0d"
+    },
+    {
+      "accession": "GCA_043905565.1",
+      "status": "already present",
+      "contigs": 75,
+      "length": 5654510,
+      "sha256": "0f6082d7f5471774cdafb8f1087699ae0eaa626164f284617120caab10079e19"
+    },
+    {
+      "accession": "GCA_043905585.1",
+      "status": "already present",
+      "contigs": 104,
+      "length": 5736506,
+      "sha256": "047f046bb879a1a6befe8d8024ba45b7f02e826e0982a5eabe8da721353df753"
+    },
+    {
+      "accession": "GCA_043905605.1",
+      "status": "already present",
+      "contigs": 147,
+      "length": 6024081,
+      "sha256": "6c5726c3d1f1bc393357620e419fe5a0eff5a0487383837aca1268ffbe749316"
+    },
+    {
+      "accession": "GCA_043905645.1",
+      "status": "already present",
+      "contigs": 113,
+      "length": 6054427,
+      "sha256": "12f3c601eb53747e63922c3f27a3d578b45c983fd969ce0c2ed33192aa569441"
+    },
+    {
+      "accession": "GCA_043905665.1",
+      "status": "already present",
+      "contigs": 147,
+      "length": 6249615,
+      "sha256": "204a0635b6342436f67076efa036698d2443e1dd289a5b2575181bd528c8256d"
+    },
+    {
+      "accession": "GCA_045489995.1",
+      "status": "already present",
+      "contigs": 130,
+      "length": 5660191,
+      "sha256": "7187f4961feccf075bf37b6d013f2da305d89b5a0ebc6125eac27f814b9ccf2b"
+    },
+    {
+      "accession": "GCA_045490015.1",
+      "status": "already present",
+      "contigs": 239,
+      "length": 5519814,
+      "sha256": "3c4497e3ff385bd72cfd011de70edf30465cdb952ae5399f780bc1cac3510803"
+    },
+    {
+      "accession": "GCA_045490105.1",
+      "status": "already present",
+      "contigs": 121,
+      "length": 5610859,
+      "sha256": "d9a4a42d92f16740955cb0a0a6d3641f83a86758b16a472fa788b7e690b52cc8"
+    },
+    {
+      "accession": "GCA_045490115.1",
+      "status": "already present",
+      "contigs": 113,
+      "length": 5553737,
+      "sha256": "936c873f0679909a1012dba26f3f26585f360942c6336487e741b33fdf7330e4"
+    },
+    {
+      "accession": "GCA_045490155.1",
+      "status": "already present",
+      "contigs": 93,
+      "length": 5568520,
+      "sha256": "f7e83ebbe5b0119712a490d6a9a7be5a6e618de6021a4659dec7c18fd38704d7"
+    },
+    {
+      "accession": "GCA_045490175.1",
+      "status": "already present",
+      "contigs": 101,
+      "length": 5565573,
+      "sha256": "f1da9d9a0fd6c5751827c5082899c77147d640481fb96011b8ddf3488970dc67"
+    },
+    {
+      "accession": "GCA_045490195.1",
+      "status": "already present",
+      "contigs": 125,
+      "length": 5394275,
+      "sha256": "99e7640fac4bff1957bbdb729aa6c373c7084c2a3f6c872047a0fc41fb0c55b4"
+    },
+    {
+      "accession": "GCA_045490215.1",
+      "status": "already present",
+      "contigs": 202,
+      "length": 5536685,
+      "sha256": "ecdca7b21bb9f426005042979d39d1abf4ee4c5c7789dbc5c65a5d4211acee7c"
+    },
+    {
+      "accession": "GCA_045490225.1",
+      "status": "already present",
+      "contigs": 92,
+      "length": 5451435,
+      "sha256": "d78a2eaf1d3830262d067cc4276ecd22665ce45a9d783a08eaf7e72f1056f1b3"
+    },
+    {
+      "accession": "GCA_045490265.1",
+      "status": "already present",
+      "contigs": 172,
+      "length": 5779154,
+      "sha256": "de3cafb612793e32fb9c75218c3908600cf6c929497accc27be2882c0abcb2a1"
+    },
+    {
+      "accession": "GCA_045490325.1",
+      "status": "already present",
+      "contigs": 72,
+      "length": 5257216,
+      "sha256": "8d735f4780478e5bf5c70bc9c56a5d203c6bda3b5806bb9f82e71acc400bc020"
+    },
+    {
+      "accession": "GCA_045490355.1",
+      "status": "already present",
+      "contigs": 81,
+      "length": 5712434,
+      "sha256": "847e37aad82deeb193f01f36232baada7920b54fe1ef0deb2d836ccbf4288b03"
+    },
+    {
+      "accession": "GCA_045490435.1",
+      "status": "already present",
+      "contigs": 89,
+      "length": 5477815,
+      "sha256": "b62bd018509c5babf17322a1ecc883265ad6e0c1d26e1489dfc7a7ae37d2a009"
+    },
+    {
+      "accession": "GCA_045490455.1",
+      "status": "already present",
+      "contigs": 92,
+      "length": 5520496,
+      "sha256": "ad00e2bfc5ab68ed37ba655b571aeafc0132148fc89c490b14a9d4b68e51df3c"
+    },
+    {
+      "accession": "GCA_045490475.1",
+      "status": "already present",
+      "contigs": 207,
+      "length": 5451514,
+      "sha256": "072f5d08a62030d9543f78409cd7f1b178162cd8679fa4c8f31e1586a789d7a0"
+    },
+    {
+      "accession": "GCA_045490555.1",
+      "status": "already present",
+      "contigs": 171,
+      "length": 5791242,
+      "sha256": "3f1e737897cbd7c0a8bc0f930f08707563c21c43bc62636bdb437d04c57c4fd1"
+    },
+    {
+      "accession": "GCA_051414815.1",
+      "status": "already present",
+      "contigs": 8,
+      "length": 5767637,
+      "sha256": "104053cb937f811e5dcf26eeca0d8eaf967cd9fe4c5df21f1cf8edb72c13b686"
+    },
+    {
+      "accession": "GCA_051414825.1",
+      "status": "already present",
+      "contigs": 7,
+      "length": 5460266,
+      "sha256": "9ef44f1fa00e9183b452fddbd723e792bdd330877084a14e4b8cb4a67d0db657"
+    },
+    {
+      "accession": "GCA_051414835.1",
+      "status": "already present",
+      "contigs": 7,
+      "length": 5572202,
+      "sha256": "54570822ff56e3f340ed544bb2465ea06c85320f012798a8d0bddcd01d0de502"
+    },
+    {
+      "accession": "GCA_055557455.1",
+      "status": "already present",
+      "contigs": 6,
+      "length": 6262168,
+      "sha256": "907c058be6f19dadff348b9d422c7a56729478dc7690e7e004923008888a721d"
+    }
+  ]
+}

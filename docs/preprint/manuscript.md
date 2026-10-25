@@ -23,7 +23,8 @@ AMRFinderPlus 4.2.7 and Kleborate 3.2.4. We added a targeted *mgrB* integrity ch
 the reference MgrB protein against each assembly, classifying the locus as intact, missense, or
 disrupted — and benchmarked rule-based prediction against logistic regression and gradient
 boosting under random, study-aware (BioProject-grouped), lineage-aware (sequence-type-grouped)
-and temporal splits, with paired bootstrap comparisons.
+and temporal splits, with paired bootstrap comparisons. The rule was then applied, frozen, to an
+external cohort assembled from NCBI Pathogen Detection and de-overlapped against our own.
 
 **Results.** Among 1,528 genomes with broth-microdilution colistin labels (367 resistant), *mgrB*
 was disrupted in 153 resistant versus 41 susceptible genomes. Adding mechanism-specified *mgrB*
@@ -47,15 +48,22 @@ below it under lineage-aware splitting (0.731 and 0.709 versus 0.759; +0.028, 95
 +0.052, and +0.050, +0.026 to +0.075). The margin over logistic regression is marginal, that over
 gradient boosting clearer. A predictor using sequence type alone reached 0.737 for meropenem but
 only 0.554 for colistin, and study-aware and lineage-aware splits each left the other
-dimension 74–95% overlapping.
+dimension 74–95% overlapping. On 263 external isolates not in our cohort, the frozen rule reached
+77.8% sensitivity (67.6–85.5) at 99.5% specificity; the *mgrB* component performed as it did
+internally (45.7% versus 41.7%) while AMRFinderPlus alone rose from 28.3% to 50.6%, because
+external resistance was weighted toward chromosomal point mutations in its catalogue rather than
+the insertion-driven disruption it misses. Six of 270 NCBI-labelled *K. pneumoniae* were
+*K. aerogenes*.
 
 **Conclusions.** The apparent superiority of machine learning for colistin reverses when
 lineages are held out. It is not explained by lineage labels themselves: a sequence-type-only
 predictor reached just 0.554, so what the models lose is a finer-grained resemblance between
 related isolates.
 More fundamentally, the mechanistic composition of colistin resistance differs substantially
-between public genome collections, so neither rules nor models transfer reliably — a limit that
-random and even study-aware validation conceals. We recommend that genomic AMR evaluations report
+between public genome collections — a limit that random and even study-aware validation conceals.
+External validation bears this out in both directions: the targeted *mgrB* check replicated, while
+the same rule's overall sensitivity differed by 21 points between collections for reasons of
+composition alone. We recommend that genomic AMR evaluations report
 a mechanism-specified rule baseline, harmonise breakpoints explicitly, and use lineage-aware
 splits.
 
@@ -230,7 +238,27 @@ resistant and 10 susceptible genomes. Differences between predictors were assess
 bootstrap over held-out genomes (2,000 resamples), resampling once per iteration and recomputing
 both predictors on the same resampled set.
 
-### 2.10 Reproducibility
+### 2.10 External validation
+
+Leave-one-study-out within BV-BRC holds out a study but not an aggregator: every such study was
+curated the same way and was available to us when the rule was specified. To test the rule on
+genomes whose phenotypes we had no access to, we assembled a cohort from NCBI Pathogen Detection,
+joining submitted antimicrobial susceptibility results (`pdbrowser.ast`) to isolate records
+(`pdbrowser.isolates`) for the assembly accession, since neither table carries both the MIC and
+the accession. All *K. pneumoniae* colistin results with an assembly accession were retrieved
+(n = 355).
+
+Because BV-BRC ingests from NCBI, overlap was removed before anything else: isolates matching our
+cohort by BioSample accession, or by assembly accession ignoring the version suffix, were excluded.
+Labels were re-derived from the submitted MIC under the same pinned EUCAST table used internally,
+never taken from the submitted phenotype; isolates without a usable MIC were retained as a separate
+stratum carrying the submitter's own interpretation. Assemblies were downloaded from NCBI Datasets
+and verified against each archive's md5. AMRFinderPlus and Kleborate were run through the identical
+pipeline code as the internal cohort, and the rules were imported unchanged from the analysis
+module. Nothing was refitted, reselected or thresholded for this cohort, and the evaluation exposes
+no parameter that could be.
+
+### 2.11 Reproducibility
 
 All analyses are deterministic for a fixed seed (20261024). Code, pinned environments, manifests,
 decision records, reports and figures are at https://github.com/omarfaruqe/klebsiella-amr.
@@ -457,6 +485,43 @@ rule balanced accuracy from 0.906 to 0.959, above every model under every split.
 BioProject at MIC 1 mg/L, implausible for a 16S rRNA methyltransferase. That study's gentamicin
 labels are flagged and excluded, with evidence recorded.
 
+### 3.10 The rule transfers to an external collection, which is composed differently
+
+Of 355 NCBI colistin results, 84 (23.7%) were already in our cohort and were excluded, leaving 271
+held out. Kleborate's species check rejected six that NCBI's taxgroup labels *K. pneumoniae*: all
+six are *Klebsiella aerogenes*, four of them complete single-contig genomes, so this is
+misassignment rather than poor assembly. AMRFinderPlus processed all six without complaint. A
+cohort built from NCBI taxgroups without an independent species check therefore inherits a 2.2%
+contamination rate from a source that does not flag it.
+
+Of the 270 held-out isolates with a usable label, six were excluded as *K. aerogenes* and one
+intermediate isolate cannot inform sensitivity, leaving 263 (81 resistant, 182 susceptible). The
+frozen rule reached 77.8% sensitivity (95% CI 67.6–85.5) at 99.5% specificity, against 56.7%
+(51.6–61.7) internally; restricting to the 251 isolates with MIC-derived labels gave 78.3%
+(67.2–86.4). The rule therefore transfers, and the external estimate is higher than the internal
+one with non-overlapping intervals.
+
+The reason is composition, not rule quality. The *mgrB* component performed almost identically in
+the two collections (45.7% versus 41.7% alone), while AMRFinderPlus alone rose from 28.3% to
+50.6%. Among the 81 resistant isolates, 26 were explained by an AMRFinderPlus determinant alone,
+22 by *mgrB* disruption alone, 15 by both, and 18 (22.2%) by neither. The determinants were
+predominantly chromosomal point mutations in AMRFinderPlus's catalogue rather than acquired genes:
+*pmrB* T157P in 10 isolates, *mgrB* nonsense and frameshift alleles in 12, *crrB* substitutions in
+4, and single substitutions in *pmrA* (two isolates), *pmrB* S85R, *phoQ* and *lapB*, with only
+9 isolates carrying any *mcr* gene.
+Correspondingly, the largest disrupted *mgrB* category here was premature stop (11 genomes), where
+internally it was the assembly-structural categories of §3.4. Point substitutions are what
+AMRFinderPlus detects and insertion-driven disruption is what it misses, so a collection weighted
+toward the former leaves the off-the-shelf tool less to miss and the targeted check less to add.
+The check still added 27.2 points over AMRFinderPlus alone, explaining 22 resistant isolates it
+missed, so the contribution of §3.3 replicates out of sample.
+
+Two secondary results follow. The missense tier added 1.2 points externally (77.8% to 79.0%, on
+three isolates) against 10.6 points in-sample, independently confirming the decision in §3.5 to
+discard it. And 22.2% of external resistant isolates remain unexplained by any determinant or
+*mgrB* disruption, close to the internal picture, so the unexplained fraction is a property of the
+mechanism catalogue rather than of one collection.
+
 ---
 
 ## 4. Discussion
@@ -529,6 +594,17 @@ which element is involved or confirm insertion in any individual genome; that re
 reference database or long-read assemblies of these isolates, neither of which we generated. The
 mechanistic label on those categories therefore remains an inference, albeit a well-supported one.
 
+The external cohort has limitations of its own. It is small (263 isolates, 81 resistant), so its
+sensitivity interval spans 18 points. Its isolates are those whose submitters chose to deposit
+colistin susceptibility results, which over-represents collections curated for characterised
+mechanisms; its higher sensitivity should therefore be read as an estimate on a mechanism-weighted
+collection rather than a field estimate, and the internal and external figures bracket rather than
+supersede one another. Thirteen isolates retain the submitter's own breakpoint interpretation,
+though excluding them changed sensitivity by 0.5 points. For colistin specifically the CLSI and
+EUCAST breakpoints effectively coincide, so harmonisation altered one label among the 355
+records retrieved; it
+remains necessary for the other drugs but did little work here.
+
 ### 4.2 Recommendations
 
 1. **Report a mechanism-specified rule baseline per drug.** It is the only way to tell whether a
@@ -545,7 +621,10 @@ mechanistic label on those categories therefore remains an inference, albeit a w
 6. **Report a lineage-only baseline.** It costs nothing and distinguishes a model that has learned
    a mechanism from one that has learned who its neighbours are.
 7. **Report per-collection performance, not only pooled.** Pooled estimates concealed a two-fold
-   range in our data.
+   range in our data, and a 21-point difference between our cohort and an external one.
+8. **Verify species independently of the source's own labels.** Six of 270 isolates in NCBI's
+   *K. pneumoniae* taxgroup were *K. aerogenes*, including complete genomes; Kleborate's species
+   check caught them and AMRFinderPlus did not.
 
 ---
 
