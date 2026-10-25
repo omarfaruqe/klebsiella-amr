@@ -1,8 +1,10 @@
 # Why genomic prediction of colistin resistance does not transfer between *Klebsiella pneumoniae* collections
 
-Md Omar Faruqe
+Md Omar Faruqe and Md Humayun Kabir
 
-Montréal, Québec, Canada. Correspondence: faruqe.cse@gmail.com
+Department of Computer Science and Engineering, University of Rajshahi, Rajshahi 6205, Bangladesh
+
+Correspondence: Md Humayun Kabir (hkj_cse@ru.ac.bd)
 
 Code and data: https://github.com/omarfaruqe/klebsiella-amr
 
@@ -650,13 +652,29 @@ design. Predictive values across a range of prevalences are tabulated in
 Code, pinned environments, provenance manifests (queries, timestamps, SHA-256 checksums), decision
 records, reports and figures are at https://github.com/omarfaruqe/klebsiella-amr. Genome assemblies
 and AST records are from BV-BRC. Derived tables regenerate deterministically from the documented
-pipeline. A model card is at `docs/model-card.md`.
+pipeline. A model card is at `docs/model-card.md`. An archived snapshot of the code at
+submission is deposited at Zenodo (DOI to be inserted on deposit).
 
-## 6. Competing interests
+Internal genome assemblies and AST records are from BV-BRC. The external validation cohort (§2.10)
+derives from NCBI Pathogen Detection; the SQL that retrieved it is version-controlled with the code
+that consumes it, and the accession list, per-file checksums and harmonised labels are in the
+repository.
+
+## 6. Author contributions
+
+Following CRediT. **Md Omar Faruqe:** conceptualisation, methodology, software, formal analysis,
+data curation, investigation, validation, visualisation, writing — original draft. **Md Humayun
+Kabir:** conceptualisation, supervision, project administration, writing — review and editing.
+
+## 7. Funding
+
+This research received no external funding.
+
+## 8. Competing interests
 
 None declared.
 
-## 7. References
+## 9. References
 
 All references were verified against the publisher record during preparation (2026-10-24).
 
