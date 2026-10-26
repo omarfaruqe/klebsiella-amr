@@ -79,14 +79,17 @@ prediction, external validity, data leakage
 ## 1. Introduction
 
 For most drug–organism combinations in *Klebsiella pneumoniae*, resistance is conferred by
-acquired genes or well-characterised target mutations, and tools such as AMRFinderPlus and
-Kleborate detect them reliably. Colistin is the conspicuous exception, and the exception matters:
+acquired genes or well-characterised target mutations, and tools such as AMRFinderPlus [4]
+and Kleborate [3] detect them reliably. Colistin is the conspicuous exception, and the exception matters:
 colistin is a last-line agent against carbapenem-resistant *K. pneumoniae*, and resistance arises
 predominantly not from an acquired gene but from loss of function of *mgrB*, a 47-codon
 chromosomal gene encoding a negative regulator of the PhoPQ two-component system. Loss of MgrB
-de-represses PhoPQ, modifying lipid A and reducing colistin binding.
+de-represses PhoPQ, modifying lipid A and reducing colistin binding [12]. Plasmid-borne *mcr*
+genes provide an acquired route and are globally disseminated [13], but account for a minority of
+colistin-resistant *K. pneumoniae*: in the external cohort of §3.10, 9 of 81 resistant isolates
+carried one.
 
-The commonest route to *mgrB* loss is insertion-sequence (IS) transposition into the gene, which
+The commonest route to *mgrB* loss is insertion-sequence (IS) transposition into the gene [12], which
 creates a specific detection problem. An IS element inserted into a 144-base-pair coding sequence
 is typically longer than the repeat a short-read assembler can resolve, so the assembly breaks
 inside *mgrB*. A gene-presence screen finds no acquired colistin determinant; a point-mutation
@@ -145,7 +148,7 @@ Tigecycline has no EUCAST breakpoint for *K. pneumoniae*, so deposited calls wer
 ### 2.3 Assembly quality control and genotyping
 
 Assemblies were required to be *K. pneumoniae* by both species field and genome name, 5.0–6.5 Mb,
-≤500 contigs, N50 ≥20 kb, CheckM completeness ≥95% and contamination ≤5%. Of 6,817 labelled
+≤500 contigs, N50 ≥20 kb, CheckM [11] completeness ≥95% and contamination ≤5%. Of 6,817 labelled
 genomes 6,652 passed. Requiring agreement between species field and genome name removed four
 genomes with internally inconsistent BV-BRC records, one independently confirmed as *Citrobacter
 freundii*.
@@ -153,7 +156,7 @@ freundii*.
 Assemblies were downloaded from BV-BRC [5] by genome identifier — 63% of QC-passing genomes
 (4,190/6,652) have no NCBI assembly accession — and validated for format and length. AMRFinderPlus
 4.2.7 [4] (database 2026-08-07.1) was run in nucleotide mode with `--organism Klebsiella_pneumoniae
---plus`, and Kleborate 3.2.4 [3] with Kaptive 3.2.2 using the `kpsc` preset. All 6,652 genomes
+--plus`, and Kleborate 3.2.4 [3] with Kaptive 3.2.2 [10] using the `kpsc` preset. All 6,652 genomes
 completed both tools (8.8 h wall time, ~140 CPU-hours, zero failures). A cross-machine
 verification script reproduces identical calls on macOS arm64 and Ubuntu x86_64.
 
@@ -697,8 +700,8 @@ None declared.
 All references were verified against the publisher record during preparation (references 1–6 on 2026-10-24, references 7–9 on 2026-10-25).
 
 1. Yu Y, Wheeler NE, Barquist L. Biased sampling driven by bacterial population structure confounds
-   machine learning prediction of antimicrobial resistance. *PLOS Biology*. 2025; published
-   16 December 2025. doi:10.1371/journal.pbio.3003539
+   machine learning prediction of antimicrobial resistance. *PLOS Biology*.
+   2025;23(12):e3003539. doi:10.1371/journal.pbio.3003539
 2. The European Committee on Antimicrobial Susceptibility Testing. Breakpoint tables for
    interpretation of MICs and zone diameters. Version 16.1, valid from 2026-06-24.
    https://www.eucast.org
@@ -711,9 +714,10 @@ All references were verified against the publisher record during preparation (re
    response, and virulence. *Scientific Reports*. 2021;11(1). doi:10.1038/s41598-021-91456-0
 5. Olson RD, Assaf R, Brettin T, et al. Introducing the Bacterial and Viral Bioinformatics Resource
    Center (BV-BRC): a resource combining PATRIC, IRD and ViPR. *Nucleic Acids Research*.
-   2023;51(D1):D678–D689. PMID:36350631
+   2023;51(D1):D678–D689. doi:10.1093/nar/gkac1003
 6. Pedregosa F, Varoquaux G, Gramfort A, et al. Scikit-learn: machine learning in Python. *Journal
    of Machine Learning Research*. 2011;12:2825–2830.
+   https://jmlr.org/papers/v12/pedregosa11a.html
 7. Benjamini Y, Hochberg Y. Controlling the false discovery rate: a practical and powerful
    approach to multiple testing. *Journal of the Royal Statistical Society: Series B
    (Statistical Methodology)*. 1995;57(1):289–300. doi:10.1111/j.2517-6161.1995.tb02031.x
@@ -723,3 +727,18 @@ All references were verified against the publisher record during preparation (re
 9. Camacho C, Coulouris G, Avagyan V, Ma N, Papadopoulos J, Bealer K, Madden TL. BLAST+:
    architecture and applications. *BMC Bioinformatics*. 2009;10:421.
    doi:10.1186/1471-2105-10-421
+10. Lam MMC, Wick RR, Judd LM, Holt KE, Wyres KL. Kaptive 2.0: updated capsule and
+    lipopolysaccharide locus typing for the *Klebsiella pneumoniae* species complex. *Microbial
+    Genomics*. 2022;8:000800. doi:10.1099/mgen.0.000800
+11. Parks DH, Imelfort M, Skennerton CT, Hugenholtz P, Tyson GW. CheckM: assessing the quality of
+    microbial genomes recovered from isolates, single cells, and metagenomes. *Genome Research*.
+    2015;25(7):1043–1055. doi:10.1101/gr.186072.114
+12. Cannatelli A, Giani T, D'Andrea MM, Di Pilato V, Arena F, Conte V, Tryfinopoulou K,
+    Vatopoulos A, Rossolini GM. MgrB inactivation is a common mechanism of colistin resistance in
+    KPC-producing *Klebsiella pneumoniae* of clinical origin. *Antimicrobial Agents and
+    Chemotherapy*. 2014;58:5696–5703. doi:10.1128/AAC.03110-14
+13. Liu YY, Wang Y, Walsh TR, Yi LX, Zhang R, Spencer J, Doi Y, Tian G, Dong B, Huang X, Yu LF,
+    Gu D, Ren H, Chen X, Lv L, He D, Zhou H, Liang Z, Liu JH, Shen J. Emergence of
+    plasmid-mediated colistin resistance mechanism MCR-1 in animals and human beings in China: a
+    microbiological and molecular biological study. *The Lancet Infectious Diseases*.
+    2016;16(2):161–168. doi:10.1016/S1473-3099(15)00424-7
