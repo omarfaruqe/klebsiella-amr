@@ -674,7 +674,7 @@ Code, pinned environments, provenance manifests (queries, timestamps, SHA-256 ch
 records, reports and figures are at https://github.com/omarfaruqe/klebsiella-amr. Derived tables
 regenerate deterministically from the documented pipeline. A model card is at
 `docs/model-card.md`. An archived snapshot of the code as submitted is deposited at Zenodo
-(version DOI 10.5281/zenodo.23634240; all versions: 10.5281/zenodo.23634239).
+(version DOI 10.5281/zenodo.23668062; all versions: 10.5281/zenodo.23634239).
 
 Internal genome assemblies and AST records are from BV-BRC. The external validation cohort (§2.10)
 derives from NCBI Pathogen Detection; the SQL that retrieved it is version-controlled with the code
