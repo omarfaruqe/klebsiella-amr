@@ -78,15 +78,17 @@ prediction, external validity, data leakage
 
 ## 1. Introduction
 
-For most drug–organism combinations in *Klebsiella pneumoniae*, resistance is conferred by
-acquired genes or well-characterised target mutations, and tools such as AMRFinderPlus [4]
-and Kleborate [3] detect them reliably. Colistin is the conspicuous exception, and the exception matters:
-colistin is a last-line agent against carbapenem-resistant *K. pneumoniae*, and resistance arises
-predominantly not from an acquired gene but from loss of function of *mgrB*, a 47-codon
-chromosomal gene encoding a negative regulator of the PhoPQ two-component system. Loss of MgrB
-de-represses PhoPQ, modifying lipid A and reducing colistin binding [12]. Plasmid-borne *mcr*
+*Klebsiella pneumoniae* is among the bacterial pathogens responsible for the greatest number of
+deaths attributable to antimicrobial resistance worldwide [14]. For most drug–organism
+combinations in this species, resistance is conferred by acquired genes or well-characterised
+target mutations, and tools such as AMRFinderPlus [4] and Kleborate [3] detect them reliably.
+Colistin is the conspicuous exception, and the exception matters: colistin is a last-line agent
+against carbapenem-resistant isolates [15], and resistance arises predominantly not from an
+acquired gene but from loss of function of *mgrB*, a 47-codon chromosomal gene encoding a negative
+regulator of the PhoPQ two-component system. Loss of MgrB de-represses PhoPQ, modifying lipid A
+and reducing colistin binding [12,15]. Plasmid-borne *mcr*
 genes provide an acquired route and are globally disseminated [13], but account for a minority of
-colistin-resistant *K. pneumoniae*: in the external cohort of §3.10, 9 of 81 resistant isolates
+colistin-resistant *K. pneumoniae*: in the external cohort of Section 3.10, 9 of 81 resistant isolates
 carried one.
 
 The commonest route to *mgrB* loss is insertion-sequence (IS) transposition into the gene [12], which
@@ -98,13 +100,22 @@ the one locus that matters.
 
 Two further issues complicate measuring how well genotype predicts phenotype on public data.
 Deposited labels mix interpretive standards, so identical MICs can be reported susceptible under
-one CLSI revision and resistant under EUCAST, introducing systematic noise easily mistaken for
-genotype error. And public collections are dominated by outbreak investigations and surveys of
+one CLSI revision and resistant under EUCAST; colistin is especially exposed, because its
+susceptibility testing is itself difficult and contested [15], and the resulting noise is easily
+mistaken for genotype error. And public collections are dominated by outbreak investigations and surveys of
 high-risk clones, so closely related isolates are abundant and random train/test splitting places
 near-identical genomes on both sides. Yu and colleagues recently demonstrated across more than
 24,000 genomes from five species that models trained this way substantially conflate lineage
 markers with resistance determinants, and recommended comparison against rule-based baselines as
 future work [1].
+
+Machine learning has been applied to this problem repeatedly, including MIC panel prediction for
+*K. pneumoniae* [16], and has recently been benchmarked at scale: across 78 species–antibiotic
+datasets, published predictors reached F1-macro ≥0.9 in 64% of randomly split experiments but only
+25% when folds were made homology-aware, while a rule-based reference method performed best on the
+most divergent genomes [17]. What that literature largely lacks is a mechanism-specified rule
+baseline for a drug whose determinant is known but routinely missed, which is what makes colistin
+the informative case.
 
 We take that recommendation as the design principle and ask a mechanism-level question: when a
 resistance determinant is detectable but routinely missed, does supplying it to a rule outperform
@@ -142,23 +153,22 @@ both a deposited and a re-interpreted call existed they agreed in 92.9–97.2% o
 Three policies were fixed in advance and recorded as decision records in the repository:
 intermediate and conflicting labels are excluded; colistin labels are restricted to broth
 microdilution, the only method EUCAST accepts for colistin MICs; and study-level label sets judged
-implausible on review are flagged and excluded with evidence recorded (one flag applied, §3.9).
+implausible on review are flagged and excluded with evidence recorded (one flag applied, Section 3.9).
 Tigecycline has no EUCAST breakpoint for *K. pneumoniae*, so deposited calls were used.
 
 ### 2.3 Assembly quality control and genotyping
 
 Assemblies were required to be *K. pneumoniae* by both species field and genome name, 5.0–6.5 Mb,
-≤500 contigs, N50 ≥20 kb, CheckM [11] completeness ≥95% and contamination ≤5%. Of 6,817 labelled
-genomes 6,652 passed. Requiring agreement between species field and genome name removed four
-genomes with internally inconsistent BV-BRC records, one independently confirmed as *Citrobacter
-freundii*.
+≤500 contigs, N50 ≥20 kb, CheckM [11] completeness ≥95% and contamination ≤5%. Agreement between
+the species field and the genome name was required, so that internally inconsistent BV-BRC records
+are excluded.
 
-Assemblies were downloaded from BV-BRC [5] by genome identifier — 63% of QC-passing genomes
-(4,190/6,652) have no NCBI assembly accession — and validated for format and length. AMRFinderPlus
-4.2.7 [4] (database 2026-08-07.1) was run in nucleotide mode with `--organism Klebsiella_pneumoniae
---plus`, and Kleborate 3.2.4 [3] with Kaptive 3.2.2 [10] using the `kpsc` preset. All 6,652 genomes
-completed both tools (8.8 h wall time, ~140 CPU-hours, zero failures). A cross-machine
-verification script reproduces identical calls on macOS arm64 and Ubuntu x86_64.
+Assemblies were downloaded from BV-BRC [5] by genome identifier rather than by NCBI assembly
+accession, because many QC-passing genomes carry no such accession, and were validated for format
+and length. AMRFinderPlus 4.2.7 [4] (database 2026-08-07.1) was run in nucleotide mode with
+`--organism Klebsiella_pneumoniae --plus`, and Kleborate 3.2.4 [3] with Kaptive 3.2.2 [10] using
+the `kpsc` preset. A cross-machine verification script reproduces identical calls on macOS arm64
+and Ubuntu x86_64.
 
 ### 2.4 Rule-based prediction
 
@@ -183,12 +193,12 @@ differences); **missense** (full-length with substitutions); **premature_stop**;
 fragments >300 bp apart); **split_contigs**; **contig_break** (alignment terminating at a contig
 edge); **partial**; or **absent**. All categories except intact and missense count as disrupted.
 The `split_contigs`, `contig_break` and `partial` categories are the assembly signature described
-in §1. The search takes 2 minutes for 6,652 assemblies on 16 threads.
+in Section 1.
 
 Residue differences are enumerated by direct comparison of aligned sequences, ignoring query
 position 1, because tblastn translates alternative start codons (GTG, TTG) as V or L rather than
-M. An initial implementation using percentage identity classified 6,048 genomes as missense at
-exactly 97.9% identity — a single artefactual mismatch at the start codon.
+M. Classifying variants by percentage identity instead produces a systematic artefact at the start
+codon, quantified in Section 3.3.
 
 ### 2.6 Testing the insertion-sequence interpretation
 
@@ -231,7 +241,7 @@ AMRFinderPlus functional subclasses, and two *mgrB* features. Features present i
 genomes were dropped.
 
 Three predictors were compared: the per-drug rule (for colistin including mechanism-specified
-*mgrB* disruption, but not the missense tier, for the reason given in §3.4); L2 logistic regression [6]
+*mgrB* disruption, but not the missense tier, for the reason given in Section 3.5); L2 logistic regression [6]
 (C = 1, class-balanced); and gradient boosting (HistGradientBoostingClassifier, 200 iterations, 15
 leaves, class-balanced). Hyperparameters were fixed rather than tuned, since the object of study is
 validation design rather than peak performance.
@@ -261,8 +271,8 @@ curated the same way and was available to us when the rule was specified. To tes
 genomes whose phenotypes we had no access to, we assembled a cohort from NCBI Pathogen Detection,
 joining submitted antimicrobial susceptibility results (`pdbrowser.ast`) to isolate records
 (`pdbrowser.isolates`) for the assembly accession, since neither table carries both the MIC and
-the accession. All *K. pneumoniae* colistin results with an assembly accession were retrieved
-(n = 355).
+the accession. All *K. pneumoniae* colistin results with an assembly accession were
+retrieved.
 
 Because BV-BRC ingests from NCBI, overlap was removed before anything else: isolates matching our
 cohort by BioSample accession, or by assembly accession ignoring the version suffix, were excluded.
@@ -285,6 +295,13 @@ decision records, reports and figures are at https://github.com/omarfaruqe/klebs
 
 ### 3.1 Cohort
 
+Of 6,817 labelled genomes, 6,652 passed quality control. Requiring agreement between the species
+field and the genome name removed four genomes with internally inconsistent BV-BRC records, one
+independently confirmed as *Citrobacter freundii*. Of the genomes that passed, 63% (4,190/6,652)
+carry no NCBI assembly accession, which is why assemblies were retrieved by BV-BRC identifier. All
+6,652 completed both genotyping tools (8.8 h wall time, ~140 CPU-hours, zero failures), and the
+targeted *mgrB* search took 2 minutes for 6,652 assemblies on 16 threads.
+
 The cohort comprised 6,652 QC-passing genomes with harmonised labels: meropenem 5,541 (1,854 R /
 3,687 S), ciprofloxacin 4,640 (3,441 / 1,199), gentamicin 4,760 (2,113 / 2,647), colistin 1,528
 broth-microdilution (367 / 1,161), tigecycline 948 (261 / 687). It is structurally non-random, as
@@ -292,6 +309,8 @@ expected: two BioProjects contribute 44% of genomes, the ten commonest sequence 
 52%, and collection year is missing for 34% (2,266/6,652).
 
 ### 3.2 Known mechanisms explain four drugs well and colistin poorly
+
+**Table 1.** Sensitivity and specificity of each gene screen per drug, on harmonised labels.
 
 | Drug | AMRFinderPlus sensitivity | specificity | Kleborate sensitivity | specificity |
 |---|---|---|---|---|
@@ -309,11 +328,12 @@ resistant genomes carried no AMRFinderPlus determinant at all.
 ### 3.3 A targeted *mgrB* check recovers part of the gap
 
 Across all 6,652 genomes *mgrB* was intact in 6,056, missense in 129, and disrupted in 467, the
-last dominated by the assembly signatures predicted in §1: split across contigs (162), partial
+last dominated by the assembly signatures predicted in Section 1: split across contigs (162), partial
 (153), premature stop (73), absent (34), frameshift or indel (27), contig break (13) and assembled
 internal insertion (5).
 
-Among the 1,528 genomes with broth-microdilution labels (24% resistant overall):
+**Table 2.** *mgrB* status against colistin phenotype among the 1,528 genomes with
+broth-microdilution labels (24% resistant overall).
 
 | *mgrB* status | Resistant | Susceptible |
 |---|---|---|
@@ -321,15 +341,13 @@ Among the 1,528 genomes with broth-microdilution labels (24% resistant overall):
 | Missense | 70 | 13 |
 | Intact | 144 | 1,107 |
 
-Adding mechanism-specified disruption to the rules (Figure 1):
+Classification required comparing aligned residues directly. An initial implementation using
+percentage identity called 6,048 genomes missense at exactly 97.9% identity, a single artefactual
+mismatch arising because tblastn translates alternative start codons as V or L rather than M;
+ignoring query position 1 removes it.
 
-| Rule | Sensitivity (95% CI) | Specificity (95% CI) |
-|---|---|---|
-| AMRFinderPlus | 28.3% (24.0–33.2) | 97.8% (96.7–98.5) |
-| **AMRFinderPlus + *mgrB* disrupted** | **56.7% (51.6–61.7)** | **95.2% (93.8–96.3)** |
-| Kleborate | 39.5% (34.6–44.6) | 96.3% (95.0–97.2) |
-| **Kleborate + *mgrB* disrupted** | **45.5% (40.5–50.6)** | **95.3% (94.0–96.4)** |
-| *mgrB* disrupted alone | 41.7% (36.8–46.8) | 96.5% (95.2–97.4) |
+Adding mechanism-specified disruption raises sensitivity for both gene screens while costing
+little specificity (Figure 1; exact values with intervals in Supplementary Table S1):
 
 ![Figure 1](../../reports/figures/colistin_mgrb_light.png)
 
@@ -345,6 +363,8 @@ comparator for the state of the art, and the honest gain is therefore six points
 **The association is not an assembly artefact.** Median contig counts were similar between calls
 (disrupted 116, intact 104, missense 108), and stratifying on assembly quality left the association
 intact:
+
+**Table 3.** Colistin resistance by *mgrB* status within quartiles of assembly fragmentation.
 
 | Contig quartile | *mgrB* intact, % resistant | *mgrB* disrupted, % resistant |
 |---|---|---|
@@ -394,22 +414,12 @@ and would have survived cross-validation that did not group by study.
 ### 3.6 Mechanism composition differs between collections
 
 The disruption tier is fitted to nothing, so its leave-one-study-out performance measures transfer
-rather than overfitting. It varied substantially:
+rather than overfitting. It varied substantially (Figure 2; per-study values in Supplementary
+Table S2):
 
-| Held-out study | Resistant | Sensitivity, disruption only |
-|---|---|---|
-| PRJEB10018 | 162 | 39.5% |
-| PRJNA504600 | 27 | 48.1% |
-| PRJEB22890 | 63 | 50.8% |
-| PRJNA288601 | 20 | 55.0% |
-| PRJNA292904 | 7 | 57.1% |
-| PRJNA307517 | 19 | 63.2% |
-| PRJEB10561 | 17 | 70.6% |
-| **Pooled** | **315** | **47.0% (41.5–52.5)** |
+![Figure 2](../../reports/figures/colistin_transfer_light.png)
 
-![Figure 3](../../reports/figures/colistin_transfer_light.png)
-
-**Figure 3.** Sensitivity of the *mgrB* disruption rule in each held-out study. The rule is
+**Figure 2.** Sensitivity of the *mgrB* disruption rule in each held-out study. The rule is
 mechanism-specified and fitted to nothing, so the spread reflects differing mechanistic
 composition between collections rather than overfitting.
 
@@ -421,17 +431,12 @@ selection history. Any fixed rule, and any model trained on one collection, inhe
 
 ### 3.7 The ordering of rules and models inverts with validation stringency
 
-| Split | Rule + *mgrB* | Logistic regression | Gradient boosting |
-|---|---|---|---|
-| Random | 0.759 | **0.844** | **0.842** |
-| Study-aware | 0.759 | **0.822** | **0.810** |
-| Lineage-aware | **0.759** | 0.731 | 0.709 |
+Balanced accuracy on held-out genomes reverses the ordering of rule and models as grouping
+tightens (Figure 3; values in Supplementary Table S3):
 
-(balanced accuracy on held-out genomes; Figure 2)
+![Figure 3](../../reports/figures/benchmark_splits_light.png)
 
-![Figure 2](../../reports/figures/benchmark_splits_light.png)
-
-**Figure 2.** Balanced accuracy of the per-drug rule, logistic regression and gradient boosting
+**Figure 3.** Balanced accuracy of the per-drug rule, logistic regression and gradient boosting
 under random, study-aware and lineage-aware splits. Rules are deterministic and therefore flat
 across splits by construction; the comparison of interest is whether model lines converge on, or
 fall below, the rule line as grouping tightens.
@@ -532,14 +537,14 @@ predominantly chromosomal point mutations in AMRFinderPlus's catalogue rather th
 4, and single substitutions in *pmrA* (two isolates), *pmrB* S85R, *phoQ* and *lapB*, with only
 9 isolates carrying any *mcr* gene.
 Correspondingly, the largest disrupted *mgrB* category here was premature stop (11 genomes), where
-internally it was the assembly-structural categories of §3.4. Point substitutions are what
+internally it was the assembly-structural categories of Section 3.4. Point substitutions are what
 AMRFinderPlus detects and insertion-driven disruption is what it misses, so a collection weighted
 toward the former leaves the off-the-shelf tool less to miss and the targeted check less to add.
 The check still added 27.2 points over AMRFinderPlus alone, explaining 22 resistant isolates it
-missed, so the contribution of §3.3 replicates out of sample.
+missed, so the contribution of Section 3.3 replicates out of sample.
 
 Two secondary results follow. The missense tier added 1.2 points externally (77.8% to 79.0%, on
-three isolates) against 10.6 points in-sample, independently confirming the decision in §3.5 to
+three isolates) against 10.6 points in-sample, independently confirming the decision in Section 3.5 to
 discard it. And 22.2% of external resistant isolates remain unexplained by any determinant or
 *mgrB* disruption, close to the internal picture, so the unexplained fraction is a property of the
 mechanism catalogue rather than of one collection.
@@ -558,7 +563,7 @@ Kleborate, which already detects truncation, and we think the six-point figure i
 should be quoted. The mechanism is instructive even where the increment is modest: the categories
 carrying most signal are not sequence features but assembly artefacts, contig boundaries that are
 diagnostic because an IS element has landed in a very short gene. Three independent lines of
-evidence support that reading (§3.4) — the breaks sit a median of 79 bp from *mgrB* against 80 kb
+evidence support that reading (Section 3.4) — the breaks sit a median of 79 bp from *mgrB* against 80 kb
 in intact genomes, the adjacent sequence is multi-copy within its own assembly beyond what
 length-matched contig ends show, and 98% of these sequences recur in unrelated isolates. Screens that ask
 "which genes are present?" cannot see this; a screen that asks "is this locus whole?" can. That
@@ -572,13 +577,13 @@ this failure mode is common in curated resistance-determinant catalogues assembl
 observational association, and it is invisible to any validation scheme that does not group by
 study.
 
-The heterogeneity result (§3.6) is in our view the most important, and the least avoidable. With
+The heterogeneity result (Section 3.6) is in our view the most important, and the least avoidable. With
 nothing fitted, the same mechanism-specified rule achieved 39.5% sensitivity in one collection and
 70.6% in another. Colistin resistance is simply constituted differently in different isolate sets.
 This bounds what any method can achieve: a model trained where *mgrB* explains 70% of resistance
 will underperform where it explains 40%, however well regularised. It also bears on the crossover
-in §3.7. We initially read that crossover as the models memorising lineage, but the sequence-type
-baseline in §3.8 shows otherwise: for colistin, type alone predicts barely better than chance.
+in Section 3.7. We initially read that crossover as the models memorising lineage, but the sequence-type
+baseline in Section 3.8 shows otherwise: for colistin, type alone predicts barely better than chance.
 What the models lose when types are held out is therefore a finer-grained resemblance between
 related isolates, not type identity — a resource that likewise disappears on genuinely novel
 lineages, but one that a reader should not mistake for simple label memorisation.
@@ -590,8 +595,9 @@ threshold, and the first is better described as parity than as an advantage. For
 models win under every split. The defensible
 claim is not that rules beat models, but that the models' advantage under conventional validation
 is attributable to information that will not be present in deployment. Yu and colleagues
-demonstrated this across species using clade-based splits [1]; the contribution here is to show it
-at the level of a single identifiable mechanism, where one can point to exactly what the rule uses
+demonstrated this across species using clade-based splits [1], and Hu and colleagues reported the
+same pattern across 78 species–antibiotic datasets under homology-aware folds [17]; the
+contribution here is to show it at the level of a single identifiable mechanism, where one can point to exactly what the rule uses
 and what the model substitutes for it.
 
 The label findings carry comparable methodological weight. Roughly a third of our usable labels did
@@ -612,7 +618,7 @@ calls from assemblies: copy number, expression, plasmid context and promoter-reg
 not represented, and the 144 colistin-resistant isolates with intact *mgrB* coding sequence likely
 include promoter insertions we cannot see. Hyperparameters were fixed rather than tuned, so the
 models are reasonable defaults rather than optimised systems. Finally, while the positional, repeat-content and
-cross-genome evidence in §3.4 collectively supports the IS interpretation, we did not identify
+cross-genome evidence in Section 3.4 collectively supports the IS interpretation, we did not identify
 which element is involved or confirm insertion in any individual genome; that requires an IS
 reference database or long-read assemblies of these isolates, neither of which we generated. The
 mechanistic label on those categories therefore remains an inference, albeit a well-supported one.
@@ -676,7 +682,7 @@ regenerate deterministically from the documented pipeline. A model card is at
 `docs/model-card.md`. An archived snapshot of the code as submitted is deposited at Zenodo
 (version DOI 10.5281/zenodo.23668062; all versions: 10.5281/zenodo.23634239).
 
-Internal genome assemblies and AST records are from BV-BRC. The external validation cohort (§2.10)
+Internal genome assemblies and AST records are from BV-BRC. The external validation cohort (Section 2.10)
 derives from NCBI Pathogen Detection; the SQL that retrieved it is version-controlled with the code
 that consumes it, and the accession list, per-file checksums and harmonised labels are in the
 repository.
@@ -742,3 +748,54 @@ All references were verified against the publisher record during preparation (re
     plasmid-mediated colistin resistance mechanism MCR-1 in animals and human beings in China: a
     microbiological and molecular biological study. *The Lancet Infectious Diseases*.
     2016;16(2):161–168. doi:10.1016/S1473-3099(15)00424-7
+14. Antimicrobial Resistance Collaborators. Global burden of bacterial antimicrobial resistance in
+    2019: a systematic analysis. *The Lancet*. 2022;399(10325):629–655.
+    doi:10.1016/S0140-6736(21)02724-0
+15. Poirel L, Jayol A, Nordmann P. Polymyxins: antibacterial activity, susceptibility testing, and
+    resistance mechanisms encoded by plasmids or chromosomes. *Clinical Microbiology Reviews*.
+    2017;30(2):557–596. doi:10.1128/CMR.00064-16
+16. Nguyen M, Brettin T, Long SW, Musser JM, Olsen RJ, Olson R, Shukla M, Stevens RL, Xia F,
+    Yoo H, Davis JJ. Developing an in silico minimum inhibitory concentration panel test for
+    *Klebsiella pneumoniae*. *Scientific Reports*. 2018;8:421. doi:10.1038/s41598-017-18972-w
+17. Hu K, Meyer F, Deng Z-L, Asgari E, Kuo T-H, Münch PC, McHardy AC. Assessing computational
+    predictions of antimicrobial resistance phenotypes from microbial genomes. *Briefings in
+    Bioinformatics*. 2024;25(3):bbae206. doi:10.1093/bib/bbae206
+
+---
+
+## 10. Supplementary tables
+
+**Supplementary Table S1.** Colistin sensitivity and specificity for each rule, with and without
+the targeted *mgrB* disruption check, on broth-microdilution labels (n = 1,528; 367 resistant).
+Plotted in Figure 1.
+
+| Rule | Sensitivity (95% CI) | Specificity (95% CI) |
+|---|---|---|
+| AMRFinderPlus | 28.3% (24.0–33.2) | 97.8% (96.7–98.5) |
+| **AMRFinderPlus + *mgrB* disrupted** | **56.7% (51.6–61.7)** | **95.2% (93.8–96.3)** |
+| Kleborate | 39.5% (34.6–44.6) | 96.3% (95.0–97.2) |
+| **Kleborate + *mgrB* disrupted** | **45.5% (40.5–50.6)** | **95.3% (94.0–96.4)** |
+| *mgrB* disrupted alone | 41.7% (36.8–46.8) | 96.5% (95.2–97.4) |
+
+**Supplementary Table S2.** Sensitivity of the *mgrB* disruption rule in each held-out study
+(leave-one-study-out). Plotted in Figure 2.
+
+| Held-out study | Resistant | Sensitivity, disruption only |
+|---|---|---|
+| PRJEB10018 | 162 | 39.5% |
+| PRJNA504600 | 27 | 48.1% |
+| PRJEB22890 | 63 | 50.8% |
+| PRJNA288601 | 20 | 55.0% |
+| PRJNA292904 | 7 | 57.1% |
+| PRJNA307517 | 19 | 63.2% |
+| PRJEB10561 | 17 | 70.6% |
+| **Pooled** | **315** | **47.0% (41.5–52.5)** |
+
+**Supplementary Table S3.** Balanced accuracy of the per-drug rule, logistic regression and
+gradient boosting under each split scheme. Plotted in Figure 3.
+
+| Split | Rule + *mgrB* | Logistic regression | Gradient boosting |
+|---|---|---|---|
+| Random | 0.759 | **0.844** | **0.842** |
+| Study-aware | 0.759 | **0.822** | **0.810** |
+| Lineage-aware | **0.759** | 0.731 | 0.709 |
