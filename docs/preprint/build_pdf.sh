@@ -9,7 +9,7 @@
 #   - image alt text is stripped, because pandoc turns it into a second caption above the
 #     manuscript's own "**Figure N.**" caption. Alt text is kept in the Markdown for GitHub.
 #
-# Usage: docs/preprint/build_pdf.sh [output.pdf]
+# Usage: docs/preprint/build_pdf.sh [manuscript.pdf] [supplementary.pdf]
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 
@@ -56,3 +56,21 @@ pandoc "$TMP/body.md" \
   -o "$OUT"
 
 echo "wrote $OUT ($(du -h "$OUT" | cut -f1))"
+
+# Supplementary material builds as its own PDF, so it can be uploaded separately.
+SUPP_SRC="docs/preprint/supplementary.md"
+SUPP_OUT="${2:-docs/preprint/supplementary.pdf}"
+if [ -f "$SUPP_SRC" ]; then
+  pandoc "$SUPP_SRC" \
+    --from=markdown+pipe_tables \
+    --pdf-engine=xelatex \
+    --resource-path=.:docs/preprint \
+    -V geometry:"a4paper,margin=2.4cm" \
+    -V mainfont="DejaVu Serif" \
+    -V sansfont="DejaVu Sans" \
+    -V monofont="DejaVu Sans Mono" \
+    -V fontsize=10pt \
+    -V colorlinks=true -V linkcolor=blue -V urlcolor=blue \
+    -o "$SUPP_OUT"
+  echo "wrote $SUPP_OUT ($(du -h "$SUPP_OUT" | cut -f1))"
+fi
