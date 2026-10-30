@@ -10,6 +10,22 @@ Code and data: https://github.com/omarfaruqe/klebsiella-amr
 
 ---
 
+## Impact Statement
+
+Genomic prediction of antimicrobial resistance is routinely evaluated by splitting genomes at
+random, a design that places near-identical isolates on both sides of the split. This study shows,
+for one well-defined mechanism, what that design conceals. A targeted check for disruption of
+*mgrB* — the commonest route to colistin resistance in *Klebsiella pneumoniae*, and one that
+short-read assemblies systematically hide — recovers substantial sensitivity that gene screens
+miss, yet the same unfitted rule varies from 39.5% to 70.6% sensitivity between public
+collections. Machine-learning models outperform the rule under random splitting and fall below it
+when lineages are held out. For anyone building or evaluating genomic resistance predictors, three
+consequences follow: reported performance depends on validation design as much as on method;
+study-aware and lineage-aware splits do not substitute for one another; and external validation on
+a de-overlapped collection is achievable from public data.
+
+---
+
 ## Abstract
 
 **Background.** Genomic prediction of antimicrobial susceptibility is accurate for drugs whose
@@ -39,6 +55,27 @@ validation design. More fundamentally, the mechanistic composition of colistin r
 substantially between public collections, so neither rules nor models transfer reliably — a limit
 random and study-aware validation conceal. Genomic AMR evaluations should report a
 mechanism-specified rule baseline, harmonise breakpoints, and use lineage-aware splits.
+
+## Data Summary
+
+All data supporting this study are publicly available, and no new sequence data were generated.
+
+Genome assemblies and antimicrobial susceptibility records for the internal cohort were obtained
+from BV-BRC (https://www.bv-brc.org). The external validation cohort derives from NCBI Pathogen
+Detection (https://www.ncbi.nlm.nih.gov/pathogens), retrieved by joining the `pdbrowser.ast` and
+`pdbrowser.isolates` tables; the query used is version-controlled alongside the code that consumes
+it. Assemblies for that cohort were downloaded from NCBI Datasets by assembly accession, and the
+complete accession list with per-file SHA-256 checksums is provided in the repository. Phenotype
+interpretation follows the EUCAST Clinical Breakpoint Tables v16.1 (https://www.eucast.org).
+
+Analysis code, pinned software environments, provenance manifests recording queries, retrieval
+timestamps and checksums, architecture decision records, derived tables and figure sources are
+available at https://github.com/omarfaruqe/klebsiella-amr and archived at Zenodo
+(DOI 10.5281/zenodo.23668062 for the version reported here; 10.5281/zenodo.23634239 resolves to
+all versions). A model card is at `docs/model-card.md`. Every reported figure and table regenerates
+deterministically from the documented pipeline for a fixed seed.
+
+---
 
 **Keywords:** antimicrobial resistance, *Klebsiella pneumoniae*, colistin, *mgrB*, genomic
 prediction, external validity, data leakage
@@ -643,34 +680,21 @@ design. Predictive values across a range of prevalences are tabulated in
 
 ---
 
-## 5. Data and code availability
-
-Code, pinned environments, provenance manifests (queries, timestamps, SHA-256 checksums), decision
-records, reports and figures are at https://github.com/omarfaruqe/klebsiella-amr. Derived tables
-regenerate deterministically from the documented pipeline. A model card is at
-`docs/model-card.md`. An archived snapshot of the code as submitted is deposited at Zenodo
-(version DOI 10.5281/zenodo.23668062; all versions: 10.5281/zenodo.23634239).
-
-Internal genome assemblies and AST records are from BV-BRC. The external validation cohort (Section 2.10)
-derives from NCBI Pathogen Detection; the SQL that retrieved it is version-controlled with the code
-that consumes it, and the accession list, per-file checksums and harmonised labels are in the
-repository.
-
-## 6. Author contributions
+## 5. Author contributions
 
 Following CRediT. **Md Omar Faruqe:** conceptualisation, methodology, software, formal analysis,
 data curation, investigation, validation, visualisation, writing — original draft. **Md Humayun
 Kabir:** conceptualisation, supervision, project administration, writing — review and editing.
 
-## 7. Funding
+## 6. Funding
 
 This research received no external funding.
 
-## 8. Competing interests
+## 7. Competing interests
 
 None declared.
 
-## 9. References
+## 8. References
 
 All references were verified against the publisher record during preparation (references 1–6 on 2026-10-24, references 7–9 on 2026-10-25).
 

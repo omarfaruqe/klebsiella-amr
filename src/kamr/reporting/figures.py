@@ -142,7 +142,7 @@ def benchmark_figure(results: pd.DataFrame, theme: str, out: Path) -> None:
         ha="left",
     )
     fig.subplots_adjust(left=0.06, right=0.93, top=0.84, bottom=0.12, wspace=0.12)
-    fig.savefig(out, dpi=200, facecolor=t["surface"], bbox_inches="tight")
+    fig.savefig(out, dpi=400, facecolor=t["surface"], bbox_inches="tight")
     plt.close(fig)
 
 
@@ -217,7 +217,7 @@ def colistin_figure(table: pd.DataFrame, theme: str, out: Path) -> None:
         ha="left",
     )
     fig.subplots_adjust(wspace=0.08)
-    fig.savefig(out, dpi=200, facecolor=t["surface"], bbox_inches="tight")
+    fig.savefig(out, dpi=400, facecolor=t["surface"], bbox_inches="tight")
     plt.close(fig)
 
 
@@ -285,7 +285,7 @@ def transfer_figure(studies: pd.DataFrame, pooled: float, theme: str, out: Path)
         fontsize=8.5,
         ha="left",
     )
-    fig.savefig(out, dpi=200, facecolor=t["surface"], bbox_inches="tight")
+    fig.savefig(out, dpi=400, facecolor=t["surface"], bbox_inches="tight")
     plt.close(fig)
 
 
