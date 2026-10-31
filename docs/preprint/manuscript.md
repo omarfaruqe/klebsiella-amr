@@ -4,6 +4,8 @@ Md Omar Faruqe and Md Humayun Kabir
 
 Department of Computer Science and Engineering, University of Rajshahi, Rajshahi 6205, Bangladesh
 
+ORCID: Md Omar Faruqe, 0000-0002-1226-7226; Md Humayun Kabir, 0000-0002-2640-2361
+
 Correspondence: Md Humayun Kabir (hkj_cse@ru.ac.bd)
 
 **Keywords:** antimicrobial resistance, *Klebsiella pneumoniae*, colistin, *mgrB*, genomic
@@ -17,11 +19,11 @@ resistance is conferred by acquired genes, but poor for colistin, where resistan
 machine learning closes that gap has not been examined at the level of an individual mechanism.
 
 We assembled 6,652 public *K. pneumoniae* genomes with laboratory susceptibility
-results, re-interpreted every minimum inhibitory concentration under one standard (EUCAST v16.1),
+results, re-interpreted every minimum inhibitory concentration under one standard (European Committee on Antimicrobial Susceptibility Testing v16.1),
 and added a targeted *mgrB* check addressing the assembly-break failure mode gene screens miss.
 Rules were benchmarked against logistic regression and gradient boosting under random,
 study-aware, lineage-aware and temporal splits, then applied, frozen, to an independent cohort
-from NCBI Pathogen Detection.
+from the National Center for Biotechnology Information (NCBI) Pathogen Detection database.
 
 Mechanism-specified *mgrB* disruption raised colistin sensitivity from 28.3% to 56.7%
 for AMRFinderPlus and from 39.5% to 45.5% for Kleborate, which already calls MgrB truncations; the
@@ -30,13 +32,13 @@ sensitivity across held-out collections. Models exceeded the rule under random s
 accuracy 0.844 versus 0.759) but fell below it when sequence types were held out (0.709–0.731), a
 reversal surviving correction across 54 comparisons. A sequence-type-only predictor reached just
 0.554, so the advantage was not simple lineage memorisation. On 263 external isolates the frozen
-rule reached 77.8% sensitivity (95% CI 67.6–85.5) at 99.5% specificity, its *mgrB* component
+rule reached 77.8% sensitivity (95% confidence interval 67.6–85.5) at 99.5% specificity, its *mgrB* component
 performing as it had internally.
 
 The apparent superiority of machine learning for colistin is an artefact of
 validation design. More fundamentally, the mechanistic composition of colistin resistance differs
 substantially between public collections, so neither rules nor models transfer reliably — a limit
-random and study-aware validation conceal. Genomic AMR evaluations should report a
+random and study-aware validation conceal. Genomic antimicrobial resistance evaluations should report a
 mechanism-specified rule baseline, harmonise breakpoints, and use lineage-aware splits.
 
 ## Data Summary

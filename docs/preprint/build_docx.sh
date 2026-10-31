@@ -1,35 +1,37 @@
 #!/usr/bin/env bash
-# Build a Word manuscript for journals that require .docx (Microbial Genomics does).
+# Build Word manuscripts for journals that require .docx (Microbial Genomics does).
 #
-# Pandoc cannot add line numbers to a .docx, and Microbial Genomics requires them, so enable
-# them once in Word after opening: Layout > Line Numbers > Continuous.
+# reference.docx sets the typeface. Microbial Genomics asks for "a standard typeface such as
+# Times New Roman or Arial"; pandoc's default is Calibri, so reference.docx carries a theme
+# with Times New Roman for both major and minor fonts.
 #
-# Figure images are embedded. Separate high-resolution figure files are required at revision and
-# live in reports/figures/.
+# Pandoc cannot add line numbers to a .docx, and Microbial Genomics requires them for review,
+# so enable them once in Word after opening: Layout > Line Numbers > Continuous.
 #
-# Usage: docs/preprint/build_docx.sh [output.docx] [supplementary.docx]
+# Usage: docs/preprint/build_docx.sh [manuscript.docx] [supplementary.docx]
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 
-OUT="${1:-docs/preprint/manuscript.docx}"
 command -v pandoc >/dev/null || { echo "ERROR: pandoc not found" >&2; exit 1; }
 
-pandoc docs/preprint/manuscript.md \
-  --from=markdown+pipe_tables+autolink_bare_uris \
-  --resource-path=.:docs/preprint \
-  --reference-doc=docs/preprint/reference.docx 2>/dev/null \
-  -o "$OUT" \
-  || pandoc docs/preprint/manuscript.md \
-       --from=markdown+pipe_tables+autolink_bare_uris \
-       --resource-path=.:docs/preprint \
-       -o "$OUT"
-echo "wrote $OUT ($(du -h "$OUT" | cut -f1))"
+REF="docs/preprint/reference.docx"
+REF_ARG=()
+if [ -f "$REF" ]; then
+  REF_ARG=(--reference-doc="$REF")
+else
+  echo "note: $REF absent; Word output will use pandoc's default typeface" >&2
+fi
 
-SUPP_OUT="${2:-docs/preprint/supplementary.docx}"
-if [ -f docs/preprint/supplementary.md ]; then
-  pandoc docs/preprint/supplementary.md \
+build () {
+  local src="$1" out="$2"
+  pandoc "$src" \
     --from=markdown+pipe_tables+autolink_bare_uris \
     --resource-path=.:docs/preprint \
-    -o "$SUPP_OUT"
-  echo "wrote $SUPP_OUT ($(du -h "$SUPP_OUT" | cut -f1))"
-fi
+    "${REF_ARG[@]}" \
+    -o "$out"
+  echo "wrote $out ($(du -h "$out" | cut -f1))"
+}
+
+build docs/preprint/manuscript.md "${1:-docs/preprint/manuscript.docx}"
+[ -f docs/preprint/supplementary.md ] && \
+  build docs/preprint/supplementary.md "${2:-docs/preprint/supplementary.docx}"

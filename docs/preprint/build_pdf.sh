@@ -27,12 +27,16 @@ import sys
 src = open("docs/preprint/manuscript.md").read()
 lines = src.split("\n")
 # drop the leading H1 and the byline line that follows it; metadata.yaml carries both
+# Drop the H1 title and the byline that follows it; metadata.yaml supplies both. The byline is
+# whatever the first non-empty line after the title is, so this survives author-list changes.
 out, dropped_title, dropped_author = [], False, False
 for line in lines:
     if not dropped_title and line.startswith("# "):
         dropped_title = True
         continue
-    if dropped_title and not dropped_author and line.strip() == "Md Omar Faruqe":
+    if dropped_title and not dropped_author:
+        if not line.strip():
+            continue
         dropped_author = True
         continue
     out.append(line)
