@@ -48,9 +48,9 @@ We would be grateful for your consideration.
 
 Yours sincerely,
 
-Md Humayun Kabir (corresponding author)
-Professor, Department of Computer Science and Engineering
-University of Rajshahi, Rajshahi 6205, Bangladesh
+Md Humayun Kabir (corresponding author) \
+Professor, Department of Computer Science and Engineering \
+University of Rajshahi, Rajshahi 6205, Bangladesh \
 hkj_cse@ru.ac.bd
 
 on behalf of Md Omar Faruqe and Md Humayun Kabir
