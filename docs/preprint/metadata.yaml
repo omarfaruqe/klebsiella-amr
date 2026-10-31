@@ -2,7 +2,9 @@ title: "Why genomic prediction of colistin resistance does not transfer between 
 author:
   - Md Omar Faruqe
   - Md Humayun Kabir
-date: "25 October 2026"
 abstract: false
 papersize: a4
 linestretch: 1.08
+header-includes:
+  - \usepackage{xurl}
+  - \emergencystretch=3em

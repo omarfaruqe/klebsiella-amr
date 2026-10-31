@@ -43,7 +43,7 @@ open(sys.argv[1], "w").write(body)
 PY
 
 pandoc "$TMP/body.md" \
-  --from=markdown+pipe_tables \
+  --from=markdown+pipe_tables+autolink_bare_uris \
   --pdf-engine=xelatex \
   --resource-path=.:docs/preprint \
   --metadata-file=docs/preprint/metadata.yaml \
@@ -62,7 +62,7 @@ SUPP_SRC="docs/preprint/supplementary.md"
 SUPP_OUT="${2:-docs/preprint/supplementary.pdf}"
 if [ -f "$SUPP_SRC" ]; then
   pandoc "$SUPP_SRC" \
-    --from=markdown+pipe_tables \
+    --from=markdown+pipe_tables+autolink_bare_uris \
     --pdf-engine=xelatex \
     --resource-path=.:docs/preprint \
     -V geometry:"a4paper,margin=2.4cm" \

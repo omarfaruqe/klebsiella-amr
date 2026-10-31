@@ -4,8 +4,6 @@
 
 Md Omar Faruqe and Md Humayun Kabir
 
----
-
 ## Supplementary tables
 
 **Supplementary Table S1.** Colistin sensitivity and specificity for each rule, with and without

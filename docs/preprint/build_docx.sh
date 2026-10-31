@@ -15,12 +15,12 @@ OUT="${1:-docs/preprint/manuscript.docx}"
 command -v pandoc >/dev/null || { echo "ERROR: pandoc not found" >&2; exit 1; }
 
 pandoc docs/preprint/manuscript.md \
-  --from=markdown+pipe_tables \
+  --from=markdown+pipe_tables+autolink_bare_uris \
   --resource-path=.:docs/preprint \
   --reference-doc=docs/preprint/reference.docx 2>/dev/null \
   -o "$OUT" \
   || pandoc docs/preprint/manuscript.md \
-       --from=markdown+pipe_tables \
+       --from=markdown+pipe_tables+autolink_bare_uris \
        --resource-path=.:docs/preprint \
        -o "$OUT"
 echo "wrote $OUT ($(du -h "$OUT" | cut -f1))"
@@ -28,7 +28,7 @@ echo "wrote $OUT ($(du -h "$OUT" | cut -f1))"
 SUPP_OUT="${2:-docs/preprint/supplementary.docx}"
 if [ -f docs/preprint/supplementary.md ]; then
   pandoc docs/preprint/supplementary.md \
-    --from=markdown+pipe_tables \
+    --from=markdown+pipe_tables+autolink_bare_uris \
     --resource-path=.:docs/preprint \
     -o "$SUPP_OUT"
   echo "wrote $SUPP_OUT ($(du -h "$SUPP_OUT" | cut -f1))"
