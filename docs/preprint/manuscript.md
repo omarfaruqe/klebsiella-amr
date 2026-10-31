@@ -57,7 +57,7 @@ Analysis code, pinned software environments, provenance manifests recording quer
 timestamps and checksums, architecture decision records, derived tables and figure sources are
 available at https://github.com/omarfaruqe/klebsiella-amr and archived at Zenodo
 (DOI 10.5281/zenodo.23668062 for the version reported here; 10.5281/zenodo.23634239 resolves to
-all versions). A model card is at `docs/model-card.md`. Every reported figure and table regenerates
+all versions), and include a model card. Every reported figure and table regenerates
 deterministically from the documented pipeline for a fixed seed.
 
 ## Impact Statement
@@ -127,8 +127,8 @@ failure mode, and evaluate rules and models under progressively stricter validat
 
 All *K. pneumoniae* (taxon 573) AMR phenotype records were downloaded from the BV-BRC `genome_amr`
 endpoint (snapshot 2026-10-22; 1,840,793 records, 39,598 genomes). Retrieval re-run the following
-day reproduced byte-identical output (SHA-256 d0e561a6…1505126). Every data pull writes a manifest
-recording query, timestamp, record count and checksum.
+day reproduced byte-identical output. Every data pull writes a manifest recording the query,
+timestamp, record count and checksum.
 
 Only records with `evidence = "Laboratory Method"` were used as labels (85,291 records, 7,276
 genomes); computational predictions deposited in the same database were excluded as circular.
@@ -163,8 +163,8 @@ Assemblies were downloaded from BV-BRC [12] by genome identifier rather than by 
 accession, because many QC-passing genomes carry no such accession, and were validated for format
 and length. AMRFinderPlus 4.2.7 [2] (database 2026-08-07.1) was run in nucleotide mode with
 `--organism Klebsiella_pneumoniae --plus`, and Kleborate 3.2.4 [3] with Kaptive 3.2.2 [13] using
-the `kpsc` preset. A cross-machine verification script reproduces identical calls on macOS arm64
-and Ubuntu x86_64.
+the `kpsc` preset. Tool calls were verified to be identical on two machines running different
+operating systems and processor architectures.
 
 ### 2.4 Rule-based prediction
 
@@ -184,11 +184,11 @@ a separate tier rather than folded into the core rule.
 
 The MgrB reference protein (WP_002911375.1, 47 aa) was searched against each assembly with tblastn [14]
 (e-value ≤1e-5, hits ≥10 aa) and the best hit classified as **intact** (full-length, no residue
-differences); **missense** (full-length with substitutions); **premature_stop**;
-**frameshift_or_indel** (two fragments on one contig <300 bp apart); **insertion_assembled** (two
-fragments >300 bp apart); **split_contigs**; **contig_break** (alignment terminating at a contig
+differences); **missense** (full-length with substitutions); **premature stop**;
+**frameshift or indel** (two fragments on one contig <300 bp apart); **assembled insertion** (two
+fragments >300 bp apart); **split contigs**; **contig break** (alignment terminating at a contig
 edge); **partial**; or **absent**. All categories except intact and missense count as disrupted.
-The `split_contigs`, `contig_break` and `partial` categories are the assembly signature described
+The split-contigs, contig-break and partial categories are the assembly signature described
 in Section 1.
 
 Residue differences are enumerated by direct comparison of aligned sequences, ignoring query
@@ -198,7 +198,7 @@ codon, quantified in Section 3.3.
 
 ### 2.6 Testing the insertion-sequence interpretation
 
-The `split_contigs`, `contig_break` and `partial` categories are inferences from assembly
+The split-contigs, contig-break and partial categories are inferences from assembly
 structure, so we tested three predictions that follow from IS insertion but not from incidental
 fragmentation. First, position: the break should coincide with *mgrB*, compared against genomes
 with intact *mgrB*. Second, repetitiveness: sequence at the *mgrB*-adjacent contig end should have
@@ -282,8 +282,7 @@ no parameter that could be.
 
 ### 2.11 Reproducibility
 
-All analyses are deterministic for a fixed seed (20261024). Code, pinned environments, manifests,
-decision records, reports and figures are at https://github.com/omarfaruqe/klebsiella-amr.
+All analyses are deterministic for a fixed seed (20261024).
 
 ## 3. Results
 
@@ -293,8 +292,7 @@ Of 6,817 labelled genomes, 6,652 passed quality control. Requiring agreement bet
 field and the genome name removed four genomes with internally inconsistent BV-BRC records, one
 independently confirmed as *Citrobacter freundii*. Of the genomes that passed, 63% (4,190/6,652)
 carry no NCBI assembly accession, which is why assemblies were retrieved by BV-BRC identifier. All
-6,652 completed both genotyping tools (8.8 h wall time, ~140 CPU-hours, zero failures), and the
-targeted *mgrB* search took 2 minutes for 6,652 assemblies on 16 threads.
+6,652 completed both genotyping tools without failure.
 
 The cohort comprised 6,652 QC-passing genomes with harmonised labels: meropenem 5,541 (1,854 R /
 3,687 S), ciprofloxacin 4,640 (3,441 / 1,199), gentamicin 4,760 (2,113 / 2,647), colistin 1,528
@@ -640,8 +638,8 @@ interchangeable — withholding colistin unnecessarily and administering it inef
 different costs — and we performed no decision analysis weighing them. Nothing here establishes
 that genotypic prediction should inform colistin therapy, and we make no such claim: the rule's
 role in this paper is as a mechanism-specified baseline against which to measure validation
-design. Predictive values across a range of prevalences are tabulated in
-`reports/review/predictive_values.md`.
+design. Predictive values across a range of plausible prevalences are given in Supplementary
+Table S4.
 
 ### 4.2 Recommendations
 
@@ -690,8 +688,6 @@ analysis code and provenance manifests are openly available and archived (see Da
 the authors accept full responsibility for the content and integrity of the work.
 
 ## 9. References
-
-All references were verified against the publisher record during preparation (references 1–6 on 2026-10-24, references 7–9 on 2026-10-25).
 
 1. Antimicrobial Resistance Collaborators. Global burden of bacterial antimicrobial resistance in
    2019: a systematic analysis. *The Lancet*. 2022;399(10325):629–655.

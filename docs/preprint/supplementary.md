@@ -40,3 +40,16 @@ gradient boosting under each split scheme. Plotted in Figure 3.
 | Random | 0.759 | **0.844** | **0.842** |
 | Study-aware | 0.759 | **0.822** | **0.810** |
 | Lineage-aware | **0.759** | 0.731 | 0.709 |
+
+**Supplementary Table S4.** Positive and negative predictive value of the AMRFinderPlus plus
+*mgrB* disruption rule (sensitivity 56.7%, specificity 95.2%) across plausible colistin resistance
+prevalences. Sensitivity and specificity are properties of the rule; predictive values also depend
+on how common resistance is in the population tested. Prevalences are illustrative and are not
+estimates for any particular setting.
+
+| Colistin resistance prevalence | PPV | NPV |
+|---|---|---|
+| 2% | 19.4% | 99.1% |
+| 5% | 38.3% | 97.7% |
+| 10% | 56.8% | 95.2% |
+| 24% (this cohort) | 78.9% | 87.4% |
